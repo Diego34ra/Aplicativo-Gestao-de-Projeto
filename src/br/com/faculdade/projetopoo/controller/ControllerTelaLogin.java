@@ -21,7 +21,38 @@ import javafx.scene.layout.Pane;
  * @author Diego
  */
 public class ControllerTelaLogin implements Initializable {    
-    @FXML
+   
+	
+	   @FXML
+	    private Button btCadastrarProjeto;
+
+	    @FXML
+	    private Button btCadastrarUsuario;
+
+	    @FXML
+	    private Button btListarProjetos;
+
+	    @FXML
+	    private Button btListarUsuarios;
+	
+	
+	
+	
+	
+	    @Override
+	    public void initialize(URL url, ResourceBundle rb) {
+
+	    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*@FXML
     private Pane painel;
     
     @FXML
@@ -54,7 +85,7 @@ public class ControllerTelaLogin implements Initializable {
     /**
      * Função para validar o acesso do operador e da produtoFab
      */
-    @FXML
+  /*  @FXML
     protected void logar() {
         
     }
@@ -79,7 +110,7 @@ public class ControllerTelaLogin implements Initializable {
      * @param senha descricao
      * @return  descricao
      */
-    private Boolean validaSenha(String senha){
+  /*  private Boolean validaSenha(String senha){
         return true;
     }
 
@@ -103,7 +134,7 @@ public class ControllerTelaLogin implements Initializable {
     /**
      * Apresentação da tela inicial
      */
-    private void comportamentoInicial(){
+   /* private void comportamentoInicial(){
         lbSenha.setVisible(false);
         txSenha.setVisible(false);
         txSenha.setEditable(false);
@@ -113,13 +144,13 @@ public class ControllerTelaLogin implements Initializable {
     /**
      * Apresentação da tela com operador validado
      */
-    private void comportamentoValidandoUsuario(){
+   /* private void comportamentoValidandoUsuario(){
         lbSenha.setVisible(true);
         txSenha.setVisible(true);
         txSenha.setEditable(true);
         btLogin.setVisible(true);
         txSenha.requestFocus();
-    }
+    }*/
     
     /**
      * Verifica o nome informado na tela
@@ -128,7 +159,7 @@ public class ControllerTelaLogin implements Initializable {
      * @param metodo dever ser preenchido como @codigo ou como @nome
      * @return  descricao
      */
-    private Boolean verificarUsuario(Integer matricula,String nome, String metodo){
+   /* private Boolean verificarUsuario(Integer matricula,String nome, String metodo){
         return true;
     }
 
@@ -136,5 +167,5 @@ public class ControllerTelaLogin implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
- 
+ */
 }

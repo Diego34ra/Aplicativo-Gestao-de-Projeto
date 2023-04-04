@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class TelaLogin extends Application {
+public class TelaPrincipal extends Application {
     private static Stage stage;
     public static Scene scene;
     
@@ -16,21 +16,21 @@ public class TelaLogin extends Application {
     public void start(Stage t) throws Exception {
         stage = new Stage();
         //para não esticar as laterais
-        stage.setMaxWidth(420);
-        stage.setMaxHeight(390);
+        stage.setMaxWidth(800);
+        stage.setMaxHeight(500);
         //valor padrao da tela
-        stage.setWidth(420);
-        stage.setHeight(390);
+        stage.setWidth(800);
+        stage.setHeight(500);
         //para não diminuir
-        stage.setMinWidth(420);
-        stage.setMinHeight(390);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
         //desativando o botão maximixar e minimizar
         stage.setResizable(false);
         
-        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaLogin.fxml"));
+        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaPrincipal.fxml"));
         scene = new Scene(painel);
         
-        stage.setTitle("Login Integração b2b");
+        stage.setTitle("Tela inicial 1.0");
 //        stage.getIcons().add(new Image(TelaLogin.class.getResourceAsStream( "icon.png" ))); 
         
         stage.show();
@@ -61,7 +61,7 @@ public class TelaLogin extends Application {
     }
 
     public static void setScene(Scene scene) {
-        TelaLogin.scene = scene;
+        TelaPrincipal.scene = scene;
     }
     
 }
