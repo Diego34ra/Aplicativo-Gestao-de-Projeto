@@ -20,24 +20,17 @@ import javafx.scene.layout.Pane;
  *
  * @author Diego
  */
-public class ControllerTelaLogin implements Initializable {    
+public class ControllerTelaPrincipal implements Initializable {    
    
 	
-	   @FXML
-	    private Button btCadastrarProjeto;
+    @FXML
+    private Button btSair;
 
-	    @FXML
-	    private Button btCadastrarUsuario;
+    @FXML
+    private Button btTelaCadastro;
 
-	    @FXML
-	    private Button btListarProjetos;
-
-	    @FXML
-	    private Button btListarUsuarios;
-	
-	
-	
-	
+    @FXML
+    private Button btTelaLogin;
 	
 	    @Override
 	    public void initialize(URL url, ResourceBundle rb) {

@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class TelaCadastro extends Application {
+public class TelaCadastroUser extends Application {
 
 	private static Stage stage;
 	public static Scene scene;
@@ -62,7 +62,7 @@ public class TelaCadastro extends Application {
 	}
 
 	public static void setScene(Scene scene) {
-		TelaCadastro.scene = scene;
+		TelaCadastroUser.scene = scene;
 	}
 
 }
