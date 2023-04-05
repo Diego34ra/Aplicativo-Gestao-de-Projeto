@@ -2,33 +2,27 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="458.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="22.0" layoutY="53.0" prefHeight="18.0" prefWidth="39.0" text="Nome: " AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0" />
-      <Label layoutX="61.0" layoutY="124.0" prefHeight="18.0" prefWidth="39.0" text="CPF:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-      <Label layoutX="61.0" layoutY="163.0" prefHeight="18.0" prefWidth="39.0" text="Email:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0" />
-      <Label layoutX="61.0" layoutY="201.0" prefHeight="18.0" prefWidth="39.0" text="Senha:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="200.0" />
-      <MenuBar layoutX="-5.0" layoutY="2.0" prefHeight="25.0" prefWidth="458.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Inicio">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextField fx:id="txNome" layoutX="92.0" layoutY="47.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu Nome" AnchorPane.topAnchor="50.0" />
-      <TextField fx:id="txCpf" layoutX="92.0" layoutY="97.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu CPF" AnchorPane.topAnchor="100.0" />
-      <TextField fx:id="txEmail" layoutX="92.0" layoutY="156.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu Email" AnchorPane.topAnchor="150.0" />
-      <Button layoutX="107.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Cancelar" AnchorPane.leftAnchor="100.0" />
-      <PasswordField fx:id="psSenha" layoutX="92.0" layoutY="197.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite sua Senha" AnchorPane.topAnchor="200.0" />
-      <Button fx:id="btCadastrarUser" layoutX="292.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Cadastrar" AnchorPane.rightAnchor="92.0" />
+      <Label layoutX="27.0" layoutY="74.0" prefHeight="18.0" prefWidth="46.0" stylesheets="@telaInicialDesign.css" text="Nome: " textFill="WHITE" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="74.0" />
+      <Label layoutX="30.0" layoutY="122.0" prefHeight="18.0" prefWidth="39.0" text="CPF:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="122.0" />
+      <Label layoutX="30.0" layoutY="172.0" prefHeight="18.0" prefWidth="39.0" text="Email:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="172.0" />
+      <Label layoutX="30.0" layoutY="222.0" prefHeight="18.0" prefWidth="39.0" text="Senha:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="222.0" />
+      <TextField fx:id="txNome" layoutX="92.0" layoutY="70.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu Nome" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="txCpf" layoutX="92.0" layoutY="118.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu CPF" AnchorPane.topAnchor="118.0" />
+      <TextField fx:id="txEmail" layoutX="92.0" layoutY="168.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu Email" AnchorPane.topAnchor="168.0" />
+      <Button layoutX="119.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Voltar" textFill="WHITE" AnchorPane.leftAnchor="119.0" />
+      <PasswordField fx:id="psSenha" layoutX="92.0" layoutY="218.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite sua Senha" AnchorPane.topAnchor="218.0" />
+      <Button fx:id="btCadastrarUser" layoutX="287.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Cadastrar" textFill="WHITE" AnchorPane.rightAnchor="97.0" />
+      <Label layoutX="123.0" layoutY="23.0" prefHeight="32.0" prefWidth="212.0" text="Cadastro de Usuário" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

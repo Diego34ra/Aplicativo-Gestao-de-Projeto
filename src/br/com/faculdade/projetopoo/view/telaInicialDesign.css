@@ -1,7 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .left-form{
-	-fx-background-color:linear-gradient(to bottom right, #272b3f, #1E90FF);
+	-fx-background-color:linear-gradient(to bottom left, #d78999, #1E90FF);
 	-fx-border-color:#000;
 	-fx-border-width:.4px 0px .4px .4px;
 }
@@ -13,9 +13,15 @@
 }
 
 .login{
-	-fx-background-color:linear-gradient(to bottom right, #1E90FF, #272b3f);
+	-fx-background-color:linear-gradient(to bottom right, #1E90FF, #638dd9);
 	-fx-border-color:#000;
-	-fx-border-width:.4px 0px .4px .4px;
+	-fx-border-width:.4px .4px .4px .4px;
+}
+
+.cadastrar{
+	-fx-background-color:linear-gradient(to top right, #638dd9, #978bbc);
+	-fx-border-color:#000;
+	-fx-border-width:.4px .4px .4px .4px;
 }
 
 
@@ -27,3 +33,5 @@
 .close:hover{
 	-fx-background-color:transparent;
 }
+
+
