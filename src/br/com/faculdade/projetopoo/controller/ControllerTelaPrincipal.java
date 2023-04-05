@@ -7,6 +7,8 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,6 +26,7 @@ public class ControllerTelaPrincipal implements Initializable {
    
     @FXML
     private AnchorPane Pane;
+   
     @FXML
     private Button btSair;
 
@@ -46,6 +49,7 @@ public class ControllerTelaPrincipal implements Initializable {
     void recuperarSenha() {
         System.out.println("recuperar senha");
     }
+    
     @FXML
     void logar() {
 
@@ -60,6 +64,11 @@ public class ControllerTelaPrincipal implements Initializable {
         } catch (Exception ex) {
             System.out.println("Exception ao criar a tela de cadastro\n"+ex);
         }       
+    }
+    
+    @FXML
+    void btSair(ActionEvent event) {
+    	System.exit(0);
     }
 	
     @Override

@@ -31,7 +31,16 @@
 }
 
 .close:hover{
-	-fx-background-color:transparent;
+	-fx-background-color:#ff3547;
 }
 
+.textfield{
+	-fx-background-color:linear-gradient(to bottom, #efefef, #eee);
+	-fx-background-radius:4px;
+	-fx-border-color:#000;
+	-fx-border-width:.4px;
+	-fx-border-radius:4px;
+	-fx-font-size:13px;
+	-fx-font-family:"Arial";
+}
 

@@ -5,27 +5,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
    <children>
       <AnchorPane fx:id="Pane" layoutX="-2.0" layoutY="-3.0" prefHeight="413.0" prefWidth="608.0" styleClass="left-form" stylesheets="@telaInicialDesign.css">
          <children>
-            <Label layoutX="43.0" layoutY="91.0" text="Nome do projeto" textFill="WHITE">
+            <Label layoutX="58.0" layoutY="97.0" text="Nome do projeto" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txEmail" layoutX="43.0" layoutY="161.0" prefHeight="30.0" prefWidth="220.0" promptText="Email" stylesheets="@telaInicialDesign.css" />
-            <PasswordField fx:id="txSenha" layoutX="43.0" layoutY="215.0" prefHeight="30.0" prefWidth="220.0" promptText="Senha" />
-            <Button fx:id="btTelaLogin" layoutX="49.0" layoutY="316.0" mnemonicParsing="false" onAction="#logar" prefHeight="40.0" prefWidth="220.0" styleClass="login" stylesheets="@telaInicialDesign.css" text="Login" textFill="#93c0ee" AnchorPane.bottomAnchor="57.0">
+            <TextField fx:id="txEmail" layoutX="49.0" layoutY="164.0" prefHeight="30.0" prefWidth="220.0" promptText="Email" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+            <PasswordField fx:id="txSenha" layoutX="49.0" layoutY="215.0" prefHeight="30.0" prefWidth="220.0" promptText="Senha" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+            <Button fx:id="btTelaLogin" layoutX="49.0" layoutY="316.0" mnemonicParsing="false" onAction="#logar" prefHeight="40.0" prefWidth="220.0" styleClass="login" stylesheets="@telaInicialDesign.css" text="Login" AnchorPane.bottomAnchor="57.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Label fx:id="txRecuperaSenha" layoutX="146.0" layoutY="359.0" onMouseClicked="#recuperarSenha" prefHeight="18.0" prefWidth="114.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Recuperar Senha" textFill="WHITE">
+            <Label fx:id="txRecuperaSenha" layoutX="153.0" layoutY="363.0" onMouseClicked="#recuperarSenha" prefHeight="18.0" prefWidth="114.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Recuperar Senha" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -35,16 +33,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btSair" layoutX="528.0" layoutY="7.0" minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Sair" AnchorPane.bottomAnchor="376.0">
+            <Button fx:id="btSair" layoutX="561.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btSair" prefHeight="30.0" prefWidth="60.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="X" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="175.0" fitWidth="201.0" layoutX="363.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@golden.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </children>
