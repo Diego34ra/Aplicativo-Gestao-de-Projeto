@@ -24,7 +24,8 @@ public class Initialize {
                     "  `codRecuperacao` varchar(45) DEFAULT NULL,\n" +
                     "  `senha` varchar(45) NOT NULL,\n" +
                     "  PRIMARY KEY (`codUsuario`),\n" +
-                    "  UNIQUE KEY `cpf_UNIQUE` (`cpf`)\n" +
+                    "  UNIQUE KEY `cpf_UNIQUE` (`cpf`),\n" +
+                    "  UNIQUE KEY `email_UNIQUE` (`email`)\n" +
                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
         }
         if(!verifyTable("projeto")){

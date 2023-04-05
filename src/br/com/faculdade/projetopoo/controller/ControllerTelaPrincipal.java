@@ -31,11 +31,25 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     private Button btTelaLogin;
-	
-	    @Override
-	    public void initialize(URL url, ResourceBundle rb) {
 
-	    }
+    @FXML
+    private PasswordField txSenha;
+
+    @FXML
+    private TextField txEmail;
+
+    @FXML
+    private Label txRecuperaSenha;
+
+    @FXML
+    void recuperarSenha() {
+        System.out.println("recuperar senha");
+    }
+	
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
 	
 	
 	

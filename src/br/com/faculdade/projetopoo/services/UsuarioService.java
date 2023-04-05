@@ -34,4 +34,8 @@ public class UsuarioService {
             }
         }
     }
+    
+    public void findByEmail(String email){
+        
+    }
 }
