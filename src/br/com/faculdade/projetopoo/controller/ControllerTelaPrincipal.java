@@ -45,6 +45,10 @@ public class ControllerTelaPrincipal implements Initializable {
     void recuperarSenha() {
         System.out.println("recuperar senha");
     }
+    @FXML
+    void logar() {
+
+    }
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {

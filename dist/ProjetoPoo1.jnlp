@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetoPoo1.jar" size="20325" download="eager" />
+    <jar href="ProjetoPoo1.jar" size="20420" download="eager" />
     <jar href="lib\activation-1.1.jar" size="62983" download="eager" />
     <jar href="lib\javax.mail-1.6.2.jar" size="659031" download="eager" />
   </resources>

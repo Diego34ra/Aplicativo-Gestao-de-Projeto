@@ -23,7 +23,7 @@
             </Label>
             <TextField fx:id="txEmail" layoutX="43.0" layoutY="161.0" prefHeight="30.0" prefWidth="220.0" promptText="Email" stylesheets="@telaInicialDesign.css" />
             <PasswordField fx:id="txSenha" layoutX="43.0" layoutY="215.0" prefHeight="30.0" prefWidth="220.0" promptText="Senha" />
-            <Button fx:id="btTelaLogin" layoutX="40.0" layoutY="287.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login" stylesheets="@telaInicialDesign.css" text="Login" AnchorPane.bottomAnchor="73.0">
+            <Button fx:id="btTelaLogin" layoutX="40.0" layoutY="287.0" mnemonicParsing="false" onAction="#logar" prefHeight="40.0" prefWidth="220.0" styleClass="login" stylesheets="@telaInicialDesign.css" text="Login" AnchorPane.bottomAnchor="73.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
