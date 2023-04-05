@@ -4,6 +4,8 @@
  */
 package br.com.faculdade.projetopoo.model;
 
+import java.util.Random;
+
 /**
  *
  * @author Diego
@@ -65,16 +67,18 @@ public class Usuario {
         this.codRecuperacao = codRecuperacao;
     }
 
-    public Usuario(Long codUsuario, String cpf, String email, String nome, String senha, String codRecuperacao) {
-        this.codUsuario = codUsuario;
+    public Usuario( String cpf, String email, String nome, String senha) {
+        Random random = new Random();
+        this.codUsuario = (long) (random.nextDouble() * 10000000L);
         this.cpf = cpf;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
-        this.codRecuperacao = codRecuperacao;
     }
 
     public Usuario() {
+        Random random = new Random();
+        this.codUsuario = (long) (random.nextDouble() * 10000000L);
     }
     
 }

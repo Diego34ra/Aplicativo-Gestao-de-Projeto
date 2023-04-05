@@ -8,9 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetoPoo1.jar" size="20420" download="eager" />
+    <jar href="ProjetoPoo1.jar" size="22883" download="eager" />
     <jar href="lib\activation-1.1.jar" size="62983" download="eager" />
     <jar href="lib\javax.mail-1.6.2.jar" size="659031" download="eager" />
+    <jar href="lib\mysql-connector-java-8.0.11.jar" size="2036609" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="br.com.faculdade.projetopoo.view.TelaPrincipal"  name="ProjetoPoo1" />
   <update check="always"/>

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
    <children>
-      <AnchorPane layoutX="-2.0" layoutY="-3.0" prefHeight="413.0" prefWidth="608.0" styleClass="left-form" stylesheets="@telaInicialDesign.css">
+      <AnchorPane fx:id="Pane" layoutX="-2.0" layoutY="-3.0" prefHeight="413.0" prefWidth="608.0" styleClass="left-form" stylesheets="@telaInicialDesign.css">
          <children>
             <Label layoutX="43.0" layoutY="91.0" text="Nome do projeto" textFill="WHITE">
                <font>
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btTelaCadastro" layoutX="341.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="cadastrar" stylesheets="@telaInicialDesign.css" text="Cadastrar" AnchorPane.topAnchor="316.0">
+            <Button fx:id="btTelaCadastro" layoutX="341.0" layoutY="316.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="40.0" prefWidth="220.0" styleClass="cadastrar" stylesheets="@telaInicialDesign.css" text="Cadastrar" AnchorPane.topAnchor="316.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

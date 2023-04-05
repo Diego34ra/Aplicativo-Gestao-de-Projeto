@@ -32,8 +32,6 @@ public class TelaCadastroUser extends Application {
 		stage.setOnCloseRequest((WindowEvent t1) -> {
 			t1.consume();
 			stage.close();
-			Platform.exit();
-			System.exit(0);
 		});
 	}
 
