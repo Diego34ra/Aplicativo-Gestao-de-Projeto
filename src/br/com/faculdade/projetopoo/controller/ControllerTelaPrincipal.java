@@ -4,17 +4,19 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.view.TelaCadastroUser;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -22,7 +24,9 @@ import javafx.scene.layout.Pane;
  */
 public class ControllerTelaPrincipal implements Initializable {    
    
-	
+    @FXML
+    private AnchorPane Pane;
+   
     @FXML
     private Button btSair;
 
@@ -45,9 +49,26 @@ public class ControllerTelaPrincipal implements Initializable {
     void recuperarSenha() {
         System.out.println("recuperar senha");
     }
+    
     @FXML
     void logar() {
 
+    }
+    
+    @FXML
+    void cadastrarUsuario() {
+        TelaCadastroUser tela = new TelaCadastroUser();
+        try {
+            tela.start(new Stage());
+            TelaCadastroUser.getStage().show();
+        } catch (Exception ex) {
+            System.out.println("Exception ao criar a tela de cadastro\n"+ex);
+        }       
+    }
+    
+    @FXML
+    void btSair(ActionEvent event) {
+    	System.exit(0);
     }
 	
     @Override
