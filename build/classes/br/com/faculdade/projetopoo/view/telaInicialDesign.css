@@ -44,3 +44,12 @@
 	-fx-font-family:"Arial";
 }
 
+.fundo-principal{
+	-fx-background-color:linear-gradient(to bottom,#eee, rgb(125, 125, 125));
+}
+
+.fundo-principal-nome{
+	-fx-background-color:linear-gradient(to bottom, #d78999, #1E90FF);
+	-fx-border-color:#000;
+	-fx-border-width:.4px .4px .4px .4px;
+}
