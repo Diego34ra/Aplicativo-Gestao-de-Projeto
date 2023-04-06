@@ -73,7 +73,7 @@ public class UsuarioService {
         usuario.setCpf("");
         Statement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM `usuario` WHERE `cpf` = " + cpf;
+        String sql = "SELECT * FROM `usuario` WHERE `cpf` = '" + cpf+"'";
         System.out.println("br.com.faculdade.projetopoo.services.UsuarioService()");
         try {
             stmt = con.getConnection().createStatement();

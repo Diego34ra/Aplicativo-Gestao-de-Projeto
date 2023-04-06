@@ -28,7 +28,7 @@ public class ConnectionBD {
 		  hostName = "localhost";
 		  userName = "root";
 		  password = "";
-		  jdbcDriver = "com.mysql.jdbc.Driver";
+		  jdbcDriver = "com.mysql.cj.jdbc.Driver";
 		  dataBaseName = "projeto";
 		  dataBasePrefix = "jdbc:mysql://";
 		  dabaBasePort = "3306";
@@ -39,7 +39,7 @@ public class ConnectionBD {
 		  try {
 		    if (con == null) {
 		      Class.forName(jdbcDriver);
-		      con = DriverManager.getConnection(url, userName, password);
+		      con = DriverManager.getConnection(url+"?useTimezone=true&serverTimezone=UTC&useSSL=false", userName, password);
 		    } else if (con.isClosed()) {
 		      con = null;
 		      return getConnection();

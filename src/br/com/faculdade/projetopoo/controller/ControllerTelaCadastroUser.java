@@ -1,11 +1,13 @@
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Global;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.services.EmailService;
 import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.view.TelaVerificacao;
 import java.util.Random;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
@@ -36,7 +38,7 @@ public class ControllerTelaCadastroUser implements Initializable {
         private Usuario usuario;
 
         @FXML
-        void cadastrar(ActionEvent event) {
+        void cadastrar() {
             boolean valida = true;
             if(!UsuarioService.findByEmail(txEmail.getText()).getEmail().equals("")){
                 System.out.println("E-mail já cadastrado");
@@ -46,22 +48,22 @@ public class ControllerTelaCadastroUser implements Initializable {
                 valida = false;
             }
             if (valida) {
-                Random random = new Random();
-                String codigo = String.valueOf((long)(random.nextDouble() * 10000L));
-                EmailService email = new EmailService();
-                String destinatario [] = {txEmail.getText()};
-                email.sendEmail("Código de verificação", destinatario, codigo);
-                Scanner scan = new Scanner(System.in);
-                String cod = scan.nextLine();
-                if(codigo.equals(cod)){
+                Global.email = txEmail.getText();
+                TelaVerificacao tela = new TelaVerificacao();
+                try {
+                    tela.start(new Stage());
+                    TelaVerificacao.getStage().show();
+                } catch (Exception ex) {
+                    System.out.println("Exception ao criar a tela de cadastro\n"+ex);
+                } 
+            }
+            System.out.println("valor do global = "+Global.valida);
+                if(Global.valida){
                     Usuario usuario = new Usuario( txCpf.getText(),txEmail.getText(),
                                               txNome.getText(), psSenha.getText());
                     UsuarioService.createUsuario(usuario);
                     System.out.println("Usuario cadastrado com sucesso");
-                } else {
-                    System.out.println("codigo de verificação incorreto");
-                }
-            }
+                } 
         }
         
 	@Override
