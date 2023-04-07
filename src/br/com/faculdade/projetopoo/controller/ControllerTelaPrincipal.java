@@ -4,9 +4,16 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
+import br.com.faculdade.projetopoo.model.Usuario;
+import br.com.faculdade.projetopoo.services.UsuarioService;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
+import br.com.faculdade.projetopoo.view.TelaInformacoes;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,8 +58,23 @@ public class ControllerTelaPrincipal implements Initializable {
     }
     
     @FXML
-    void logar() {
-
+    void logar() throws NoSuchAlgorithmException {
+        Usuario usuario  = UsuarioService.findByEmail(txEmail.getText());
+        if(txEmail.getText().equals(usuario.getEmail())){
+            if (usuario.getSenha().equals(UsuarioService.cryptoPass(txSenha.getText()))) {
+                TelaInformacoes tela = new TelaInformacoes();
+                try {
+                    tela.start(new Stage());
+                    TelaInformacoes.getStage().show();
+                } catch (Exception ex) {
+                    System.out.println("Exception ao entrar no menu principal\n"+ex);
+                } 
+            } else {
+                Alertas.alertaInformacao("Senha incorreta!", "A senha digitada está incorreta.");
+            }
+        } else {
+            Alertas.alertaInformacao("E-mail inválido!", "Não existe usuário cadastrado com esse e-mail.");
+        }
     }
     
     @FXML
@@ -73,6 +95,5 @@ public class ControllerTelaPrincipal implements Initializable {
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 }

@@ -7,6 +7,7 @@ package br.com.faculdade.projetopoo;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.EmailService;
 import br.com.faculdade.projetopoo.services.ProjetoService;
+import br.com.faculdade.projetopoo.services.UsuarioService;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
@@ -37,5 +38,6 @@ public class ProjetoPOO {
 //         EmailService email = new EmailService();
 //         String destinatario[] = {"diegoribeiro13ra@hotmail.com"};
 //         email.sendEmail("test",destinatario , "teste123");
+        
     }
 }

@@ -5,10 +5,7 @@
         <group>
             <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/view/FXMLTelaPrincipal.fxml</file>
             <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/controller/ControllerTelaPrincipal.java</file>
-            <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/services/ProjetoService.java</file>
             <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/controller/ControllerTelaCadastroUser.java</file>
-            <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/view/TelaPrincipal.java</file>
-            <file>file:/C:/Users/Developer/Documents/NetBeansProjects/ProjetoPoo/src/br/com/faculdade/projetopoo/services/UsuarioService.java</file>
         </group>
     </open-files>
 </project-private>

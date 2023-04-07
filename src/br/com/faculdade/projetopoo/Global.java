@@ -4,6 +4,8 @@
  */
 package br.com.faculdade.projetopoo;
 
+import br.com.faculdade.projetopoo.model.Usuario;
+
 /**
  *
  * @author Diego
@@ -11,5 +13,5 @@ package br.com.faculdade.projetopoo;
 public class Global {
     
     public static String email;
-    public static Boolean valida = false;
+    public static Usuario usuario = new Usuario();
 }

@@ -6,6 +6,9 @@ package br.com.faculdade.projetopoo.services;
 
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Usuario;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -15,12 +18,12 @@ import java.sql.Statement;
  */
 public class UsuarioService {
     
-    public static void createUsuario(Usuario usuario){
+    public static void createUsuario(Usuario usuario) throws NoSuchAlgorithmException{
         ConnectionBD con = new ConnectionBD();
         Statement stmt = null;
         String sql = "INSERT INTO `usuario` (`codUsuario`, `nome`, `email`, `cpf`,`senha`)\n"
         		   + "VALUES ('"+usuario.getCodUsuario()+"', '"+usuario.getNome()+"', '"+usuario.getEmail()+"',\n"
-        		   + "'"+usuario.getCpf()+"','"+usuario.getSenha()+"')";
+        		   + "'"+usuario.getCpf()+"','"+cryptoPass(usuario.getSenha())+"')";
         System.out.println("br.com.faculdade.projetopoo.services.UsuarioService.createUsuario()");
         try {
             stmt = con.getConnection().createStatement();
@@ -96,5 +99,13 @@ public class UsuarioService {
             }
         }
         return usuario;
+    }
+    
+    public static String cryptoPass(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+ 
+        BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
+ 
+        return String.format("%32x", hash);
     }
 }

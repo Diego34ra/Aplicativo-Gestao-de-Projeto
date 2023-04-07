@@ -3,6 +3,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.services.EmailService;
+import br.com.faculdade.projetopoo.services.UsuarioService;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -35,8 +36,8 @@ public class ControllerCodigoVerificacao implements Initializable {
     @FXML
     void enviarCodigo() {
         if(txCodigo.getText().equals(codigo)){
-            Global.valida = true;
-            System.out.println("status = "+Global.valida);
+            UsuarioService service = new UsuarioService();
+            service.createUsuario(Global.usuario);
             Stage stage = (Stage) painel.getScene().getWindow();
             stage.close();
         } else {
@@ -61,9 +62,10 @@ public class ControllerCodigoVerificacao implements Initializable {
     public static String gerarCodigo (){
         Random random = new Random();
         String codigo = String.valueOf((long)(random.nextDouble() * 10000L));
+        System.out.println("codigo = " + codigo);
         EmailService email = new EmailService();
         String destinatario [] = {Global.email};
-        email.sendEmail("Código de verificação", destinatario, codigo);
+//        email.sendEmail("Código de verificação", destinatario, codigo);
         return codigo;
     }
 

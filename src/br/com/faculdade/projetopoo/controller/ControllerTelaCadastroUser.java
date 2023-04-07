@@ -53,17 +53,13 @@ public class ControllerTelaCadastroUser implements Initializable {
                 try {
                     tela.start(new Stage());
                     TelaVerificacao.getStage().show();
+                    Global.usuario = new Usuario( txCpf.getText(),txEmail.getText(),
+                                                  txNome.getText(), psSenha.getText());
                 } catch (Exception ex) {
                     System.out.println("Exception ao criar a tela de cadastro\n"+ex);
-                } 
+                }
             }
-            System.out.println("valor do global = "+Global.valida);
-                if(Global.valida){
-                    Usuario usuario = new Usuario( txCpf.getText(),txEmail.getText(),
-                                              txNome.getText(), psSenha.getText());
-                    UsuarioService.createUsuario(usuario);
-                    System.out.println("Usuario cadastrado com sucesso");
-                } 
+            
         }
         
 	@Override
