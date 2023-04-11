@@ -5,6 +5,7 @@ import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.services.EmailService;
 import br.com.faculdade.projetopoo.services.UsuarioService;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -34,7 +35,7 @@ public class ControllerCodigoVerificacao implements Initializable {
     private String codigo;
     
     @FXML
-    void enviarCodigo() {
+    void enviarCodigo() throws NoSuchAlgorithmException {
         if(txCodigo.getText().equals(codigo)){
             UsuarioService service = new UsuarioService();
             service.createUsuario(Global.usuario);

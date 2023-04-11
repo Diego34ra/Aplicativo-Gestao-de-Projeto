@@ -70,10 +70,10 @@ public class ControllerTelaPrincipal implements Initializable {
                     System.out.println("Exception ao entrar no menu principal\n"+ex);
                 } 
             } else {
-                Alertas.alertaInformacao("Senha incorreta!", "A senha digitada está incorreta.");
+                Alertas.informacao("Senha incorreta!", "A senha digitada está incorreta.");
             }
         } else {
-            Alertas.alertaInformacao("E-mail inválido!", "Não existe usuário cadastrado com esse e-mail.");
+            Alertas.informacao("E-mail inválido!", "Não existe usuário cadastrado com esse e-mail.");
         }
     }
     

@@ -11,6 +11,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 /**
  *
@@ -107,5 +111,29 @@ public class UsuarioService {
         BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
  
         return String.format("%32x", hash);
+    }
+    
+    public static String validateCpf(String value){
+        String cpf = removeAcentos(value);
+        if (cpf.length() != 11) {
+            cpf = "";
+        }
+        return cpf;
+    }
+
+    public static String removeAcentos(String value) {
+        String normalizer = Normalizer.normalize(value, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(normalizer).replaceAll("");
+    }
+    public static boolean validateEmail(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
     }
 }
