@@ -4,6 +4,7 @@
  */
 package br.com.faculdade.projetopoo.services;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Usuario;
 import java.math.BigInteger;
@@ -113,12 +114,14 @@ public class UsuarioService {
         return String.format("%32x", hash);
     }
     
-    public static String validateCpf(String value){
-        String cpf = removeAcentos(value);
-        if (cpf.length() != 11) {
-            cpf = "";
-        }
-        return cpf;
+    public static String validateCpf(String cpf){
+        CPFValidator cpfValidator = new CPFValidator(); 
+        try{ cpfValidator.assertValid(cpf); 
+            return cpf; 
+        }catch(Exception e){ 
+            System.out.println("Cpf digitado está inválido: " +cpf+"\n"+ e.getMessage());
+            return ""; 
+        } 
     }
 
     public static String removeAcentos(String value) {
