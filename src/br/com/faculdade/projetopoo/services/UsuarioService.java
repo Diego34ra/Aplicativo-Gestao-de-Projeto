@@ -4,6 +4,7 @@
  */
 package br.com.faculdade.projetopoo.services;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Usuario;
 import java.math.BigInteger;
@@ -11,6 +12,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 /**
  *
@@ -107,5 +112,31 @@ public class UsuarioService {
         BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
  
         return String.format("%32x", hash);
+    }
+    
+    public static String validateCpf(String cpf){
+        CPFValidator cpfValidator = new CPFValidator(); 
+        try{ cpfValidator.assertValid(cpf); 
+            return cpf; 
+        }catch(Exception e){ 
+            System.out.println("Cpf digitado está inválido: " +cpf+"\n"+ e.getMessage());
+            return ""; 
+        } 
+    }
+
+    public static String removeAcentos(String value) {
+        String normalizer = Normalizer.normalize(value, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(normalizer).replaceAll("");
+    }
+    public static boolean validateEmail(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
     }
 }

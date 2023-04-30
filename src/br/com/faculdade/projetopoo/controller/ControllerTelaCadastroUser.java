@@ -1,5 +1,6 @@
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,8 @@ import br.com.faculdade.projetopoo.services.UsuarioService;
 import br.com.faculdade.projetopoo.view.TelaVerificacao;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,11 +43,22 @@ public class ControllerTelaCadastroUser implements Initializable {
         @FXML
         void cadastrar() {
             boolean valida = true;
-            if(!UsuarioService.findByEmail(txEmail.getText()).getEmail().equals("")){
-                System.out.println("E-mail já cadastrado");
+            if (UsuarioService.validateEmail(txEmail.getText())) {
+                if(!UsuarioService.findByEmail(txEmail.getText()).getEmail().equals("")){
+                    Alertas.informacao("E-mail inválido!", "O E-mail Informado já está cadastrado.");
+                    valida = false;
+                }
+            } else {
+                Alertas.informacao("E-mail inválido!", "O E-mail Informado não tem um formato correto.");
                 valida = false;
-            }  else if(!UsuarioService.findByCpf(txCpf.getText()).getCpf().equals("")){
-                System.out.println("Cpf já cadastrado");
+            }
+            if(!UsuarioService.validateCpf(txCpf.getText()).equals("")){
+                if (!UsuarioService.findByCpf(txCpf.getText()).getCpf().equals("")) {
+                    valida = false;
+                    Alertas.informacao("Cpf inválido!", "O Cpf Informado já está cadastrado.");
+               }   
+            } else {
+                Alertas.informacao("Cpf inválido!", "O Cpf Informado não tem um formato correto.");
                 valida = false;
             }
             if (valida) {
@@ -58,10 +72,9 @@ public class ControllerTelaCadastroUser implements Initializable {
                 } catch (Exception ex) {
                     System.out.println("Exception ao criar a tela de cadastro\n"+ex);
                 }
-            }
-            
+            } 
         }
-        
+  
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub	

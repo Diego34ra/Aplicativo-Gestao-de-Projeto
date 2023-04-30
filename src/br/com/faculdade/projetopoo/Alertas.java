@@ -40,7 +40,7 @@ public class Alertas {
         }
     }
     
-    public static void alertaInformacao(String cabeca,String corpo){
+    public static void informacao(String cabeca,String corpo){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Gestão de Projetos");
         alert.setHeaderText(cabeca);
