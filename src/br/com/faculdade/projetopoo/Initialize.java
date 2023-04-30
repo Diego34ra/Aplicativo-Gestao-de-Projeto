@@ -33,9 +33,21 @@ public class Initialize {
                     "  `codProjeto` varchar(45) NOT NULL,\n" +
                     "  `nome` varchar(45) NOT NULL,\n" +
                     "  `descricao` varchar(45) NOT NULL,\n" +
-                    "  `dataCriacao` varchar(45) NOT NULL,\n" +
+                    "  `dataCriacao` datetime NOT NULL,\n" +
                     "  PRIMARY KEY (`codProjeto`)\n" +
                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+        }
+        
+        if(!verifyTable("status")){
+            createTable("CREATE TABLE `status` (\n" +
+                     "  `codStatus` int(11) NOT NULL AUTO_INCREMENT,\n" +
+                     "  `projeto_id` int(11) NOT NULL,\n" +
+                     "  `nome` varchar(45) NOT NULL,\n" +
+                     "  `descricao` varchar(45) NOT NULL,\n" +
+                     "  `dataHora` datetime NOT NULL,\n" +
+                     "  PRIMARY KEY (`codStatus`),\n" +
+                     "  KEY `projeto_id` (`projeto_id`)\n" +
+                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
         }
         
     }

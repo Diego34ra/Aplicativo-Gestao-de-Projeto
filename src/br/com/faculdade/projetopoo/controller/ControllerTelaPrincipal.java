@@ -69,6 +69,9 @@ public class ControllerTelaPrincipal implements Initializable {
                 } catch (Exception ex) {
                     System.out.println("Exception ao entrar no menu principal\n"+ex);
                 } 
+                //Fecha a tela atual
+                Stage stage = (Stage) Pane.getScene().getWindow();
+                stage.close();
             } else {
                 Alertas.alertaInformacao("Senha incorreta!", "A senha digitada está incorreta.");
             }

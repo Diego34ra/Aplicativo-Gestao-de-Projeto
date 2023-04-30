@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="teste" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaInicial">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="67.0" prefWidth="700.0" style="-fx-padding: 1.5em; -fx-background-color: #CDE4EB;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" style="-fx-font-size: 16px;" text="Início" />
+            <Menu mnemonicParsing="false" style="-fx-font-size: 16px;" text="Perfil">
+               <items>
+                  <MenuItem fx:id="menuUsuario" mnemonicParsing="false" onAction="#cadastrarUsuario" text="Usuário" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" style="-fx-font-size: 16px;" text="Projetos">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#getPaneProjeto" text="Action 1" />
+              </items>
+            </Menu>
+         </menus>
+         <padding>
+            <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+         </padding>
+      </MenuBar>
+      <AnchorPane fx:id="Pane" layoutY="79.0" prefHeight="421.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0" />
+   </children>
+</AnchorPane>

@@ -4,7 +4,6 @@
  */
 package br.com.faculdade.projetopoo.model;
 
-import java.sql.Timestamp;
 import java.util.Random;
 
 /**
@@ -17,6 +16,15 @@ public class Projeto {
     private String nome;
     private String dataCriacao;
     private String descricao;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getCodProjeto() {
         return codProjeto;

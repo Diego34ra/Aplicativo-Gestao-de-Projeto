@@ -53,3 +53,9 @@
 	-fx-border-color:#000;
 	-fx-border-width:.4px .4px .4px .4px;
 }
+
+.jumbotron .btn:focus{
+outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+}
