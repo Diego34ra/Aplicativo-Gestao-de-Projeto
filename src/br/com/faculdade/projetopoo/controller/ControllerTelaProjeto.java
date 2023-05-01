@@ -9,9 +9,12 @@ import br.com.faculdade.projetopoo.services.ProjetoService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -28,14 +31,14 @@ public class ControllerTelaProjeto {
     private final TableColumn cellProDtCriacao = new TableColumn("Data de Criação");
     private final TableColumn cellProDescricao = new TableColumn("Descrição");
     private final TableColumn cellProStatus = new TableColumn("Status");
-//    private final TableColumn<ClienteBean,ClienteBean> cellCliDelete = new TableColumn("Delete");
+    private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
 //    private final TableColumn<ClienteBean,ClienteBean> cellCliIntegerar = new TableColumn("Integra");
     
     private void carregaTabelaProjeto(ObservableList<Projeto> list){
         tbProjeto.getColumns().clear();
         formataTabelaProjeto();
         tbProjeto.setItems(list);
-        tbProjeto.getColumns().addAll(cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao);
+        tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao);
     }
     
 //    switch (cbTipoConsultaClienteGeral.getSelectionModel().getSelectedItem()){
@@ -132,18 +135,18 @@ public class ControllerTelaProjeto {
          } );
         cellProDescricao.setStyle("-fx-alignment: center;");
         
-//        cellCliDelete.setMinWidth(50);
-//        cellCliDelete.setPrefWidth(80);
-//        cellCliDelete.setResizable(false);
-//        cellCliDelete.setStyle("-fx-alignment: center;");
-//        cellCliDelete.setCellFactory(col -> {
-//            TableCell<ClienteBean, ClienteBean> cell = new TableCell<ClienteBean, ClienteBean>() {
-//                @Override
-//                public void updateItem(ClienteBean item, boolean empty) {
-//                    final Tooltip infAjuda = new Tooltip();
-//                    infAjuda.setText("Exclui o cliente da integradora.");
-//                    Button botao = new Button();
-//                    String caminho = "icon/lixeira.png";
+        cellProTarefas.setMinWidth(50);
+        cellProTarefas.setPrefWidth(80);
+        cellProTarefas.setResizable(false);
+        cellProTarefas.setStyle("-fx-alignment: center;");
+        cellProTarefas.setCellFactory(col -> {
+            TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
+                @Override
+                public void updateItem(Projeto item, boolean empty) {
+                    final Tooltip infAjuda = new Tooltip();
+                    infAjuda.setText("Exclui o cliente da integradora.");
+                    Button botao = new Button();
+                    String caminho = "icon/lixeira.png";
 //                    File file = new File(caminho);
 //                    Image imagem = new Image(file.toURI().toString());
 //                    ImageView imv = new ImageView();
@@ -152,29 +155,30 @@ public class ControllerTelaProjeto {
 //                        imv.setFitWidth(20l);
 //                    }
 //                    imv.setImage(imagem);
-//                    botao.setPickOnBounds(true);
+                    botao.setPickOnBounds(true);
 //                    botao.setGraphic(imv);
-//                    botao.setAlignment(Pos.CENTER);
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        botao.setOnAction(event -> 
-//                            { 
+                    botao.setAlignment(Pos.CENTER);
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        botao.setOnAction(event -> 
+                            { 
+                                System.out.println("Testando");
 //                                if(Alertas.confirmacao("Confirma a exclusão do cliente?", "", "Sim", "Não") == 1){
 //                                    deletaClienteGeral(getTableView().getItems().get(getIndex()));
 //                                    Alertas.alertaInformacao("Processo finalizado!","");
 //                                    consultaClienteGeral();
 //                                } else
 //                                    Alertas.alertaAtencao("Ok!", "Nada foi alterado!");
-//                            }
-//                        );
-//                        setGraphic(botao);
-//                    }
-//                }
-//            };
-//            return cell ;
-//        });
+                            }
+                        );
+                        setGraphic(botao);
+                    }
+                }
+            };
+            return cell ;
+        });
         
 //        cellCliIntegerar.setMinWidth(50);
 //        cellCliIntegerar.setPrefWidth(80);

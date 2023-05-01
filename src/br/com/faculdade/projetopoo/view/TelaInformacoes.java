@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class TelaInformacoes extends Application {
@@ -30,7 +29,7 @@ public class TelaInformacoes extends Application {
         
         scene = new Scene(painel);
         
-        stage.setTitle(" seja bem vindo ao Integrador IFC");
+        stage.setTitle("Gestão de Projetos");
 //        stage.getIcons().add(new Image(TelaInicial.class.getResourceAsStream( "icon.png" ))); 
         
         stage.setScene(scene);

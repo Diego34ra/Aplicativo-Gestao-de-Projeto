@@ -50,6 +50,16 @@ public class Initialize {
                      ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
         }
         
+        if(!verifyTable("tarefa")){
+            createTable("CREATE TABLE `tarefa` (\n" +
+                     "  `codTarefa` int(11) NOT NULL,\n" +
+                     "  `nome` varchar(45) NOT NULL,\n" +
+                     "  `descricao` varchar(45) NOT NULL,\n" +
+                     "  `status` varchar(45) NOT NULL,\n" +
+                     "  PRIMARY KEY (`codTarefa`)\n" +
+                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+        }
+        
     }
     
     public void createTable(String sql){
