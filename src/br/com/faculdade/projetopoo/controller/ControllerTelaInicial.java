@@ -29,7 +29,7 @@ public class ControllerTelaInicial {
     
     @FXML
     void getPaneProjeto() throws IOException {
-        Parent menuRecebimento = FXMLLoader.load(getClass().getResource("/br/com/faculdade/projetopoo/view/FXMLTelaProjeto.fxml"));
+        Parent menuRecebimento = FXMLLoader.load(getClass().getResource("/br/com/faculdade/projetopoo/view/FXMLTelaProjeto2.fxml"));
         AnchorPane.setTopAnchor(menuRecebimento, 72.0);
         AnchorPane.setBottomAnchor(menuRecebimento, 23.0);
         AnchorPane.setLeftAnchor(menuRecebimento, 23.0);

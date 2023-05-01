@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaProjeto">
+   <children>
+      <TableView fx:id="tbProjeto" layoutX="20.0" layoutY="72.0" prefHeight="305.0" prefWidth="557.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="72.0" />
+      <Button layoutX="20.0" layoutY="27.0" mnemonicParsing="false" onAction="#teste" text="Button" />
+   </children>
+</AnchorPane>
