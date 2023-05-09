@@ -156,17 +156,17 @@ public class ControllerTelaProjeto implements Initializable{
                     final Tooltip infAjuda = new Tooltip();
                     infAjuda.setText("Tarefas do projeto.");
                     Button botao = new Button();
-                    String caminho = "icon/lixeira.png";
-//                    File file = new File(caminho);
-//                    Image imagem = new Image(file.toURI().toString());
-//                    ImageView imv = new ImageView();
-//                    {
-//                        imv.setFitHeight(20l);
-//                        imv.setFitWidth(20l);
-//                    }
-//                    imv.setImage(imagem);
+                    String caminho = "imagens/ordem-de-servico.png";
+                    File file = new File(caminho);
+                    Image imagem = new Image(file.toURI().toString());
+                    ImageView imv = new ImageView();
+                   {
+                       imv.setFitHeight(20l);
+                       imv.setFitWidth(20l);
+                  }
+                   imv.setImage(imagem);
                     botao.setPickOnBounds(true);
-//                    botao.setGraphic(imv);
+                    botao.setGraphic(imv);
                     botao.setAlignment(Pos.CENTER);
                     super.updateItem(item, empty);
                     if (empty) {

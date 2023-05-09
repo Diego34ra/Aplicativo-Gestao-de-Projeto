@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="dist/lib/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="dist/lib/javax.mail-1.6.2.jar"/>
 	<classpathentry kind="lib" path="dist/ProjetoPoo1.jar"/>
+	<classpathentry kind="lib" path="dependencies/caelum-stella-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="dependencies/caelum-stella-bean-validation-2.1.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

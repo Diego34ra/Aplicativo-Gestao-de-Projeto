@@ -28,12 +28,12 @@ public class ProjetoPOO {
     private static final String OUTPUT_FORMAT = "%-20s:%s";
 
     public static void main(String[] args) throws Exception {
-//        Projeto projeto = new Projeto();
-//        projeto.setDescricao("teste");
-//        projeto.setNome("TESTE PROJETO");
-//        projeto.setDataCriacao("01/04/2023");
-//        ProjetoService service = new ProjetoService();
-//        service.create(projeto);
+      Projeto projeto = new Projeto();
+        projeto.setDescricao("teste");
+        projeto.setNome("TESTE PROJETO");
+        projeto.setDataCriacao("01/04/2023");
+        ProjetoService service = new ProjetoService();
+        service.create(projeto);
             //Encode
 //         EmailService email = new EmailService();
 //         String destinatario[] = {"diegoribeiro13ra@hotmail.com"};
