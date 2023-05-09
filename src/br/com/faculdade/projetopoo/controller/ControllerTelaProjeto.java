@@ -4,16 +4,22 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -21,9 +27,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author Diego
  */
-public class ControllerTelaProjeto {
+public class ControllerTelaProjeto implements Initializable{
     
-    
+    @FXML
+    private TextField txConsulta;
+
+    @FXML
+    private ComboBox<String> cbConsulta;
+
     @FXML
     private TableView<Projeto> tbProjeto;
     private final TableColumn cellProId = new TableColumn("Código");
@@ -32,7 +43,6 @@ public class ControllerTelaProjeto {
     private final TableColumn cellProDescricao = new TableColumn("Descrição");
     private final TableColumn cellProStatus = new TableColumn("Status");
     private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
-//    private final TableColumn<ClienteBean,ClienteBean> cellCliIntegerar = new TableColumn("Integra");
     
     private void carregaTabelaProjeto(ObservableList<Projeto> list){
         tbProjeto.getColumns().clear();
@@ -41,25 +51,21 @@ public class ControllerTelaProjeto {
         tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao);
     }
     
-//    switch (cbTipoConsultaClienteGeral.getSelectionModel().getSelectedItem()){
-//                    case "Nome":
-//                        sql = "SELECT C.NAME AS NOME, \n" +
-//                            "C.DOCUMENTNR AS CGC, \n" +
-//                            "C.INTEGRADO,C.CUSTOMERID,\n" +
-//                            "C.INTEGRADORA AS IDINTEGRADORA\n" +
-//                            "FROM CLIENTE C WHERE C.INTEGRADORA = "+conf.getId()+
-//                            "\n AND C.NAME LIKE '%"+txClienteGeral.getText()+"%'";
-//                        
-//                        carregaTabelaClienteGeral(ClienteIntegradoDao.getListCliente(sql));
-//                        ObservableList<ClienteBean> obj = FXCollections.observableArrayList(lista);
-//                        break;
-//    }
             
     @FXML
-    void teste() {
-        ObservableList<Projeto> obj = FXCollections.observableArrayList(ProjetoService.findAll());
+    void buscar() {
+        ObservableList<Projeto> obj = null;
+        switch (cbConsulta.getSelectionModel().getSelectedItem()) {
+            case "Todos":
+                obj = FXCollections.observableArrayList(ProjetoService.findAll());
+                break;
+            case "Código":
+                obj = FXCollections.observableArrayList(ProjetoService.findById(txConsulta.getText()));
+                break;
+            default:
+                throw new AssertionError();
+        }
         carregaTabelaProjeto(obj);
-//                        ObservableList<ClienteBean> obj = FXCollections.observableArrayList(lista);
     }
     
     private void formataTabelaProjeto(){
@@ -144,7 +150,7 @@ public class ControllerTelaProjeto {
                 @Override
                 public void updateItem(Projeto item, boolean empty) {
                     final Tooltip infAjuda = new Tooltip();
-                    infAjuda.setText("Exclui o cliente da integradora.");
+                    infAjuda.setText("Tarefas do projeto.");
                     Button botao = new Button();
                     String caminho = "icon/lixeira.png";
 //                    File file = new File(caminho);
@@ -225,5 +231,12 @@ public class ControllerTelaProjeto {
 //            return cell ;
 //        });
         
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cbConsulta.getItems().addAll(Global.tipoConsulta("projeto"));
+        
+        cbConsulta.getSelectionModel().selectFirst();
     }
 }

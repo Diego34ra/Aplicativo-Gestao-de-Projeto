@@ -69,4 +69,34 @@ public class ProjetoService {
         }
         return lista;
     }
+    
+    public static Projeto findById(String codigo){
+        ConnectionBD con = new ConnectionBD();
+        Projeto projeto = new Projeto();
+        Statement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
+        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        try {
+            stmt = con.getConnection().createStatement();
+            rs = stmt.executeQuery(sql); 
+            while(rs.next()) {
+            	projeto.setCodProjeto(rs.getLong("codProjeto"));
+            	projeto.setNome(rs.getString("nome"));
+            	projeto.setDataCriacao(rs.getString("dataCriacao"));
+            	projeto.setDescricao(rs.getString("descricao"));
+                projeto.setStatus(StatusService.findById(projeto.getCodProjeto()).getNome());
+            	
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return projeto;
+    }
 }
