@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaPrincipal">
    <children>
       <AnchorPane fx:id="Pane" layoutX="-2.0" layoutY="-3.0" prefHeight="413.0" prefWidth="608.0" styleClass="left-form" stylesheets="@telaInicialDesign.css">
          <children>
@@ -29,11 +29,6 @@
                </font>
             </Label>
             <Button fx:id="btTelaCadastro" layoutX="341.0" layoutY="316.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="40.0" prefWidth="220.0" styleClass="cadastrar" stylesheets="@telaInicialDesign.css" text="Cadastrar" AnchorPane.topAnchor="316.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btSair" layoutX="561.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btSair" prefHeight="30.0" prefWidth="60.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="X" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

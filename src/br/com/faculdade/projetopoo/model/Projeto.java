@@ -67,8 +67,6 @@ public class Projeto {
     }
 
     public Projeto() {
-        Random random = new Random();
-        this.codProjeto = (long) (random.nextDouble() * 10000000L);
     }
     
 }

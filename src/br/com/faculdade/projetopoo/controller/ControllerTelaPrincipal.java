@@ -90,11 +90,6 @@ public class ControllerTelaPrincipal implements Initializable {
             System.out.println("Exception ao criar a tela de cadastro\n"+ex);
         }       
     }
-    
-    @FXML
-    void btSair(ActionEvent event) {
-    	System.exit(0);
-    }
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {

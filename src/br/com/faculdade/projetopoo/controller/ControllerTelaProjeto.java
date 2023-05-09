@@ -8,6 +8,8 @@ import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,10 +62,12 @@ public class ControllerTelaProjeto implements Initializable{
                 obj = FXCollections.observableArrayList(ProjetoService.findAll());
                 break;
             case "Código":
-                obj = FXCollections.observableArrayList(ProjetoService.findById(txConsulta.getText()));
+                List<Projeto> lista= new ArrayList<>();
+                if(!ProjetoService.findById(txConsulta.getText()).getCodProjeto().equals(0L)){
+                    lista.add(ProjetoService.findById(txConsulta.getText()));
+                }
+                obj = FXCollections.observableArrayList(lista);
                 break;
-            default:
-                throw new AssertionError();
         }
         carregaTabelaProjeto(obj);
     }

@@ -73,6 +73,7 @@ public class ProjetoService {
     public static Projeto findById(String codigo){
         ConnectionBD con = new ConnectionBD();
         Projeto projeto = new Projeto();
+        projeto.setCodProjeto(0L);
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
