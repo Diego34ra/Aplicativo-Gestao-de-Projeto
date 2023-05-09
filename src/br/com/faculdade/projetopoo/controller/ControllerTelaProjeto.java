@@ -7,6 +7,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -156,7 +159,7 @@ public class ControllerTelaProjeto implements Initializable{
                     final Tooltip infAjuda = new Tooltip();
                     infAjuda.setText("Tarefas do projeto.");
                     Button botao = new Button();
-                    String caminho = "imagens/ordem-de-servico.png";
+                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\tarefaimg.png";
                     File file = new File(caminho);
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();
