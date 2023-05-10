@@ -59,3 +59,13 @@ outline: thin dotted;
     outline: 0px auto -webkit-focus-ring-color;
     outline-offset: 0px;
 }
+
+
+.buscar{
+        cursor: pointer;
+        border: 1px solid #3498db;
+        background-color: transparent;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}

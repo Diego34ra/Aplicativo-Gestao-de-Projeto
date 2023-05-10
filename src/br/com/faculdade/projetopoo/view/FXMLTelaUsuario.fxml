@@ -17,9 +17,9 @@
                </items>
             </Menu>
             <Menu mnemonicParsing="false" style="-fx-font-size: 16px;" text="Projetos">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#getPaneProjeto" text="Action 1" />
-              </items>
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#getPaneProjeto" text="Action 1" />
+               </items>
             </Menu>
          </menus>
          <padding>
