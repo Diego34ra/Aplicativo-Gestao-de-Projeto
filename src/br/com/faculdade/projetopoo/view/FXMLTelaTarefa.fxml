@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="tbTarefa" layoutX="51.0" layoutY="100.0" prefHeight="456.0" prefWidth="749.0" />
-      <Button layoutX="51.0" layoutY="49.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="409.0" layoutY="44.0" mnemonicParsing="false" styleClass="login" stylesheets="@telaInicialDesign.css" text="Adicionar" />
+      <TableView fx:id="tbTarefa" layoutY="82.0" prefHeight="320.0" prefWidth="500.0" />
    </children>
 </AnchorPane>

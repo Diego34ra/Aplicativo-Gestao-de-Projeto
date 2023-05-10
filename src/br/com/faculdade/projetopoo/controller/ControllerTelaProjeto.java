@@ -198,7 +198,7 @@ public class ControllerTelaProjeto implements Initializable{
         cellProDelete.setMinWidth(50);
         cellProDelete.setPrefWidth(80);
         cellProDelete.setResizable(false);
-        cellProDelete.setStyle("-fx-alignment: center;");
+        cellProDelete.setStyle("-fx-alignment: center");
         cellProDelete.setCellFactory(col -> {
             TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
                 @Override
@@ -206,13 +206,14 @@ public class ControllerTelaProjeto implements Initializable{
                     final Tooltip infAjuda = new Tooltip();
                     infAjuda.setText("Deleta o projeto.");
                     Button botao = new Button();
-                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\tarefaimg.png";
+                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png";
                     File file = new File(caminho);
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();
                     {
                        imv.setFitHeight(20l);
                        imv.setFitWidth(20l);
+                       
                     }
                    imv.setImage(imagem);
                     botao.setPickOnBounds(true);
