@@ -100,4 +100,28 @@ public class ProjetoService {
         }
         return projeto;
     }
+    
+    public static Boolean deleteById(Long codigo){
+        ConnectionBD con = new ConnectionBD();
+        Statement stmt = null;
+        Boolean rs = false;
+        TarefaService tarefaService = new TarefaService();
+        String sql = "DELETE FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
+        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        try {
+            stmt = con.getConnection().createStatement();
+            rs = stmt.execute(sql); 
+            tarefaService.deleteById(codigo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return rs;
+    }
+    
 }

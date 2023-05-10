@@ -4,6 +4,7 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
@@ -48,12 +49,13 @@ public class ControllerTelaProjeto implements Initializable{
     private final TableColumn cellProDescricao = new TableColumn("Descrição");
     private final TableColumn cellProStatus = new TableColumn("Status");
     private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
+    private final TableColumn<Projeto,Projeto> cellProDelete = new TableColumn("Deletar");
     
     private void carregaTabelaProjeto(ObservableList<Projeto> list){
         tbProjeto.getColumns().clear();
         formataTabelaProjeto();
         tbProjeto.setItems(list);
-        tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao);
+        tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProDelete);
     }
     
             
@@ -184,6 +186,51 @@ public class ControllerTelaProjeto implements Initializable{
 //                                    consultaClienteGeral();
 //                                } else
 //                                    Alertas.alertaAtencao("Ok!", "Nada foi alterado!");
+                            }
+                        );
+                        setGraphic(botao);
+                    }
+                }
+            };
+            return cell ;
+        });
+        
+        cellProDelete.setMinWidth(50);
+        cellProDelete.setPrefWidth(80);
+        cellProDelete.setResizable(false);
+        cellProDelete.setStyle("-fx-alignment: center;");
+        cellProDelete.setCellFactory(col -> {
+            TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
+                @Override
+                public void updateItem(Projeto item, boolean empty) {
+                    final Tooltip infAjuda = new Tooltip();
+                    infAjuda.setText("Deleta o projeto.");
+                    Button botao = new Button();
+                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\tarefaimg.png";
+                    File file = new File(caminho);
+                    Image imagem = new Image(file.toURI().toString());
+                    ImageView imv = new ImageView();
+                    {
+                       imv.setFitHeight(20l);
+                       imv.setFitWidth(20l);
+                    }
+                   imv.setImage(imagem);
+                    botao.setPickOnBounds(true);
+                    botao.setGraphic(imv);
+                    botao.setAlignment(Pos.CENTER);
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        botao.setOnAction(event -> 
+                            { 
+                                ProjetoService projetoService = new ProjetoService();
+                                Boolean retorno = projetoService.deleteById(cellProDelete.getCellData(item).getCodProjeto());
+                                if(retorno){
+                                    Alertas.informacao("Sucesso!", "Projeto deletado com sucesso.");
+                                } else {
+                                    Alertas.informacao("Erro", "Erro ao deletar o projeto.");
+                                }
                             }
                         );
                         setGraphic(botao);
