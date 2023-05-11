@@ -18,6 +18,7 @@ public class Global {
     
     public static String email;
     public static Usuario usuario = new Usuario();
+    public static Boolean validar = false;
     
     public static List<String>  tipoConsulta(String tipo){
         List<String> tipoConsulta = new ArrayList<>();

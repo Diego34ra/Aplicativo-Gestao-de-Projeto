@@ -4,19 +4,8 @@
 
 package br.com.faculdade.projetopoo;
 
-import br.com.faculdade.projetopoo.model.Projeto;
-import br.com.faculdade.projetopoo.services.EmailService;
-import br.com.faculdade.projetopoo.services.ProjetoService;
-import br.com.faculdade.projetopoo.services.UsuarioService;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.math.BigInteger;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 /**
  *

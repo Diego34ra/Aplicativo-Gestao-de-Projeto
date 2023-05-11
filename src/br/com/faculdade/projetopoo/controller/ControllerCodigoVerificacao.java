@@ -39,6 +39,7 @@ public class ControllerCodigoVerificacao implements Initializable {
         if(txCodigo.getText().equals(codigo)){
             UsuarioService service = new UsuarioService();
             service.createUsuario(Global.usuario);
+            Global.validar = true;
             Stage stage = (Stage) painel.getScene().getWindow();
             stage.close();
         } else {
@@ -66,7 +67,7 @@ public class ControllerCodigoVerificacao implements Initializable {
         System.out.println("codigo = " + codigo);
         EmailService email = new EmailService();
         String destinatario [] = {Global.email};
-//        email.sendEmail("Código de verificação", destinatario, codigo);
+        email.sendEmail("Código de verificação", destinatario, codigo);
         return codigo;
     }
 

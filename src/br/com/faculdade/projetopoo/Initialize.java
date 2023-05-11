@@ -17,47 +17,55 @@ public class Initialize {
     public void generateDB(){
         if (!verifyTable("usuario")) {
             createTable("CREATE TABLE `usuario` (\n" +
-                    "  `codUsuario` varchar(45) NOT NULL,\n" +
-                    "  `nome` varchar(45) NOT NULL,\n" +
-                    "  `email` varchar(45) NOT NULL,\n" +
-                    "  `cpf` varchar(45) NOT NULL,\n" +
-                    "  `codRecuperacao` varchar(45) DEFAULT NULL,\n" +
-                    "  `senha` varchar(45) NOT NULL,\n" +
-                    "  PRIMARY KEY (`codUsuario`),\n" +
-                    "  UNIQUE KEY `cpf_UNIQUE` (`cpf`),\n" +
-                    "  UNIQUE KEY `email_UNIQUE` (`email`)\n" +
-                    ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+                        "  `codUsuario` varchar(45) NOT NULL,\n" +
+                        "  `nome` varchar(45) NOT NULL,\n" +
+                        "  `email` varchar(45) NOT NULL,\n" +
+                        "  `cpf` varchar(45) NOT NULL,\n" +
+                        "  `codRecuperacao` varchar(45) DEFAULT NULL,\n" +
+                        "  `senha` varchar(45) NOT NULL,\n" +
+                        "  PRIMARY KEY (`codUsuario`),\n" +
+                        "  UNIQUE KEY `cpf` (`cpf`)\n" +
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         if(!verifyTable("projeto")){
             createTable("CREATE TABLE `projeto` (\n" +
-                    "  `codProjeto` varchar(45) NOT NULL,\n" +
-                    "  `nome` varchar(45) NOT NULL,\n" +
-                    "  `descricao` varchar(45) NOT NULL,\n" +
-                    "  `dataCriacao` datetime NOT NULL,\n" +
-                    "  PRIMARY KEY (`codProjeto`)\n" +
-                    ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+                        "  `codProjeto` varchar(45) NOT NULL,\n" +
+                        "  `nome` varchar(45) NOT NULL,\n" +
+                        "  `descricao` varchar(45) NOT NULL,\n" +
+                        "  `dataCriacao` datetime NOT NULL,\n" +
+                        "  PRIMARY KEY (`codProjeto`)\n" +
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         
         if(!verifyTable("status")){
             createTable("CREATE TABLE `status` (\n" +
-                     "  `codStatus` int(11) NOT NULL AUTO_INCREMENT,\n" +
-                     "  `projeto_id` int(11) NOT NULL,\n" +
-                     "  `nome` varchar(45) NOT NULL,\n" +
-                     "  `descricao` varchar(45) NOT NULL,\n" +
-                     "  `dataHora` datetime NOT NULL,\n" +
-                     "  PRIMARY KEY (`codStatus`),\n" +
-                     "  KEY `projeto_id` (`projeto_id`)\n" +
-                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+                        "  `codStatus` int(11) NOT NULL AUTO_INCREMENT,\n" +
+                        "  `codProjeto` varchar(45) DEFAULT NULL,\n" +
+                        "  `nome` varchar(45) NOT NULL,\n" +
+                        "  `descricao` varchar(45) NOT NULL,\n" +
+                        "  `dataHora` datetime NOT NULL,\n" +
+                        "  PRIMARY KEY (`codStatus`),\n" +
+                        "  KEY `codProjeto` (`codProjeto`),\n" +
+                        "  CONSTRAINT `status_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`)\n" +
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         
         if(!verifyTable("tarefa")){
             createTable("CREATE TABLE `tarefa` (\n" +
-                     "  `codTarefa` int(11) NOT NULL,\n" +
-                     "  `nome` varchar(45) NOT NULL,\n" +
-                     "  `descricao` varchar(45) NOT NULL,\n" +
-                     "  `status` varchar(45) NOT NULL,\n" +
-                     "  PRIMARY KEY (`codTarefa`)\n" +
-                     ") ENGINE=MyISAM DEFAULT CHARSET=latin1");
+                        "  `codTarefa` varchar(45) NOT NULL,\n" +
+                        "  `codProjeto` varchar(45) DEFAULT NULL,\n" +
+                        "  `codUsuario` varchar(45) DEFAULT NULL,\n" +
+                        "  `nome` varchar(45) NOT NULL,\n" +
+                        "  `descricao` varchar(45) NOT NULL,\n" +
+                        "  `status` varchar(45) NOT NULL,\n" +
+                        "  `dtCriacao` datetime NOT NULL,\n" +
+                        "  `dtFinalizacao` datetime DEFAULT NULL,\n" +
+                        "  PRIMARY KEY (`codTarefa`),\n" +
+                        "  KEY `codProjeto` (`codProjeto`),\n" +
+                        "  KEY `codUsuario` (`codUsuario`),\n" +
+                        "  CONSTRAINT `tarefa_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`),\n" +
+                        "  CONSTRAINT `tarefa_ibfk_2` FOREIGN KEY (`codUsuario`) REFERENCES `usuario` (`codUsuario`)\n" +
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         
     }
