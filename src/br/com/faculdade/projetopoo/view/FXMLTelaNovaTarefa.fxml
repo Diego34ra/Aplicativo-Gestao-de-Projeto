@@ -31,6 +31,6 @@
       <Button layoutX="217.0" layoutY="343.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: transparent;" text="Adicionar" AnchorPane.topAnchor="343.0" />
       <TextField fx:id="txNome" layoutX="139.0" layoutY="87.0" prefHeight="25.0" prefWidth="291.0" promptText="Nome da Tarefa" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
       <TextField fx:id="txNome1" layoutX="139.0" layoutY="177.0" prefHeight="25.0" prefWidth="291.0" promptText="Descrição" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
-      <TextField fx:id="txNome11" layoutX="139.0" layoutY="269.0" prefHeight="25.0" prefWidth="291.0" promptText="Descrição" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+      <TextField fx:id="txNome11" layoutX="139.0" layoutY="269.0" prefHeight="25.0" prefWidth="291.0" promptText="Encarregado" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
    </children>
 </AnchorPane>

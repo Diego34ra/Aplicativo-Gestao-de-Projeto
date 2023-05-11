@@ -35,7 +35,7 @@ public class ControllerTelaTarefa {
      TelaNovaTarefa tela = new TelaNovaTarefa();
         try {
             tela.start(new Stage());
-            TelaNovoProjeto.getStage().show();
+            TelaNovaTarefa.getStage().show();
         } catch (Exception ex) {
             System.out.println("Exception ao criar a tela de nova tarefa\n"+ex);
         }  

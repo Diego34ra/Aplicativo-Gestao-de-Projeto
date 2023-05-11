@@ -4,15 +4,18 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
     import javafx.scene.control.TextField;
 
 /**
  *
  * @author 2022101202010066
  */
-public class ControllerTelaNovaTarefa {
+public class ControllerTelaNovaTarefa implements Initializable{
    
     @FXML
     private TextField txNome;
@@ -22,12 +25,16 @@ public class ControllerTelaNovaTarefa {
 
     @FXML
     private TextField txNome11;
-    
+
     @FXML
     void add(ActionEvent event) {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+    }
 }
 
 

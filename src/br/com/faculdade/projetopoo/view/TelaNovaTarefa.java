@@ -26,10 +26,10 @@ public class TelaNovaTarefa extends Application{
         stage =  new Stage();
         
         stage.setWidth(500);
-        stage.setHeight(400);
+        stage.setHeight(440);
         
         stage.setMinWidth(500);
-        stage.setMinHeight(400);
+        stage.setMinHeight(440);
         
         stage.setMaxWidth(608);
         stage.setMaxHeight(443);
@@ -40,7 +40,7 @@ public class TelaNovaTarefa extends Application{
         
         scene = new Scene(painel);
         
-        stage.setTitle("Novo Projeto");
+        stage.setTitle("Nova Tarefa");
 //        stage.getIcons().add(new Image(TelaInicial.class.getResourceAsStream( "icon.png" ))); 
         
         stage.setScene(scene);
