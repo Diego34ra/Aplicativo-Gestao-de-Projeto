@@ -8,6 +8,7 @@ import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
+import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -28,6 +30,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  *
@@ -40,6 +43,9 @@ public class ControllerTelaProjeto implements Initializable{
 
     @FXML
     private ComboBox<String> cbConsulta;
+    
+    @FXML
+    private Button btTelaNovoProjeto;
 
     @FXML
     private TableView<Projeto> tbProjeto;
@@ -58,6 +64,16 @@ public class ControllerTelaProjeto implements Initializable{
         tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProDelete);
     }
     
+    @FXML
+    void novoProjeto() {
+          TelaNovoProjeto tela = new TelaNovoProjeto();
+        try {
+            tela.start(new Stage());
+            TelaNovoProjeto.getStage().show();
+        } catch (Exception ex) {
+            System.out.println("Exception ao criar a tela de novo projetos\n"+ex);
+        }       
+    }
             
     @FXML
     void buscar() {

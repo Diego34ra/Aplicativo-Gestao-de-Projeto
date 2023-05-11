@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaNovoProjeto">
+   <children>
+      <Label layoutX="177.0" layoutY="33.0" prefHeight="32.0" prefWidth="147.0" text="Novo Projeto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="138.0" prefHeight="20.0" prefWidth="124.0" stylesheets="@telaInicialDesign.css" text="Nome do Projeto" AnchorPane.topAnchor="138.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="257.0" prefHeight="18.0" prefWidth="97.0" stylesheets="@telaInicialDesign.css" text="Descrição:" AnchorPane.topAnchor="257.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="217.0" layoutY="309.0" mnemonicParsing="false" onAction="#addProjeto" style="-fx-background-color: transparent;" text="Adicionar" AnchorPane.topAnchor="309.0" />
+      <TextField fx:id="txNome" layoutX="139.0" layoutY="135.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite o nome do projeto" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+      <TextField fx:id="txNome1" layoutX="139.0" layoutY="254.0" prefHeight="25.0" prefWidth="291.0" promptText="Descrição" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+   </children>
+</AnchorPane>

@@ -5,6 +5,7 @@
 package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.model.Projeto;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,5 +23,8 @@ public class ControllerTelaTarefa {
     private final TableColumn cellNome = new TableColumn("Nome");
     private final TableColumn cellStatus = new TableColumn("Status");
     
-    
+    @FXML
+    void addTarefa(ActionEvent event) {
+
+    }
 }
