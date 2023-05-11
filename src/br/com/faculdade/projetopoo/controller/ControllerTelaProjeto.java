@@ -9,6 +9,7 @@ import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
 import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
+import br.com.faculdade.projetopoo.view.TelaTarefa;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -202,6 +203,14 @@ public class ControllerTelaProjeto implements Initializable{
 //                                    consultaClienteGeral();
 //                                } else
 //                                    Alertas.alertaAtencao("Ok!", "Nada foi alterado!");
+
+                                    TelaTarefa tela = new TelaTarefa();
+                                          try {
+                                                tela.start(new Stage());
+                                                TelaTarefa.getStage().show();
+                                               } catch (Exception ex) {
+                                                 System.out.println("Exception ao criar a tela de tarefa\n"+ex);
+                                               } 
                             }
                         );
                         setGraphic(botao);

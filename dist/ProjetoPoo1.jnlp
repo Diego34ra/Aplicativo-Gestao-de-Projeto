@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetoPoo1.jar" size="109656" download="eager" />
+    <jar href="ProjetoPoo1.jar" size="113597" download="eager" />
     <jar href="lib\activation-1.1.jar" size="62983" download="eager" />
     <jar href="lib\caelum-stella-core-2.1.6.jar" size="138415" download="eager" />
     <jar href="lib\javax.mail-1.6.2.jar" size="659031" download="eager" />

@@ -5,16 +5,23 @@
 package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.model.Projeto;
+import br.com.faculdade.projetopoo.view.TelaNovaTarefa;
+import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Diego
  */
 public class ControllerTelaTarefa {
+    
+    @FXML
+    private Button btAddNovaTarefa;
     
     @FXML
     private TableView<Projeto> tbTarefa;
@@ -24,7 +31,13 @@ public class ControllerTelaTarefa {
     private final TableColumn cellStatus = new TableColumn("Status");
     
     @FXML
-    void addTarefa(ActionEvent event) {
-
+    void addTarefa() {
+     TelaNovaTarefa tela = new TelaNovaTarefa();
+        try {
+            tela.start(new Stage());
+            TelaNovoProjeto.getStage().show();
+        } catch (Exception ex) {
+            System.out.println("Exception ao criar a tela de nova tarefa\n"+ex);
+        }  
     }
 }
