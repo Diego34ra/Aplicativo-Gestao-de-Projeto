@@ -26,9 +26,9 @@ public class TelaVerificacao extends Application {
 
 		stage.setTitle("Tela Verificação"); 
 
-		 stage.initStyle(StageStyle.TRANSPARENT);
+		stage.initStyle(StageStyle.TRANSPARENT);
 		
-		stage.show();
+//		stage.show();
 
 		stage.setScene(scene);
 

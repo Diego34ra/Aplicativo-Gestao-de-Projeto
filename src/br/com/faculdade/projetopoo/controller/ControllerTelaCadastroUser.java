@@ -59,10 +59,10 @@ public class ControllerTelaCadastroUser implements Initializable {
                 Global.email = txEmail.getText();
                 TelaVerificacao tela = new TelaVerificacao();
                 try {
-                    tela.start(new Stage());
-                    TelaVerificacao.getStage().showAndWait();
                     Global.usuario = new Usuario( txCpf.getText(),txEmail.getText(),
                                                   txNome.getText(), psSenha.getText());
+                    tela.start(new Stage());
+                    TelaVerificacao.getStage().showAndWait();
                     if(Global.validar){
                         Alertas.informacao("Sucesso", "Usuário cadastrado com sucesso.");
                     }

@@ -10,6 +10,7 @@ import br.com.faculdade.projetopoo.model.Usuario;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.Normalizer;
@@ -25,14 +26,22 @@ public class UsuarioService {
     
     public static void createUsuario(Usuario usuario) throws NoSuchAlgorithmException{
         ConnectionBD con = new ConnectionBD();
-        Statement stmt = null;
-        String sql = "INSERT INTO `usuario` (`codUsuario`, `nome`, `email`, `cpf`,`senha`)\n"
-        		   + "VALUES ('"+usuario.getCodUsuario()+"', '"+usuario.getNome()+"', '"+usuario.getEmail()+"',\n"
-        		   + "'"+usuario.getCpf()+"','"+cryptoPass(usuario.getSenha())+"')";
+//        PreparedStatement stmt = null;
+//        String sql = "INSERT INTO `usuario` (`codUsuario`, `nome`, `email`, `cpf`,`senha`)\n"
+//        		   + "VALUES ('"+usuario.getCodUsuario()+"', '"+usuario.getNome()+"', '"+usuario.getEmail()+"',\n"
+//        		   + "'"+usuario.getCpf()+"','"+cryptoPass(usuario.getSenha())+"')";
+        String sql = "INSERT INTO usuario (codUsuario, nome, email, cpf, senha) VALUES (?,?,?,?,?)";
         System.out.println("br.com.faculdade.projetopoo.services.UsuarioService.createUsuario()");
         try {
-            stmt = con.getConnection().createStatement();
-            stmt.execute(sql);
+            String cryptoSenha = cryptoPass(usuario.getSenha());
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, usuario.getCodUsuario().toString());
+            stmt.setString(2, usuario.getNome());
+            stmt.setString(3, usuario.getEmail());
+            stmt.setString(4, usuario.getCpf());
+            stmt.setString(5, cryptoSenha);
+            stmt.execute();
+            stmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
