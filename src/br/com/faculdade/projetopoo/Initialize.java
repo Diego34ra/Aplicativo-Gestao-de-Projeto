@@ -39,14 +39,16 @@ public class Initialize {
         
         if(!verifyTable("status")){
             createTable("CREATE TABLE `status` (\n" +
-                        "  `codStatus` int(11) NOT NULL AUTO_INCREMENT,\n" +
-                        "  `codProjeto` varchar(45) DEFAULT NULL,\n" +
-                        "  `nome` varchar(45) NOT NULL,\n" +
-                        "  `descricao` varchar(45) NOT NULL,\n" +
-                        "  `dataHora` datetime NOT NULL,\n" +
-                        "  PRIMARY KEY (`codStatus`),\n" +
-                        "  KEY `codProjeto` (`codProjeto`),\n" +
-                        "  CONSTRAINT `status_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`)\n" +
+                        "`codStatus` int(11) NOT NULL AUTO_INCREMENT,\n" +
+                        "`codProjeto` varchar(45) DEFAULT NULL,\n" +
+                        "`nome` varchar(45) NOT NULL,\n" +
+                        "`descricao` varchar(45) NOT NULL,\n" +
+                        "`dataHora` datetime NOT NULL,\n" +
+                        "PRIMARY KEY (`codStatus`),\n" +
+                        "KEY `codProjeto` (`codProjeto`),\n" +
+                        "CONSTRAINT `status_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`)\n" +
+                        "ON DELETE CASCADE\n" +
+                        "ON UPDATE CASCADE\n" +
                         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         
@@ -65,6 +67,8 @@ public class Initialize {
                         "  KEY `codUsuario` (`codUsuario`),\n" +
                         "  CONSTRAINT `tarefa_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`),\n" +
                         "  CONSTRAINT `tarefa_ibfk_2` FOREIGN KEY (`codUsuario`) REFERENCES `usuario` (`codUsuario`)\n" +
+                        "  ON DELETE CASCADE\n" +
+                        "  ON UPDATE CASCADE\n" +
                         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         

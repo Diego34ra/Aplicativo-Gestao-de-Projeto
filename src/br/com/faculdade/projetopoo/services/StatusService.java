@@ -73,4 +73,23 @@ public class StatusService {
             }
         }
     }
+    
+    public static void deleteByIdProjeto(Long codProjeto){
+        ConnectionBD con = new ConnectionBD();
+        String sql = "DELETE FROM `status` WHERE `status`.codProjeto = ?";
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, codProjeto.toString());
+            stmt.execute();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

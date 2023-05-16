@@ -21,10 +21,10 @@ public class ControllerTelaNovaTarefa implements Initializable{
     private TextField txNome;
 
     @FXML
-    private TextField txNome1;
+    private TextField txDescricao;
 
     @FXML
-    private TextField txNome11;
+    private TextField txEncarregado;
 
     @FXML
     void add(ActionEvent event) {

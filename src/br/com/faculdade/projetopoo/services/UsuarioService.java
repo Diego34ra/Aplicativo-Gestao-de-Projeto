@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -53,6 +55,37 @@ public class UsuarioService {
         }
     }
     
+    public static List<Usuario> findAll(){
+        ConnectionBD con = new ConnectionBD();
+        List<Usuario> usuarios = new ArrayList<>();
+        Statement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM usuario";
+        System.out.println("br.com.faculdade.projetopoo.services.UsuarioService()");
+        try {
+            stmt = con.getConnection().createStatement();
+            rs = stmt.executeQuery(sql); 
+            while(rs.next()) {
+                Usuario usuario = new Usuario();
+            	usuario.setCodUsuario(rs.getLong("codUsuario"));
+            	usuario.setNome(rs.getString("nome"));
+            	usuario.setCpf(rs.getString("cpf"));
+            	usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+            	usuarios.add(usuario);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return usuarios;
+    }
+    
     public static Usuario findByEmail(String email){
         ConnectionBD con = new ConnectionBD();
         Usuario usuario = new Usuario();
@@ -69,6 +102,68 @@ public class UsuarioService {
             	usuario.setNome(rs.getString("nome"));
             	usuario.setCpf(rs.getString("cpf"));
             	usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+            	
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return usuario;
+    }
+    
+    public static List<Usuario> findByName(String consulta){
+        ConnectionBD con = new ConnectionBD();
+        List<Usuario> usuarios = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM usuario WHERE nome LIKE ?";
+        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, "%"+consulta+"%");
+            rs = stmt.executeQuery(); 
+            while(rs.next()) {
+                Usuario usuario = new Usuario();
+            	usuario.setCodUsuario(rs.getLong("codUsuario"));
+            	usuario.setNome(rs.getString("nome"));
+            	usuario.setEmail(rs.getString("email"));
+            	usuario.setCpf(rs.getString("cpf"));
+                usuario.setSenha(rs.getString("senha"));
+                usuarios.add(usuario);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return usuarios;
+    }
+    
+    public static Usuario findById(String codigo){
+        ConnectionBD con = new ConnectionBD();
+        Usuario usuario = new Usuario();
+        usuario.setCodUsuario(0L);
+        ResultSet rs = null;
+        String sql = "SELECT * FROM usuario WHERE codUsuario = ?";
+        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, codigo);
+            rs = stmt.executeQuery(); 
+            while(rs.next()) {
+            	usuario.setCodUsuario(rs.getLong("codUsuario"));
+            	usuario.setNome(rs.getString("nome"));
+            	usuario.setEmail(rs.getString("email"));
+            	usuario.setCpf(rs.getString("cpf"));
                 usuario.setSenha(rs.getString("senha"));
             	
             }

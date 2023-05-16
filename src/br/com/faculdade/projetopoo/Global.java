@@ -29,6 +29,12 @@ public class Global {
                 tipoConsulta.add("Código");
                 
                 break;
+            case "usuario":
+                tipoConsulta.add("Todos");
+                tipoConsulta.add("Nome");
+                tipoConsulta.add("Código");
+                
+                break;
             default:
                 throw new AssertionError();
         }

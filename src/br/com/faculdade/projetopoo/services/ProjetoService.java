@@ -49,6 +49,27 @@ public class ProjetoService {
         }
     }
     
+    public boolean deleteById(Long codProjeto){
+        ConnectionBD con = new ConnectionBD();
+        String sql = "DELETE FROM projeto WHERE codProjeto = ?";
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, codProjeto.toString());
+            stmt.execute();
+            stmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     public static List<Projeto> findAll(){
         ConnectionBD con = new ConnectionBD();
         List<Projeto> lista = new ArrayList<>();
@@ -144,27 +165,27 @@ public class ProjetoService {
         return projeto;
     }
     
-    public static Boolean deleteById(Long codigo){
-        ConnectionBD con = new ConnectionBD();
-        Statement stmt = null;
-        Boolean rs = false;
-        TarefaService tarefaService = new TarefaService();
-        String sql = "DELETE FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
-        try {
-            stmt = con.getConnection().createStatement();
-            rs = stmt.execute(sql); 
-            tarefaService.deleteById(codigo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                con.closeConnection();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return rs;
-    }
+//    public static Boolean deleteById(Long codigo){
+//        ConnectionBD con = new ConnectionBD();
+//        Statement stmt = null;
+//        Boolean rs = false;
+//        TarefaService tarefaService = new TarefaService();
+//        String sql = "DELETE FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
+//        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+//        try {
+//            stmt = con.getConnection().createStatement();
+//            rs = stmt.execute(sql); 
+//            tarefaService.deleteById(codigo);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                con.closeConnection();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return rs;
+//    }
     
 }

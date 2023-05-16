@@ -4,6 +4,8 @@
  */
 package br.com.faculdade.projetopoo.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Diego
@@ -13,12 +15,56 @@ public class Tarefa {
     private Long codTarefa;
     private String nome;
     private String descricao;
+    private String dataCriacao;
+    private String status;
+    private Projeto projeto;
+    private Usuario usuario;
 
-    public Tarefa(Long codTarefa, String nome, String descricao) {
+    public Tarefa(Long codTarefa, String nome, String descricao, Projeto projeto, Usuario usuario) {
         this.codTarefa = codTarefa;
         this.nome = nome;
         this.descricao = descricao;
+        this.projeto = projeto;
+        this.dataCriacao = LocalDate.now().toString();
+        this.usuario = usuario;
+        this.status = "Em Espera";
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(String dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+    
+    
+
+    public Projeto getProjeto() {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
     public Tarefa() {
     }

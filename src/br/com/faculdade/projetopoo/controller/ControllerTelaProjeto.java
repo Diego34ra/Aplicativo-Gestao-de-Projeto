@@ -48,6 +48,8 @@ public class ControllerTelaProjeto implements Initializable{
     
     @FXML
     private Button btTelaNovoProjeto;
+    
+    private ObservableList<Projeto> obj = null;
 
     @FXML
     private TableView<Projeto> tbProjeto;
@@ -79,7 +81,7 @@ public class ControllerTelaProjeto implements Initializable{
             
     @FXML
     void buscar() {
-        ObservableList<Projeto> obj = null;
+//        ObservableList<Projeto> obj = null;
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
                 obj = FXCollections.observableArrayList(ProjetoService.findAll());
@@ -275,11 +277,15 @@ public class ControllerTelaProjeto implements Initializable{
                         botao.setOnAction(event -> 
                             { 
                                 ProjetoService projetoService = new ProjetoService();
-                                Boolean retorno = projetoService.deleteById(cellProDelete.getCellData(item).getCodProjeto());
-                                if(retorno){
-                                    Alertas.informacao("Sucesso!", "Projeto deletado com sucesso.");
-                                } else {
-                                    Alertas.informacao("Erro", "Erro ao deletar o projeto.");
+                                if(Alertas.confirmacao("Atenção!", "Realmente deseja deletar o projeto "+getTableView().getItems().get(0).getNome()+" ?") == 1){
+                                    Boolean retorno = projetoService.deleteById(getTableView().getItems().get(0).getCodProjeto());
+                                    if(retorno){
+                                        Alertas.informacao("Sucesso!", "Projeto deletado com sucesso.");
+                                        obj.remove(getTableView().getItems().get(0));
+                                        carregaTabelaProjeto(obj);
+                                    } else {
+                                        Alertas.informacao("Erro", "Erro ao deletar o projeto.");
+                                    }
                                 }
                             }
                         );
