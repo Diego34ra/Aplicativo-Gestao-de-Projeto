@@ -26,13 +26,13 @@ public class TelaNovaTarefa extends Application{
         stage =  new Stage();
         
         stage.setWidth(500);
-        stage.setHeight(440);
+        stage.setHeight(375);
         
         stage.setMinWidth(500);
-        stage.setMinHeight(440);
+        stage.setMinHeight(375);
         
         stage.setMaxWidth(608);
-        stage.setMaxHeight(443);
+        stage.setMaxHeight(375);
         
         stage.setResizable(false);
         

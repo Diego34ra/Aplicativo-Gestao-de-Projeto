@@ -28,13 +28,13 @@ public class TelaNovoProjeto extends Application{
         stage =  new Stage();
         
         stage.setWidth(500);
-        stage.setHeight(400);
+        stage.setHeight(315);
         
         stage.setMinWidth(500);
-        stage.setMinHeight(400);
+        stage.setMinHeight(315);
         
         stage.setMaxWidth(608);
-        stage.setMaxHeight(443);
+        stage.setMaxHeight(315);
         
         stage.setResizable(false);
         

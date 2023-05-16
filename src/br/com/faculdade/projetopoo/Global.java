@@ -25,7 +25,9 @@ public class Global {
         switch (tipo) {
             case "projeto":
                 tipoConsulta.add("Todos");
+                tipoConsulta.add("Nome");
                 tipoConsulta.add("Código");
+                
                 break;
             default:
                 throw new AssertionError();

@@ -4,6 +4,8 @@
  */
 package br.com.faculdade.projetopoo.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Random;
 
 /**
@@ -16,13 +18,13 @@ public class Projeto {
     private String nome;
     private String dataCriacao;
     private String descricao;
-    private String status;
+    private Status status;
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -58,11 +60,11 @@ public class Projeto {
         this.descricao = descricao;
     }
     
-    public Projeto(String nome, String dataCriacao, String descricao) {
+    public Projeto(String nome, String descricao) {
         Random random = new Random();
         this.codProjeto = (long) (random.nextDouble() * 10000000L);
         this.nome = nome;
-        this.dataCriacao = dataCriacao;
+        this.dataCriacao = Date.valueOf(LocalDate.now()).toString();
         this.descricao = descricao;
     }
 

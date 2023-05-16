@@ -4,6 +4,8 @@
 
 package br.com.faculdade.projetopoo;
 
+import br.com.faculdade.projetopoo.model.Projeto;
+import br.com.faculdade.projetopoo.services.ProjetoService;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
@@ -20,6 +22,9 @@ public class ProjetoPOO {
             
             Initialize init = new Initialize();
             init.generateDB();
+            Projeto projeto = new Projeto("teste", "Testando");
+            ProjetoService projetoService = new ProjetoService();
+            projetoService.create(projeto);
             
         
  //       Projeto projeto = new Projeto();

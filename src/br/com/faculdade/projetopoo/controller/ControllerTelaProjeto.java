@@ -7,6 +7,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
+import br.com.faculdade.projetopoo.model.Status;
 import br.com.faculdade.projetopoo.services.ProjetoService;
 import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
 import br.com.faculdade.projetopoo.view.TelaTarefa;
@@ -54,7 +55,7 @@ public class ControllerTelaProjeto implements Initializable{
     private final TableColumn cellProNome = new TableColumn("Nome");
     private final TableColumn cellProDtCriacao = new TableColumn("Data de Criação");
     private final TableColumn cellProDescricao = new TableColumn("Descrição");
-    private final TableColumn cellProStatus = new TableColumn("Status");
+    private final TableColumn<Projeto,Status> cellProStatus = new TableColumn("Status");
     private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
     private final TableColumn<Projeto,Projeto> cellProDelete = new TableColumn("Deletar");
     
@@ -82,6 +83,9 @@ public class ControllerTelaProjeto implements Initializable{
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
                 obj = FXCollections.observableArrayList(ProjetoService.findAll());
+                break;
+            case "Nome":
+                obj = FXCollections.observableArrayList(ProjetoService.findByName(txConsulta.getText()));
                 break;
             case "Código":
                 List<Projeto> lista= new ArrayList<>();
@@ -119,12 +123,32 @@ public class ControllerTelaProjeto implements Initializable{
         cellProNome.setPrefWidth(350);
         cellProNome.setResizable(false);
         cellProNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
-        cellProNome.setStyle("-fx-alignment: center-left;");
+        cellProNome.setStyle("-fx-alignment: center;");
+        
+//        cellProStatus.setMinWidth(200);
+//        cellProStatus.setPrefWidth(350);
+//        cellProStatus.setResizable(false);
+//        cellProStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
+//        cellProStatus.setStyle("-fx-alignment: center;");
         
         cellProStatus.setMinWidth(200);
-        cellProStatus.setPrefWidth(350);
+        cellProStatus.setPrefWidth(340);
         cellProStatus.setResizable(false);
         cellProStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
+        cellProStatus.setCellFactory( col -> {              
+            return new TableCell<Projeto, Status>() {
+                @Override
+                protected void updateItem( Status item, boolean empty) {
+                   super.updateItem(item, empty);
+                   if(item == null|| empty) {
+                       setText("");
+                       setGraphic(null);
+                   }else {
+                       setText(item.getNome());
+                   }
+                }
+            };
+         });
         cellProStatus.setStyle("-fx-alignment: center;");
         
         cellProDtCriacao.setMinWidth(100);

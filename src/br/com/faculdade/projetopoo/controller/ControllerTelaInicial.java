@@ -23,12 +23,18 @@ public class ControllerTelaInicial {
     private MenuItem menuUsuario;
 
     @FXML
-    void cadastrarUsuario() {
-        
+    void teste() {
+        System.out.println("TESTANDO");
+    }
+
+    @FXML
+    void cadastrarUsuario( ) {
+        System.out.println("CADASTRANDO");
     }
     
     @FXML
     void getPaneProjeto() throws IOException {
+        System.out.println("TESTANDO");
         Parent menuRecebimento = FXMLLoader.load(getClass().getResource("/br/com/faculdade/projetopoo/view/FXMLTelaProjeto2.fxml"));
         AnchorPane.setTopAnchor(menuRecebimento, 72.0);
         AnchorPane.setBottomAnchor(menuRecebimento, 23.0);

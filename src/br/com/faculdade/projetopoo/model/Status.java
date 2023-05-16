@@ -4,13 +4,16 @@
  */
 package br.com.faculdade.projetopoo.model;
 
+import java.time.LocalDate;
+import java.util.Random;
+
 /**
  *
  * @author Diego
  */
 public class Status {
     
-    private String codStatus;
+    private int codStatus;
     private String nome;
     private String descricao;
     private String dataHora;
@@ -24,11 +27,11 @@ public class Status {
         this.codProjeto = codProjeto;
     }
 
-    public String getCodStatus() {
+    public int getCodStatus() {
         return codStatus;
     }
 
-    public void setCodStatus(String codStatus) {
+    public void setCodStatus(int codStatus) {
         this.codStatus = codStatus;
     }
 
@@ -55,6 +58,19 @@ public class Status {
     public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
     }
+
+    public Status(String nome, String descricao, String codProjeto) {
+        Random random = new Random();
+        this.codStatus = (int) (random.nextDouble() * 10000000);
+        this.nome = nome;
+        this.descricao = descricao;
+        this.dataHora = LocalDate.now().toString();
+        this.codProjeto = codProjeto;
+    }
+
+    public Status() {
+    }
+    
     
     
     

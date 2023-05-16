@@ -4,12 +4,17 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
+import br.com.faculdade.projetopoo.model.Projeto;
+import br.com.faculdade.projetopoo.services.ProjetoService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -22,11 +27,23 @@ public class ControllerTelaNovoProjeto implements Initializable {
     private TextField txNome;
 
     @FXML
-    private TextField txNome1;
+    private TextField txDescricao;
+    
+    @FXML
+    private AnchorPane Pane;
 
     @FXML
-    void addProjeto(ActionEvent event) {
-
+    void addProjeto() {
+        ProjetoService projetoService = new ProjetoService();
+        if(txNome.getText().isEmpty() || txDescricao.getText().isEmpty()){
+            Alertas.informacao("Erro!", "Preencha todos os campos.");
+        } else{
+            projetoService.create(new Projeto(txNome.getText(), txDescricao.getText()));
+            Alertas.informacao("Sucesso!", "Projeto Criado com sucesso.");
+            Stage stage = (Stage) Pane.getScene().getWindow();
+            stage.close();
+        }
+        
     }
     
     
