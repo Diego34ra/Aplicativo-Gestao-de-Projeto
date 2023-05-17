@@ -70,7 +70,7 @@ public class ControllerTelaProjeto implements Initializable{
     
     @FXML
     void novoProjeto() {
-          TelaNovoProjeto tela = new TelaNovoProjeto();
+        TelaNovoProjeto tela = new TelaNovoProjeto();
         try {
             tela.start(new Stage());
             TelaNovoProjeto.getStage().show();
@@ -81,7 +81,6 @@ public class ControllerTelaProjeto implements Initializable{
             
     @FXML
     void buscar() {
-//        ObservableList<Projeto> obj = null;
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
                 obj = FXCollections.observableArrayList(ProjetoService.findAll());
@@ -126,12 +125,6 @@ public class ControllerTelaProjeto implements Initializable{
         cellProNome.setResizable(false);
         cellProNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
         cellProNome.setStyle("-fx-alignment: center;");
-        
-//        cellProStatus.setMinWidth(200);
-//        cellProStatus.setPrefWidth(350);
-//        cellProStatus.setResizable(false);
-//        cellProStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
-//        cellProStatus.setStyle("-fx-alignment: center;");
         
         cellProStatus.setMinWidth(200);
         cellProStatus.setPrefWidth(340);
@@ -222,21 +215,14 @@ public class ControllerTelaProjeto implements Initializable{
                     } else {
                         botao.setOnAction(event -> 
                             { 
-                                System.out.println("Testando");
-//                                if(Alertas.confirmacao("Confirma a exclusão do cliente?", "", "Sim", "Não") == 1){
-//                                    deletaClienteGeral(getTableView().getItems().get(getIndex()));
-//                                    Alertas.alertaInformacao("Processo finalizado!","");
-//                                    consultaClienteGeral();
-//                                } else
-//                                    Alertas.alertaAtencao("Ok!", "Nada foi alterado!");
-
-                                    TelaTarefa tela = new TelaTarefa();
-                                          try {
-                                                tela.start(new Stage());
-                                                TelaTarefa.getStage().show();
-                                               } catch (Exception ex) {
-                                                 System.out.println("Exception ao criar a tela de tarefa\n"+ex);
-                                               } 
+                                Global.projeto = getTableView().getItems().get(getIndex());
+                                TelaTarefa tela = new TelaTarefa();
+                                try {
+                                    tela.start(new Stage());
+                                    TelaTarefa.getStage().show();
+                                } catch (Exception ex) {
+                                    System.out.println("Exception ao criar a tela de tarefa\n"+ex);
+                                } 
                             }
                         );
                         setGraphic(botao);

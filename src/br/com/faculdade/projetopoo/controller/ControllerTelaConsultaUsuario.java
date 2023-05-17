@@ -17,8 +17,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -27,8 +33,12 @@ import javafx.scene.control.TextField;
 public class ControllerTelaConsultaUsuario implements Initializable{
     
     @FXML
+    private AnchorPane Pane;
+    
+    @FXML
     private TableView<Usuario> tbUsuario;
-
+    private final TableColumn cellUsuarioId = new TableColumn("Código");
+    private final TableColumn cellUsuarioNome = new TableColumn("Nome");
     @FXML
     private ComboBox<String> cbConsulta;
 
@@ -39,7 +49,6 @@ public class ControllerTelaConsultaUsuario implements Initializable{
 
     @FXML
     void buscar() {
-//        ObservableList<Projeto> obj = null;
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
                 obj = FXCollections.observableArrayList(UsuarioService.findAll());
@@ -61,14 +70,46 @@ public class ControllerTelaConsultaUsuario implements Initializable{
 
     private void carregaTabelaProjeto(ObservableList<Usuario> list){
         tbUsuario.getColumns().clear();
-//        formataTabelaProjeto();
+        formataTabelaProjeto();
         tbUsuario.setItems(list);
-//        tbUsuario.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProDelete);
+        tbUsuario.getColumns().addAll(cellUsuarioId,cellUsuarioNome);
+    }
+    
+    private void formataTabelaProjeto(){
+        cellUsuarioId.setMinWidth(100);
+        cellUsuarioId.setPrefWidth(150);
+        cellUsuarioId.setResizable(false);
+        cellUsuarioId.setCellValueFactory (new PropertyValueFactory <> ( "codUsuario" ));
+        cellUsuarioId.setCellFactory( cell -> {              
+            return new TableCell<AbstractMethodError, Long>() {
+                @Override
+                protected void updateItem( Long item, boolean empty) {
+                   super.updateItem(item, empty);
+                   if(item == null|| empty) {
+                       setText("");
+                       setGraphic(null);
+                   }else {
+                        setText(item.toString());
+                   }
+                }
+            };
+         });
+        cellUsuarioId.setStyle("-fx-alignment: center;");
+        
+        cellUsuarioNome.setMinWidth(200);
+        cellUsuarioNome.setPrefWidth(350);
+        cellUsuarioNome.setResizable(false);
+        cellUsuarioNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
+        cellUsuarioNome.setStyle("-fx-alignment: center;");
     }
     
     @FXML
-    void getUsuario() {
-
+    void getUsuario(MouseEvent event) {
+        int x = tbUsuario.getSelectionModel().getSelectedIndex();
+        
+        Global.consulta = tbUsuario.getItems().get(x);
+        Stage stage = (Stage) Pane.getScene().getWindow();
+        stage.close();
     }
 
     @Override

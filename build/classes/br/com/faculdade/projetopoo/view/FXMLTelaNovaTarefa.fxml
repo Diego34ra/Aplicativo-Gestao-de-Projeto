@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="501.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaNovaTarefa">
+<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="501.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaNovaTarefa">
    <children>
       <Label layoutX="183.0" layoutY="33.0" prefHeight="32.0" prefWidth="135.0" text="Nova Tarefa" textFill="WHITE">
          <font>
@@ -36,5 +34,14 @@
       <TextField fx:id="txNome" layoutX="139.0" layoutY="90.0" prefHeight="30.0" prefWidth="291.0" promptText="Nome da Tarefa" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
       <TextField fx:id="txDescricao" layoutX="139.0" layoutY="150.0" prefHeight="30.0" prefWidth="291.0" promptText="Descrição" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
       <TextField fx:id="txEncarregado" layoutX="139.0" layoutY="210.0" prefHeight="30.0" prefWidth="291.0" promptText="Encarregado" styleClass="textfield" stylesheets="@telaInicialDesign.css" />
+      <Button layoutX="436.0" layoutY="211.0" mnemonicParsing="false" onAction="#buscar" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/buscar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

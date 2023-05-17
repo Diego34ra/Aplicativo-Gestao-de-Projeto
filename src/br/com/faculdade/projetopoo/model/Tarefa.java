@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.com.faculdade.projetopoo.model;
+import java.util.Random;
 
 import java.time.LocalDate;
 
@@ -20,8 +21,9 @@ public class Tarefa {
     private Projeto projeto;
     private Usuario usuario;
 
-    public Tarefa(Long codTarefa, String nome, String descricao, Projeto projeto, Usuario usuario) {
-        this.codTarefa = codTarefa;
+    public Tarefa(String nome, String descricao, Projeto projeto, Usuario usuario) {
+        Random random = new Random();
+        this.codTarefa = (long) (random.nextDouble() * 10000000L);
         this.nome = nome;
         this.descricao = descricao;
         this.projeto = projeto;

@@ -36,7 +36,7 @@ public class TelaConsultaUsuario extends Application{
         
         stage.setResizable(false);
         
-        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaNovaTarefa.fxml"));
+        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaConsultaUsuario.fxml"));
         
         scene = new Scene(painel);
         

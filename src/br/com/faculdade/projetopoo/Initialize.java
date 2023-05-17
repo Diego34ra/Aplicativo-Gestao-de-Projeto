@@ -65,10 +65,8 @@ public class Initialize {
                         "  PRIMARY KEY (`codTarefa`),\n" +
                         "  KEY `codProjeto` (`codProjeto`),\n" +
                         "  KEY `codUsuario` (`codUsuario`),\n" +
-                        "  CONSTRAINT `tarefa_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`),\n" +
-                        "  CONSTRAINT `tarefa_ibfk_2` FOREIGN KEY (`codUsuario`) REFERENCES `usuario` (`codUsuario`)\n" +
-                        "  ON DELETE CASCADE\n" +
-                        "  ON UPDATE CASCADE\n" +
+                        "  CONSTRAINT `tarefa_ibfk_1` FOREIGN KEY (`codProjeto`) REFERENCES `projeto` (`codProjeto`) ON DELETE CASCADE ON UPDATE CASCADE,\n" +
+                        "  CONSTRAINT `tarefa_ibfk_2` FOREIGN KEY (`codUsuario`) REFERENCES `usuario` (`codUsuario`) ON DELETE CASCADE ON UPDATE CASCADE\n" +
                         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
         }
         
