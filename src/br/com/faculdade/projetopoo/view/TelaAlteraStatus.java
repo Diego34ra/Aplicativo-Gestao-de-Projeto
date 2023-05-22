@@ -14,9 +14,9 @@ import javafx.stage.WindowEvent;
 
 /**
  *
- * @author 2022101202010066
+ * @author Diego
  */
-public class TelaTarefa extends Application {
+public class TelaAlteraStatus extends Application{
     
     public static Stage stage;
     public static Scene scene;
@@ -25,22 +25,22 @@ public class TelaTarefa extends Application {
     public void start(Stage t) throws Exception {
         stage =  new Stage();
         
-        stage.setWidth(1055);
-        stage.setHeight(405);
+        stage.setWidth(300);
+        stage.setHeight(200);
         
-        stage.setMinWidth(1055);
-        stage.setMinHeight(405);
+        stage.setMinWidth(300);
+        stage.setMinHeight(200);
         
-//        stage.setMaxWidth(608);
-//        stage.setMaxHeight(443);
+        stage.setMaxWidth(300);
+        stage.setMaxHeight(200);
         
         stage.setResizable(false);
         
-        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaTarefa.fxml"));
+        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaAlteraStatus.fxml"));
         
         scene = new Scene(painel);
         
-        stage.setTitle("Tarefas");
+        stage.setTitle("Alterar Status");
 //        stage.getIcons().add(new Image(TelaInicial.class.getResourceAsStream( "icon.png" ))); 
         
         stage.setScene(scene);

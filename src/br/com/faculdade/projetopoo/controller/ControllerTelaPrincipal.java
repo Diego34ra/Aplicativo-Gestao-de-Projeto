@@ -88,7 +88,10 @@ public class ControllerTelaPrincipal implements Initializable {
             TelaCadastroUser.getStage().show();
         } catch (Exception ex) {
             System.out.println("Exception ao criar a tela de cadastro\n"+ex);
-        }       
+        }
+        //Fecha a tela atual
+        Stage stage = (Stage) Pane.getScene().getWindow();
+        stage.close();
     }
 	
     @Override

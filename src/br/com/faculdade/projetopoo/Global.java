@@ -5,6 +5,7 @@
 package br.com.faculdade.projetopoo;
 
 import br.com.faculdade.projetopoo.model.Projeto;
+import br.com.faculdade.projetopoo.model.Status;
 import br.com.faculdade.projetopoo.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +46,14 @@ public class Global {
         ObservableList<String> options = FXCollections.observableArrayList(tipoConsulta);
         
         return tipoConsulta;
+    }
+    
+    public static List<Status> tipoStatus(){
+        List<Status> listStatus = new ArrayList<>();
+        listStatus.add(new Status("Sem Fluxo"));
+        listStatus.add(new Status("Em Espera"));
+        listStatus.add(new Status("Em Andamento"));
+        listStatus.add(new Status("Finalizado"));
+        return listStatus;
     }
 }

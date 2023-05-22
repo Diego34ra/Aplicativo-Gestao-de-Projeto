@@ -67,6 +67,10 @@ public class Status {
         this.dataHora = LocalDate.now().toString();
         this.codProjeto = codProjeto;
     }
+    
+    public Status(String nome) {
+        this.nome = nome;
+    }
 
     public Status() {
     }

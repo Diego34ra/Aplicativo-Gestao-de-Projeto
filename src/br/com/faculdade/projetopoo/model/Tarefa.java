@@ -17,6 +17,7 @@ public class Tarefa {
     private String nome;
     private String descricao;
     private String dataCriacao;
+    private String dataFinalizacao;
     private String status;
     private Projeto projeto;
     private Usuario usuario;
@@ -30,6 +31,14 @@ public class Tarefa {
         this.dataCriacao = LocalDate.now().toString();
         this.usuario = usuario;
         this.status = "Em Espera";
+    }
+
+    public String getDataFinalizacao() {
+        return dataFinalizacao;
+    }
+
+    public void setDataFinalizacao(String dataFinalizacao) {
+        this.dataFinalizacao = dataFinalizacao;
     }
 
     public String getStatus() {

@@ -19,13 +19,13 @@ public class TelaPrincipal extends Application {
         stage = new Stage();
         //para não esticar as laterais
         stage.setMaxWidth(608);
-        stage.setMaxHeight(443);
+        stage.setMaxHeight(433);
         //valor padrao da tela
         stage.setWidth(608);
-        stage.setHeight(443);
+        stage.setHeight(433);
         //para não diminuir
         stage.setMinWidth(608);
-        stage.setMinHeight(443);
+        stage.setMinHeight(433);
         //desativando o botão maximixar e minimizar
         stage.setResizable(false);
         

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="501.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaNovaTarefa">
+<AnchorPane id="AnchorPane" fx:id="Pane" prefHeight="335.0" prefWidth="501.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaNovaTarefa">
    <children>
       <Label layoutX="183.0" layoutY="33.0" prefHeight="32.0" prefWidth="135.0" text="Nova Tarefa" textFill="WHITE">
          <font>
