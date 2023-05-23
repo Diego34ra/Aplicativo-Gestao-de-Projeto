@@ -6,6 +6,7 @@ package br.com.faculdade.projetopoo;
 
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Status;
+import br.com.faculdade.projetopoo.model.Tarefa;
 import br.com.faculdade.projetopoo.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class Global {
     public static Usuario consulta = new Usuario();
     public static Projeto projeto = new Projeto();
     public static Boolean validar = false;
+    public static Tarefa tarefa = new Tarefa();
+    public static String alteraStatus = "";
     
     public static List<String>  tipoConsulta(String tipo){
         List<String> tipoConsulta = new ArrayList<>();

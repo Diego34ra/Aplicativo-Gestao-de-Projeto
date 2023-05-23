@@ -73,7 +73,7 @@ public class StatusService {
             }
         }
     }
-    
+        
     public static void deleteByIdProjeto(Long codProjeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "DELETE FROM `status` WHERE `status`.codProjeto = ?";

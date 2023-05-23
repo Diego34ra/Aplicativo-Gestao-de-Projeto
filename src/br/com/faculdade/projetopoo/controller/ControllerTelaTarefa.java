@@ -47,6 +47,7 @@ public class ControllerTelaTarefa implements Initializable{
     private final TableColumn<Tarefa,Tarefa> cellTarefaDelete = new TableColumn("Deletar");
     private final TableColumn cellTarefaDescricao = new TableColumn("Descrição");
     private final TableColumn cellTarefaDtCriacao = new TableColumn("Data de criação");
+    private final TableColumn cellTarefaDtFinalizacao = new TableColumn("Data de Finalização");
     private final TableColumn cellTarefaNome = new TableColumn("Nome");
     private final TableColumn cellTarefaStatus = new TableColumn("Status");
     private final TableColumn cellTarefaAlteraStatus = new TableColumn("Alterar status");
@@ -71,7 +72,7 @@ public class ControllerTelaTarefa implements Initializable{
         tbTarefa.getColumns().clear();
         formataTabelaTarefa();
         tbTarefa.setItems(list);
-        tbTarefa.getColumns().addAll(cellTarefaCodigo,cellTarefaNome,cellTarefaDescricao,cellTarefaStatus, cellTarefaDtCriacao,cellTarefaAlteraStatus,cellTarefaDelete);
+        tbTarefa.getColumns().addAll(cellTarefaCodigo,cellTarefaNome,cellTarefaDescricao,cellTarefaStatus, cellTarefaDtCriacao,cellTarefaDtFinalizacao,cellTarefaAlteraStatus,cellTarefaDelete);
     }
     
     private void formataTabelaTarefa(){
@@ -145,11 +146,14 @@ public class ControllerTelaTarefa implements Initializable{
                             { 
                                 TelaAlteraStatus tela = new TelaAlteraStatus();
                                 try {
+                                    Global.tarefa = getTableView().getItems().get(getIndex());
+                                    Global.alteraStatus = "Tarefa";
                                     tela.start(new Stage());
-                                    TelaAlteraStatus.getStage().show();
+                                    TelaAlteraStatus.getStage().showAndWait();
                                 } catch (Exception ex) {
                                     System.out.println("Exception ao criar a tela de alteração de status\n"+ex);
-                                }  
+                                }
+                                geraTabela();
                             }
                         );
                         setGraphic(botao);
@@ -178,6 +182,31 @@ public class ControllerTelaTarefa implements Initializable{
             };
          } );
         cellTarefaDtCriacao.setStyle("-fx-alignment: center;");
+        
+        cellTarefaDtFinalizacao.setMinWidth(100);
+        cellTarefaDtFinalizacao.setPrefWidth(300);
+        cellTarefaDtFinalizacao.setResizable(true);
+        cellTarefaDtFinalizacao.setCellValueFactory (new PropertyValueFactory<> ("dataFinalizacao"));
+        cellTarefaDtFinalizacao.setCellFactory( coluna -> {              
+            return new TableCell<AbstractMethodError, String>() {
+                @Override
+                protected void updateItem( String item, boolean empty) {
+                   super.updateItem(item, empty);
+                   if(item == null || empty) {
+                       setText("");
+                       setGraphic(null);
+                   }else {
+                       if(item.length() != 1){
+                           setText(item.substring(0,10));
+                       } else {
+                           setText(item);
+                       }
+                        
+                   }
+                }
+            };
+         } );
+        cellTarefaDtFinalizacao.setStyle("-fx-alignment: center;");
         
         cellTarefaDelete.setMinWidth(50);
         cellTarefaDelete.setPrefWidth(80);
@@ -228,6 +257,12 @@ public class ControllerTelaTarefa implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TarefaService tarefa = new TarefaService();
+        obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
+        carregaTabelaProjeto(obj);
+    }
+    
+    public void geraTabela(){
         TarefaService tarefa = new TarefaService();
         obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
         carregaTabelaProjeto(obj);

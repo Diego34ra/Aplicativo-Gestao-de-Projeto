@@ -105,7 +105,14 @@ public class TarefaService {
             	tarefa.setNome(rs.getString("nome"));
 //                tarefa.setUsuario(usuario);
             	tarefa.setDataCriacao(rs.getString("dtCriacao"));
+//                if(!rs.getString("dtFinalizacao").isEmpty()){
                 tarefa.setDataFinalizacao(rs.getString("dtFinalizacao"));
+                if(tarefa.getDataFinalizacao() == null){
+                    tarefa.setDataFinalizacao("-");
+                }
+//                } else {
+//                    tarefa.setDataFinalizacao("-");
+//                }
             	tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setStatus(rs.getString("status"));
                 lista.add(tarefa);
@@ -122,5 +129,26 @@ public class TarefaService {
         }
         return lista;
     
+    }
+    
+    public void update(Tarefa tarefa){
+        ConnectionBD con = new ConnectionBD();
+        String sql = "UPDATE tarefa SET status = ? WHERE codTarefa = ?";
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, tarefa.getStatus());
+            stmt.setString(2, tarefa.getCodTarefa().toString());
+            stmt.execute();
+    
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

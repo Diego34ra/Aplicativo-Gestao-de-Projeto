@@ -4,8 +4,10 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Status;
+import br.com.faculdade.projetopoo.services.TarefaService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -15,29 +17,53 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Diego
  */
 public class ControllerTelaAlteraStatus implements Initializable{
+    
+    @FXML
+    private AnchorPane Pane;
+    
     @FXML
     private TableView<Status> tbStatus;
     private final TableColumn cellStatusNome = new TableColumn("Status");
     
     @FXML
     void getStatus() {
-
+        int x = tbStatus.getSelectionModel().getSelectedIndex();
+        
+        Status status = tbStatus.getItems().get(x);
+        switch (Global.alteraStatus) {
+            case "Tarefa":
+                if(Alertas.confirmacao("Atenção!", "Realmente deseja atualizar o status da tarefa?") == 1){
+                    Global.tarefa.setStatus(status.getNome());
+                    TarefaService tarefaService = new TarefaService();
+                    tarefaService.update(Global.tarefa);
+                    Alertas.informacao("Sucesso!", "Status da tarefa atualizado com sucesso.");
+                    Stage stage = (Stage) Pane.getScene().getWindow();
+                    stage.close();
+                }
+                break;
+            case "Projeto":
+                break;
+        }
+        
+        
     }
     
-    private void carregaTabelaTarefa(ObservableList<Status> list){
+    private void carregaTabelaStatus(ObservableList<Status> list){
         tbStatus.getColumns().clear();
-        formataTabelaTarefa();
+        formataTabelaStatus();
         tbStatus.setItems(list);
         tbStatus.getColumns().addAll(cellStatusNome);
     }
     
-    private void formataTabelaTarefa(){
+    private void formataTabelaStatus(){
         cellStatusNome.setMinWidth(200);
         cellStatusNome.setPrefWidth(295);
         cellStatusNome.setResizable(false);
@@ -47,7 +73,7 @@ public class ControllerTelaAlteraStatus implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        carregaTabelaTarefa(FXCollections.observableArrayList(Global.tipoStatus()));
+        carregaTabelaStatus(FXCollections.observableArrayList(Global.tipoStatus()));
     }
     
 }

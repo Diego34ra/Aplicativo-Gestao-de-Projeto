@@ -9,6 +9,7 @@ import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Status;
 import br.com.faculdade.projetopoo.services.ProjetoService;
+import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
 import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
 import br.com.faculdade.projetopoo.view.TelaTarefa;
 import java.io.File;
@@ -58,6 +59,7 @@ public class ControllerTelaProjeto implements Initializable{
     private final TableColumn cellProDtCriacao = new TableColumn("Data de Criação");
     private final TableColumn cellProDescricao = new TableColumn("Descrição");
     private final TableColumn<Projeto,Status> cellProStatus = new TableColumn("Status");
+    private final TableColumn cellProAlteraStatus = new TableColumn("Alterar status");
     private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
     private final TableColumn<Projeto,Projeto> cellProDelete = new TableColumn("Deletar");
     
@@ -65,7 +67,7 @@ public class ControllerTelaProjeto implements Initializable{
         tbProjeto.getColumns().clear();
         formataTabelaProjeto();
         tbProjeto.setItems(list);
-        tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProDelete);
+        tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProAlteraStatus, cellProDelete);
     }
     
     @FXML
@@ -121,13 +123,13 @@ public class ControllerTelaProjeto implements Initializable{
         cellProId.setStyle("-fx-alignment: center;");
         
         cellProNome.setMinWidth(200);
-        cellProNome.setPrefWidth(350);
+        cellProNome.setPrefWidth(300);
         cellProNome.setResizable(false);
         cellProNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
         cellProNome.setStyle("-fx-alignment: center;");
         
         cellProStatus.setMinWidth(200);
-        cellProStatus.setPrefWidth(340);
+        cellProStatus.setPrefWidth(300);
         cellProStatus.setResizable(false);
         cellProStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
         cellProStatus.setCellFactory( col -> {              
@@ -273,6 +275,55 @@ public class ControllerTelaProjeto implements Initializable{
                                         Alertas.informacao("Erro", "Erro ao deletar o projeto.");
                                     }
                                 }
+                            }
+                        );
+                        setGraphic(botao);
+                    }
+                }
+            };
+            return cell ;
+        });
+        
+        cellProAlteraStatus.setMinWidth(50);
+        cellProAlteraStatus.setPrefWidth(80);
+        cellProAlteraStatus.setResizable(false);
+        cellProAlteraStatus.setStyle("-fx-alignment: center");
+        cellProAlteraStatus.setCellFactory(col -> {
+            TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
+                @Override
+                public void updateItem(Projeto item, boolean empty) {
+                    final Tooltip infAjuda = new Tooltip();
+                    infAjuda.setText("Altera o status do projeto.");
+                    Button botao = new Button();
+                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png";
+                    File file = new File(caminho);
+                    Image imagem = new Image(file.toURI().toString());
+                    ImageView imv = new ImageView();
+                    {
+                       imv.setFitHeight(20l);
+                       imv.setFitWidth(20l);
+                       
+                    }
+                   imv.setImage(imagem);
+                    botao.setPickOnBounds(true);
+                    botao.setGraphic(imv);
+                    botao.setAlignment(Pos.CENTER);
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        botao.setOnAction(event -> 
+                            { 
+                                TelaAlteraStatus tela = new TelaAlteraStatus();
+                                try {
+                                    Global.projeto = getTableView().getItems().get(getIndex());
+                                    Global.alteraStatus = "Projeto";
+                                    tela.start(new Stage());
+                                    TelaAlteraStatus.getStage().showAndWait();
+                                } catch (Exception ex) {
+                                    System.out.println("Exception ao criar a tela de alteração de status\n"+ex);
+                                }
+//                                geraTabela();
                             }
                         );
                         setGraphic(botao);
