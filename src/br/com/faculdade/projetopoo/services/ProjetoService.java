@@ -30,7 +30,7 @@ public class ProjetoService {
             stmt.setString(1, projeto.getCodProjeto().toString());
             stmt.setString(2, projeto.getNome());
             stmt.setString(3, projeto.getDescricao());
-            stmt.setDate(4, Date.valueOf(projeto.getDataCriacao()+LocalTime.now()));
+          //stmt.setDate(4, Date.valueOf(projeto.getDataCriacao()+LocalTime.now()));
             if (stmt.execute()) {
                 
             }
