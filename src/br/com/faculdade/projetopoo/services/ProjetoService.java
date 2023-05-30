@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,19 +24,19 @@ public class ProjetoService {
     
     public void create(Projeto projeto){
         ConnectionBD con = new ConnectionBD();
-        String sql = "INSERT INTO projeto (codProjeto, nome, descricao, dataCriacao) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO projeto (codProjeto, nome, descricao, dataCriacao) VALUES (?,?,?,NOW())";
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, projeto.getCodProjeto().toString());
             stmt.setString(2, projeto.getNome());
             stmt.setString(3, projeto.getDescricao());
-            stmt.setDate(4, Date.valueOf(projeto.getDataCriacao()));
+            stmt.setDate(4, Date.valueOf(projeto.getDataCriacao()+LocalTime.now()));
             if (stmt.execute()) {
                 
             }
             StatusService statusService = new StatusService();
-                Status status = new Status("Em espera", "Projeto ainda não foi iniciado.", projeto.getCodProjeto().toString());
-                statusService.create(status);
+            Status status = new Status("Em espera", "O projeto ainda não foi iniciado.", projeto.getCodProjeto().toString());
+            statusService.create(status);
     
             stmt.close();
         } catch (Exception e) {

@@ -21,7 +21,7 @@ public class TarefaService {
     
     public void create(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
-        String sql = "INSERT INTO tarefa (codTarefa, codProjeto, codUsuario, nome, descricao, status, dtCriacao) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tarefa (codTarefa, codProjeto, codUsuario, nome, descricao, status, dtCriacao) VALUES (?,?,?,?,?,?,NOW())";
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, tarefa.getCodTarefa().toString());
@@ -30,7 +30,6 @@ public class TarefaService {
             stmt.setString(4, tarefa.getNome());
             stmt.setString(5, tarefa.getDescricao());
             stmt.setString(6, tarefa.getStatus());
-            stmt.setDate(7, Date.valueOf(tarefa.getDataCriacao()));
             stmt.execute();
     
             stmt.close();
@@ -103,18 +102,14 @@ public class TarefaService {
                 Tarefa tarefa = new Tarefa();
             	tarefa.setCodTarefa(rs.getLong("codTarefa"));
             	tarefa.setNome(rs.getString("nome"));
-//                tarefa.setUsuario(usuario);
             	tarefa.setDataCriacao(rs.getString("dtCriacao"));
-//                if(!rs.getString("dtFinalizacao").isEmpty()){
                 tarefa.setDataFinalizacao(rs.getString("dtFinalizacao"));
                 if(tarefa.getDataFinalizacao() == null){
                     tarefa.setDataFinalizacao("-");
                 }
-//                } else {
-//                    tarefa.setDataFinalizacao("-");
-//                }
             	tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setStatus(rs.getString("status"));
+                tarefa.setUsuario(UsuarioService.findById(rs.getString("codUsuario")));
                 lista.add(tarefa);
             	
             }
@@ -133,7 +128,7 @@ public class TarefaService {
     
     public void update(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
-        String sql = "UPDATE tarefa SET status = ? WHERE codTarefa = ?";
+        String sql = "UPDATE tarefa SET status = ?, dtFinalizacao = "+tarefa.getDataFinalizacao()+" WHERE codTarefa = ?";
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, tarefa.getStatus());

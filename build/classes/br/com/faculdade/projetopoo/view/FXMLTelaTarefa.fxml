@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaTarefa">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="1355.0" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaTarefa">
    <children>
       <Button fx:id="btAddNovaTarefa" layoutX="554.0" layoutY="41.0" mnemonicParsing="false" onAction="#addTarefa" styleClass="login" stylesheets="@telaInicialDesign.css" text="Adicionar" AnchorPane.rightAnchor="14.0" />
-      <TableView fx:id="tbTarefa" layoutY="82.0" prefHeight="290.0" prefWidth="1055.0" />
+      <TableView fx:id="tbTarefa" layoutY="82.0" prefHeight="290.0" prefWidth="1355.0" />
    </children>
 </AnchorPane>

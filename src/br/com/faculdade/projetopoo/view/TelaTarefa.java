@@ -25,11 +25,11 @@ public class TelaTarefa extends Application {
     public void start(Stage t) throws Exception {
         stage =  new Stage();
         
-        stage.setWidth(1055);
-        stage.setHeight(405);
+        stage.setWidth(1355);
+        stage.setHeight(410);
         
-        stage.setMinWidth(1055);
-        stage.setMinHeight(405);
+        stage.setMinWidth(1355);
+        stage.setMinHeight(410);
         
 //        stage.setMaxWidth(608);
 //        stage.setMaxHeight(443);

@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalTime;
 
 /**
  *
@@ -52,14 +53,14 @@ public class StatusService {
     
     public void create(Status status){
         ConnectionBD con = new ConnectionBD();
-        String sql = "INSERT INTO status (codStatus, codProjeto, nome, descricao, dataHora) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO status (codStatus, codProjeto, nome, descricao, dataHora) VALUES (?,?,?,?,NOW())";
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setInt(1, status.getCodStatus());
             stmt.setString(2, status.getCodProjeto());
             stmt.setString(3, status.getNome());
             stmt.setString(4, status.getDescricao());
-            stmt.setDate(5, Date.valueOf(status.getDataHora()));
+//            stmt.setDate(5, Date.valueOf(status.getDataHora()+LocalTime.now()));
             stmt.execute();
     
             stmt.close();

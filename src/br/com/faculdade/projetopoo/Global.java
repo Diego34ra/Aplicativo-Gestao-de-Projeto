@@ -53,10 +53,10 @@ public class Global {
     
     public static List<Status> tipoStatus(){
         List<Status> listStatus = new ArrayList<>();
-        listStatus.add(new Status("Sem Fluxo"));
-        listStatus.add(new Status("Em Espera"));
-        listStatus.add(new Status("Em Andamento"));
-        listStatus.add(new Status("Finalizado"));
+        listStatus.add(new Status("Sem Fluxo","O projeto foi parado momentâneamente."));
+        listStatus.add(new Status("Em Espera", "O projeto ainda não foi iniciado."));
+        listStatus.add(new Status("Em Andamento","O projeto já foi iniciado."));
+        listStatus.add(new Status("Finalizado", "O projeto foi finalizado."));
         return listStatus;
     }
 }

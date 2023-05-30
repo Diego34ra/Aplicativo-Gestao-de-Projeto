@@ -323,7 +323,7 @@ public class ControllerTelaProjeto implements Initializable{
                                 } catch (Exception ex) {
                                     System.out.println("Exception ao criar a tela de alteração de status\n"+ex);
                                 }
-//                                geraTabela();
+                                carregaTabelaProjeto(obj);
                             }
                         );
                         setGraphic(botao);

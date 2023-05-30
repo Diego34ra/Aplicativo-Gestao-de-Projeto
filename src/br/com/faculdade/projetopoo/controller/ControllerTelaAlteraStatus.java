@@ -7,6 +7,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Status;
+import br.com.faculdade.projetopoo.services.StatusService;
 import br.com.faculdade.projetopoo.services.TarefaService;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,6 +43,11 @@ public class ControllerTelaAlteraStatus implements Initializable{
             case "Tarefa":
                 if(Alertas.confirmacao("Atenção!", "Realmente deseja atualizar o status da tarefa?") == 1){
                     Global.tarefa.setStatus(status.getNome());
+                    if(status.getNome().equals("Finalizado")){
+                        Global.tarefa.setDataFinalizacao("NOW()");
+                    } else { 
+                        Global.tarefa.setDataFinalizacao("null");
+                    }
                     TarefaService tarefaService = new TarefaService();
                     tarefaService.update(Global.tarefa);
                     Alertas.informacao("Sucesso!", "Status da tarefa atualizado com sucesso.");
@@ -50,6 +56,14 @@ public class ControllerTelaAlteraStatus implements Initializable{
                 }
                 break;
             case "Projeto":
+                if(Alertas.confirmacao("Atenção!", "Realmente deseja atualizar o status do Projeto?") == 1){
+                StatusService statusService = new StatusService();
+                Status statusProjeto = new Status(status.getNome(), status.getDescricao(), Global.projeto.getCodProjeto().toString());
+                statusService.create(statusProjeto);
+                Alertas.informacao("Sucesso!", "Status da Projeto atualizado com sucesso.");
+                Stage stage = (Stage) Pane.getScene().getWindow();
+                stage.close();
+                }
                 break;
         }
         

@@ -68,6 +68,11 @@ public class Status {
         this.codProjeto = codProjeto;
     }
     
+    public Status(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+    
     public Status(String nome) {
         this.nome = nome;
     }

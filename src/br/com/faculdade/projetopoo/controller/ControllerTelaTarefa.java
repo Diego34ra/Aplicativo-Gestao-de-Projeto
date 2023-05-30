@@ -8,6 +8,7 @@ import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Tarefa;
+import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.services.ProjetoService;
 import br.com.faculdade.projetopoo.services.TarefaService;
 import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
@@ -49,6 +50,7 @@ public class ControllerTelaTarefa implements Initializable{
     private final TableColumn cellTarefaDtCriacao = new TableColumn("Data de criação");
     private final TableColumn cellTarefaDtFinalizacao = new TableColumn("Data de Finalização");
     private final TableColumn cellTarefaNome = new TableColumn("Nome");
+    private final TableColumn<Tarefa,Usuario> cellTarefaEncarregado = new TableColumn("Encarregado");
     private final TableColumn cellTarefaStatus = new TableColumn("Status");
     private final TableColumn cellTarefaAlteraStatus = new TableColumn("Alterar status");
     
@@ -72,12 +74,12 @@ public class ControllerTelaTarefa implements Initializable{
         tbTarefa.getColumns().clear();
         formataTabelaTarefa();
         tbTarefa.setItems(list);
-        tbTarefa.getColumns().addAll(cellTarefaCodigo,cellTarefaNome,cellTarefaDescricao,cellTarefaStatus, cellTarefaDtCriacao,cellTarefaDtFinalizacao,cellTarefaAlteraStatus,cellTarefaDelete);
+        tbTarefa.getColumns().addAll(cellTarefaCodigo,cellTarefaEncarregado, cellTarefaNome,cellTarefaDescricao,cellTarefaStatus, cellTarefaDtCriacao,cellTarefaDtFinalizacao,cellTarefaAlteraStatus,cellTarefaDelete);
     }
     
     private void formataTabelaTarefa(){
-        cellTarefaCodigo.setMinWidth(100);
-        cellTarefaCodigo.setPrefWidth(120);
+        cellTarefaCodigo.setMinWidth(80);
+        cellTarefaCodigo.setPrefWidth(100);
         cellTarefaCodigo.setResizable(false);
         cellTarefaCodigo.setCellValueFactory (new PropertyValueFactory <> ( "codTarefa" ));
         cellTarefaCodigo.setCellFactory( cell -> {              
@@ -96,20 +98,40 @@ public class ControllerTelaTarefa implements Initializable{
          });
         cellTarefaCodigo.setStyle("-fx-alignment: center;");
         
-        cellTarefaNome.setMinWidth(150);
-        cellTarefaNome.setPrefWidth(200);
+        cellTarefaEncarregado.setMinWidth(150);
+        cellTarefaEncarregado.setPrefWidth(200);
+        cellTarefaEncarregado.setResizable(false);
+        cellTarefaEncarregado.setCellValueFactory (new PropertyValueFactory <> ( "usuario" ));
+        cellTarefaEncarregado.setCellFactory( col -> {              
+            return new TableCell<Tarefa, Usuario>() {
+                @Override
+                protected void updateItem( Usuario item, boolean empty) {
+                   super.updateItem(item, empty);
+                   if(item == null|| empty) {
+                       setText("");
+                       setGraphic(null);
+                   }else {
+                       setText(item.getNome());
+                   }
+                }
+            };
+         });
+        cellTarefaEncarregado.setStyle("-fx-alignment: center;");
+        
+        cellTarefaNome.setMinWidth(100);
+        cellTarefaNome.setPrefWidth(130);
         cellTarefaNome.setResizable(false);
         cellTarefaNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
         cellTarefaNome.setStyle("-fx-alignment: center;");
         
         cellTarefaDescricao.setMinWidth(150);
-        cellTarefaDescricao.setPrefWidth(200);
+        cellTarefaDescricao.setPrefWidth(300);
         cellTarefaDescricao.setResizable(false);
         cellTarefaDescricao.setCellValueFactory (new PropertyValueFactory <> ( "descricao" ));
         cellTarefaDescricao.setStyle("-fx-alignment: center;");
         
         cellTarefaStatus.setMinWidth(150);
-        cellTarefaStatus.setPrefWidth(170);
+        cellTarefaStatus.setPrefWidth(150);
         cellTarefaStatus.setResizable(false);
         cellTarefaStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
         cellTarefaStatus.setStyle("-fx-alignment: center;");
@@ -164,7 +186,7 @@ public class ControllerTelaTarefa implements Initializable{
         });
         
         cellTarefaDtCriacao.setMinWidth(100);
-        cellTarefaDtCriacao.setPrefWidth(200);
+        cellTarefaDtCriacao.setPrefWidth(150);
         cellTarefaDtCriacao.setResizable(true);
         cellTarefaDtCriacao.setCellValueFactory (new PropertyValueFactory<> ("dataCriacao"));
         cellTarefaDtCriacao.setCellFactory( coluna -> {              
@@ -176,7 +198,7 @@ public class ControllerTelaTarefa implements Initializable{
                        setText("");
                        setGraphic(null);
                    }else {
-                        setText(item.substring(0,10));
+                        setText(item);
                    }
                 }
             };
@@ -184,7 +206,7 @@ public class ControllerTelaTarefa implements Initializable{
         cellTarefaDtCriacao.setStyle("-fx-alignment: center;");
         
         cellTarefaDtFinalizacao.setMinWidth(100);
-        cellTarefaDtFinalizacao.setPrefWidth(300);
+        cellTarefaDtFinalizacao.setPrefWidth(150);
         cellTarefaDtFinalizacao.setResizable(true);
         cellTarefaDtFinalizacao.setCellValueFactory (new PropertyValueFactory<> ("dataFinalizacao"));
         cellTarefaDtFinalizacao.setCellFactory( coluna -> {              
@@ -197,7 +219,7 @@ public class ControllerTelaTarefa implements Initializable{
                        setGraphic(null);
                    }else {
                        if(item.length() != 1){
-                           setText(item.substring(0,10));
+                           setText(item);
                        } else {
                            setText(item);
                        }
