@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaHistoricoStatus">
+   <children>
+      <TableView fx:id="tbStatus" prefHeight="240.0" prefWidth="725.0" />
+   </children>
+</AnchorPane>

@@ -55,7 +55,7 @@ public class Global {
         List<Status> listStatus = new ArrayList<>();
         listStatus.add(new Status("Sem Fluxo","O projeto foi parado momentâneamente."));
         listStatus.add(new Status("Em Espera", "O projeto ainda não foi iniciado."));
-        listStatus.add(new Status("Em Andamento","O projeto já foi iniciado."));
+        listStatus.add(new Status("Em Andamento","O projeto está sendo executado."));
         listStatus.add(new Status("Finalizado", "O projeto foi finalizado."));
         return listStatus;
     }
