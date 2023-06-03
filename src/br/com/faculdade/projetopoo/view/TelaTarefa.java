@@ -4,11 +4,13 @@
  */
 package br.com.faculdade.projetopoo.view;
 
+import static br.com.faculdade.projetopoo.view.TelaPrincipal.stage;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -41,7 +43,7 @@ public class TelaTarefa extends Application {
         scene = new Scene(painel);
         
         stage.setTitle("Tarefas");
-//        stage.getIcons().add(new Image(TelaInicial.class.getResourceAsStream( "icon.png" ))); 
+        stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" ))); 
         
         stage.setScene(scene);
         

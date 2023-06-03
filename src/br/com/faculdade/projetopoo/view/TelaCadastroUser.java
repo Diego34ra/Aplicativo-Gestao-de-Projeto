@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -33,7 +34,7 @@ public class TelaCadastroUser extends Application {
         scene = new Scene(painel);
 
         stage.setTitle("Tela Cadastro");
-//	        stage.getIcons().add(new Image(TelaLogin.class.getResourceAsStream( "icon.png" ))); 
+        stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" ))); 
 
         stage.show();
 

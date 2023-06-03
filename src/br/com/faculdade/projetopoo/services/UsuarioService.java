@@ -233,6 +233,7 @@ public class UsuarioService {
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(normalizer).replaceAll("");
     }
+    
     public static boolean validateEmail(String email) {
         boolean result = true;
         try {

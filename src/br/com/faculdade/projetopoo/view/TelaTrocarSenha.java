@@ -1,12 +1,14 @@
 package br.com.faculdade.projetopoo.view;
 
 
+import static br.com.faculdade.projetopoo.view.TelaPrincipal.stage;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -27,7 +29,7 @@ public class TelaTrocarSenha extends Application {
 		scene = new Scene(painel);
 
 		stage.setTitle("Trocar Senha"); 
-
+                stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" ))); 
 		//stage.initStyle(StageStyle.TRANSPARENT);
 		
 //		stage.show();
@@ -37,8 +39,6 @@ public class TelaTrocarSenha extends Application {
 		stage.setOnCloseRequest((WindowEvent t1) -> {
             t1.consume();
             stage.close();
-            Platform.exit();
-            System.exit(0);
         });
 	}
 

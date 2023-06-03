@@ -9,7 +9,7 @@ import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.services.UsuarioService;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
 import br.com.faculdade.projetopoo.view.TelaInformacoes;
-import br.com.faculdade.projetopoo.view.TelaRecuperacaoSenha;
+import br.com.faculdade.projetopoo.view.TelaAlterarSenha;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
@@ -56,9 +56,12 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     void recuperarSenha() {
-    TelaRecuperacaoSenha telaRecuperacaoSenha = new TelaRecuperacaoSenha();
+    TelaAlterarSenha telaRecuperacaoSenha = new TelaAlterarSenha();
     try {
         telaRecuperacaoSenha.start(new Stage());
+        //Fecha a tela atual
+        Stage stage = (Stage) Pane.getScene().getWindow();
+        stage.close();
     } catch (Exception ex) {
         System.out.println("Erro ao abrir tela de recuperação de senha: " + ex.getMessage());
     }

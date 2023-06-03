@@ -4,11 +4,13 @@
  */
 package br.com.faculdade.projetopoo;
 
+import br.com.faculdade.projetopoo.view.TelaPrincipal;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -27,7 +29,7 @@ public class Alertas {
         ButtonType cancela = new ButtonType("Cancelar", ButtonData.CANCEL_CLOSE);
         
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//        stage.getIcons().add(new Image(TelaLogin.class.getResourceAsStream( "icon.png" )));
+        stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" )));
         alert.getButtonTypes().setAll(sim, nao, cancela);
 
         Optional<ButtonType> result = alert.showAndWait();
@@ -46,7 +48,7 @@ public class Alertas {
         alert.setHeaderText(cabeca);
         alert.setContentText(corpo);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-//        stage.getIcons().add(new Image(TelaLogin.class.getResourceAsStream( "icon.png" )));
+        stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" )));
         alert.showAndWait();
     }
 }

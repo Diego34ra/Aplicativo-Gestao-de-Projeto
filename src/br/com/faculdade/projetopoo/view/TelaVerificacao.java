@@ -1,11 +1,13 @@
 package br.com.faculdade.projetopoo.view;
 
 
+import static br.com.faculdade.projetopoo.view.TelaPrincipal.stage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -23,9 +25,10 @@ public class TelaVerificacao extends Application {
 
 		Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaVerificacao.fxml"));
 		scene = new Scene(painel);
-
+                
+                stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" ))); 
 		stage.setTitle("Tela Verificação"); 
-
+                
 		//stage.initStyle(StageStyle.TRANSPARENT);
 		
 //		stage.show();
