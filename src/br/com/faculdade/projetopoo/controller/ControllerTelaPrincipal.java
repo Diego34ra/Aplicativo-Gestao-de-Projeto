@@ -9,6 +9,7 @@ import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.services.UsuarioService;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
 import br.com.faculdade.projetopoo.view.TelaInformacoes;
+import br.com.faculdade.projetopoo.view.TelaRecuperacaoSenha;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
@@ -51,11 +52,17 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     private Label txRecuperaSenha;
+   
 
     @FXML
     void recuperarSenha() {
-        System.out.println("recuperar senha");
+    TelaRecuperacaoSenha telaRecuperacaoSenha = new TelaRecuperacaoSenha();
+    try {
+        telaRecuperacaoSenha.start(new Stage());
+    } catch (Exception ex) {
+        System.out.println("Erro ao abrir tela de recuperação de senha: " + ex.getMessage());
     }
+}
     
     @FXML
     void logar() throws NoSuchAlgorithmException {

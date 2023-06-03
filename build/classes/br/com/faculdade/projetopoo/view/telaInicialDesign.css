@@ -1,7 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-.left-form{
-	-fx-background-color:linear-gradient(to bottom left, #d78999, #1E90FF);
+.left-form{	
+        -fx-background-color:linear-gradient(to bottom left, #d78999, #3F2B63);
 	-fx-border-color:#000;
 	-fx-border-width:.4px 0px .4px .4px;
 }
@@ -31,13 +31,13 @@
 }
 
 .close:hover{
-	-fx-background-color:#ff3547;
+	-fx-background-color:#000;
 }
 
 .textfield{
 	-fx-background-color:linear-gradient(to bottom, #efefef, #eee);
 	-fx-background-radius:4px;
-	-fx-border-color:#000;
+	-fx-border-color:#3F2B63;
 	-fx-border-width:.4px;
 	-fx-border-radius:4px;
 	-fx-font-size:13px;
@@ -68,4 +68,17 @@ outline: thin dotted;
         color: #3498db;
         font-size: 1.5em;
         box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+.button{
+    -fx-background-color: #3F2B63;
+}
+
+.button:hover{
+    -fx-background-color: #2A1C42;
+}
+
+.button:pressed{
+    -fx-background-color: #2A1C42;
 }

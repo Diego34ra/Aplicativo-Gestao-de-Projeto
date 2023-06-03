@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="458.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaRecuperacaoSenha">
+   <children>
+      <Label layoutX="30.0" layoutY="154.0" prefHeight="18.0" prefWidth="39.0" text="Email:" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="154.0" />
+      <TextField fx:id="txEmail" layoutX="84.0" layoutY="150.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite seu Email" styleClass="textfield" stylesheets="@telaInicialDesign.css" AnchorPane.topAnchor="150.0" />
+      <Button layoutX="100.0" layoutY="248.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Voltar" textFill="WHITE" AnchorPane.leftAnchor="100.0" />
+      <Button fx:id="teRecuperarSenha" layoutX="287.0" layoutY="248.0" mnemonicParsing="false" onAction="#recuperar" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Recuperar" textFill="WHITE" AnchorPane.rightAnchor="97.0" />
+      <Label layoutX="113.0" layoutY="24.0" prefHeight="32.0" prefWidth="233.0" text="Recuperação de senha" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
