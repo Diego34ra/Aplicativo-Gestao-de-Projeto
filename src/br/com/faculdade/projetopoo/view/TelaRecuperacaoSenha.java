@@ -19,14 +19,14 @@ public class TelaRecuperacaoSenha extends Application {
     public void start(Stage t) throws Exception {
         stage = new Stage();
 
-        stage.setMaxWidth(458);
-        stage.setMaxHeight(365);
+        stage.setMaxWidth(301);
+        stage.setMaxHeight(388);
         //valor padrao da tela
-        stage.setWidth(458);
-        stage.setHeight(365);
+        stage.setWidth(301);
+        stage.setHeight(388);
         //para não diminuir
-        stage.setMinWidth(458);
-        stage.setMinHeight(365);
+        stage.setMinWidth(301);
+        stage.setMinHeight(388);
 
         stage.setResizable(false);
 
