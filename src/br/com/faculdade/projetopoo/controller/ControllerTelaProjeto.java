@@ -193,7 +193,7 @@ public class ControllerTelaProjeto implements Initializable{
         cellProTarefas.setMinWidth(50);
         cellProTarefas.setPrefWidth(80);
         cellProTarefas.setResizable(false);
-        cellProTarefas.setStyle("-fx-alignment: center;");
+        cellProTarefas.setStyle("-fx-alignment: center;-fx-background-radius:10px");
         cellProTarefas.setCellFactory(col -> {
             TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
                 @Override
@@ -433,7 +433,6 @@ public class ControllerTelaProjeto implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbConsulta.getItems().addAll(Global.tipoConsulta("projeto"));
-        
         cbConsulta.getSelectionModel().selectFirst();
     }
 }
