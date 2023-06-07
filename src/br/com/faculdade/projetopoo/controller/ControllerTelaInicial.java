@@ -19,9 +19,6 @@ import javafx.scene.layout.AnchorPane;
 public class ControllerTelaInicial {
     @FXML
     private AnchorPane Pane;
-
-    @FXML
-    private MenuItem menuUsuario;
     
     @FXML
     void teste() {
