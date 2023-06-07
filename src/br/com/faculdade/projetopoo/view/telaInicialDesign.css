@@ -84,4 +84,12 @@ outline: thin dotted;
     -fx-background-color: #2A1C42;
 }
 
+.image{
+    -fx-background-image: url(gerenciador.png);
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    /*-fx-background-size: 100% 100%;*/
+}
+
 
