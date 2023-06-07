@@ -27,7 +27,7 @@ public class TelaInformacoes extends Application {
         
         stage.setResizable(true);
         
-        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaInformacoes.fxml"));
+        Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaTeste.fxml"));
         
         scene = new Scene(painel);
         
