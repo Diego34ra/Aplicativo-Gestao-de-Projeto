@@ -92,4 +92,16 @@ outline: thin dotted;
     /*-fx-background-size: 100% 100%;*/
 }
 
+.primary-color{
+    -fx-background-color: #3F2B63;
+}
 
+.secondary-color{
+    -fx-background-color: #2A1C42;
+}
+
+.label-usuer{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-widht: 0 0 1 0;
+    -fx-border-coler: #242551;
+}
