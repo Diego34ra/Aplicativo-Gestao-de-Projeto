@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
@@ -23,13 +24,27 @@ public class TelaPerfilUsuario extends Application {
     public void start(Stage t) throws Exception {
         stage =  new Stage();
         
-        stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-        stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+       // stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+       // stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
         
-        stage.setMinWidth(700);
+     /*   stage.setMinWidth(700);
         stage.setMinHeight(500);
         
+        stage.setResizable(false);*/
+     
+        //para não esticar as laterais
+        stage.setMaxWidth(700);
+        stage.setMaxHeight(600);
+        //valor padrao da tela
+        stage.setWidth(700);
+        stage.setHeight(600);
+        //para não diminuir
+        stage.setMinWidth(700);
+        stage.setMinHeight(600);
+        //desativando o botão maximixar e minimizar
         stage.setResizable(false);
+        
+        stage.initStyle(StageStyle.UNDECORATED);
         
         Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaPerfilUsuario.fxml"));
         
