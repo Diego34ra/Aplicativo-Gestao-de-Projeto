@@ -1,7 +1,5 @@
 package br.com.faculdade.projetopoo.view;
 
-
-import static br.com.faculdade.projetopoo.view.TelaPrincipal.stage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 public class TelaVerificacao extends Application {
 
@@ -38,8 +35,6 @@ public class TelaVerificacao extends Application {
 		stage.setOnCloseRequest((WindowEvent t1) -> {
             t1.consume();
             stage.close();
-            Platform.exit();
-            System.exit(0);
         });
 	}
 

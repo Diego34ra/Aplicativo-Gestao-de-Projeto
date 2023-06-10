@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 public class Global {
     
     public static String email;
+    public static String tipoVerificacao;
     public static Usuario usuario = new Usuario();
     public static Usuario consulta = new Usuario();
     public static Projeto projeto = new Projeto();

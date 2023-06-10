@@ -4,13 +4,12 @@ import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.services.EmailService;
 import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.view.TelaTrocarSenha;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,11 +36,29 @@ public class ControllerCodigoVerificacao implements Initializable {
     @FXML
     void enviarCodigo() throws NoSuchAlgorithmException {
         if(txCodigo.getText().equals(codigo)){
-            UsuarioService service = new UsuarioService();
-            service.createUsuario(Global.usuario);
-            Global.validar = true;
-            Stage stage = (Stage) painel.getScene().getWindow();
-            stage.close();
+            switch (Global.tipoVerificacao) {
+                case "Trocar Senha":
+                    TelaTrocarSenha tela = new TelaTrocarSenha();
+                    try{
+                        tela.start(new Stage());
+                        TelaTrocarSenha.getStage().show();
+                        Stage stage = (Stage) painel.getScene().getWindow();
+                        stage.close();
+                    } catch(Exception e){
+                        System.out.println("Exception ao criar a tela de alteração de senha \n"+e);
+                    }
+                    break;
+                case "Cadastrar Usuario":
+                    UsuarioService service = new UsuarioService();
+                    service.createUsuario(Global.usuario);
+                    Global.validar = true;
+                    Stage stage = (Stage) painel.getScene().getWindow();
+                    stage.close();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            
         } else {
             codigo = "";
             if(Alertas.confirmacao("Codigo Invalido!", "Deseja receber outro codigo ?") == 1){
@@ -51,7 +68,7 @@ public class ControllerCodigoVerificacao implements Initializable {
     }
 
     @FXML
-    void btSair(ActionEvent event) {
+    void btSair() {
         Stage stage = (Stage) painel.getScene().getWindow();
         stage.close();
     } 

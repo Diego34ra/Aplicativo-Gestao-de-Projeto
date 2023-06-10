@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="painel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="458.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8.0.361" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerCodigoVerificacao">
+<AnchorPane fx:id="painel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="458.0" styleClass="left-form" stylesheets="@telaInicialDesign.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerCodigoVerificacao">
    <children>
       <Label layoutX="84.0" layoutY="127.0" prefHeight="18.0" prefWidth="304.0" stylesheets="@telaInicialDesign.css" text="Digite abaixo o código recebido no e-mail cadastrado" textFill="WHITE" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="127.0" />
       <TextField fx:id="txCodigo" layoutX="84.0" layoutY="185.0" prefHeight="25.0" prefWidth="291.0" promptText="Digite o código de validação" styleClass="textfield" stylesheets="@telaInicialDesign.css" AnchorPane.topAnchor="185.0" />
-      <Button layoutX="119.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Voltar" textFill="WHITE" AnchorPane.leftAnchor="119.0" />
-      <Button fx:id="txEnviar" layoutX="287.0" layoutY="260.0" mnemonicParsing="false" onAction="#enviarCodigo" prefHeight="25.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Enviar" textFill="WHITE" AnchorPane.rightAnchor="97.0" />
+      <Button fx:id="txEnviar" layoutX="192.0" layoutY="260.0" mnemonicParsing="false" onAction="#enviarCodigo" prefHeight="30.0" prefWidth="74.0" styleClass="close" stylesheets="@telaInicialDesign.css" text="Enviar" textFill="WHITE" AnchorPane.rightAnchor="192.0" />
       <Label layoutX="117.0" layoutY="29.0" prefHeight="32.0" prefWidth="238.0" text="Verificação de E-mail" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />

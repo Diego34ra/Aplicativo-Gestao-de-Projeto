@@ -62,6 +62,7 @@ public class ControllerTelaCadastroUser implements Initializable {
         }
         if (valida) {
             Global.email = txEmail.getText();
+            Global.tipoVerificacao = "Cadastrar Usuario";
             TelaVerificacao tela = new TelaVerificacao();
             try {
                 Global.usuario = new Usuario( txCpf.getText(),txEmail.getText(),
