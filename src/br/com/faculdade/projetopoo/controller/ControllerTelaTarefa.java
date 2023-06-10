@@ -6,20 +6,18 @@ package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
-import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Tarefa;
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.ProjetoService;
 import br.com.faculdade.projetopoo.services.TarefaService;
 import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
 import br.com.faculdade.projetopoo.view.TelaNovaTarefa;
-import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -241,8 +239,8 @@ public class ControllerTelaTarefa implements Initializable{
                     final Tooltip infAjuda = new Tooltip();
                     infAjuda.setText("Deleta o projeto.");
                     Button botao = new Button();
-                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png";
-                    File file = new File(caminho);
+                    Path resourcePath = Paths.get("");
+                    File file = new File(resourcePath.toAbsolutePath().toString() + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png");
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();
                     {

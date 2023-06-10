@@ -2,7 +2,9 @@ package br.com.faculdade.projetopoo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 /**
  *
@@ -10,12 +12,17 @@ import javafx.scene.layout.HBox;
  */
 public class ControllerTelaPerfilUsuario {
     
-     @FXML
+    @FXML
+    private BorderPane borderPane;
+    
+    @FXML
     private HBox hbox;
 
     @FXML
-    void teste(ActionEvent event) {
-
+    void fechar() {
+        //Fecha a tela atual
+        Stage stage = (Stage) borderPane.getScene().getWindow();
+        stage.close();
     }
 }
 

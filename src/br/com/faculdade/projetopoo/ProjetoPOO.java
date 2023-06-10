@@ -8,6 +8,8 @@ import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.services.ProjetoService;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -20,13 +22,14 @@ public class ProjetoPOO {
 
     public static void main(String[] args) throws Exception {
             
-            Initialize init = new Initialize();
-            init.generateDB();
-            Projeto projeto = new Projeto("teste", "Testando");
-            ProjetoService projetoService = new ProjetoService();
-            projetoService.create(projeto);
-            
-        
+//            Initialize init = new Initialize();
+//            init.generateDB();
+//            Projeto projeto = new Projeto("teste", "Testando");
+//            ProjetoService projetoService = new ProjetoService();
+//            projetoService.create(projeto);
+        Path resourcePath = Paths.get("");
+        String caminho = resourcePath.toAbsolutePath().toString();
+        System.out.println(caminho + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\tarefaimg.png");
  //       Projeto projeto = new Projeto();
  //       projeto.setDescricao("teste");
   //      projeto.setNome("TESTE PROJETO");
