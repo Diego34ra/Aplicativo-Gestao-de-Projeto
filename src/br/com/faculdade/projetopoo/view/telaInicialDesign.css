@@ -32,7 +32,7 @@
 }
 
 .close:hover{
-	-fx-background-color:#000;
+	-fx-background-color:#2A1C42;
 }
 
 .textfield{
@@ -72,15 +72,18 @@ outline: thin dotted;
 }
 
 
-.button{
+.button-second{
     -fx-background-color: #3F2B63;
+    -fx-background-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
 }
 
-.button:hover{
+.button-second:hover{
     -fx-background-color: #2A1C42;
 }
 
-.button:pressed{
+.button-second:pressed{
     -fx-background-color: #2A1C42;
 }
 

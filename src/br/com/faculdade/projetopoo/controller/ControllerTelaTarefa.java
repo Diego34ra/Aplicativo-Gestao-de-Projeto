@@ -145,7 +145,7 @@ public class ControllerTelaTarefa implements Initializable{
                     final Tooltip infAjuda = new Tooltip();
                     infAjuda.setText("Altera o status do projeto.");
                     Button botao = new Button();
-                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png";
+                    String caminho = "C:\\Users\\joaog\\OneDrive\\Documentos\\GitHub\\Aplicativo-Gestao-de-Projeto\\src\\br\\com\\faculdade\\projetopoo\\imagens\\stats.png";
                     File file = new File(caminho);
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();

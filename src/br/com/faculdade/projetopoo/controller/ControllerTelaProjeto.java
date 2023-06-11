@@ -299,7 +299,7 @@ public class ControllerTelaProjeto implements Initializable{
                     infAjuda.setText("Altera o status do projeto.");
                     Button botao = new Button();
                     Path resourcePath = Paths.get("");
-                    File file = new File(resourcePath.toAbsolutePath().toString() + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png");
+                    File file = new File(resourcePath.toAbsolutePath().toString() + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\stats.png");
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();
                     {
@@ -348,7 +348,7 @@ public class ControllerTelaProjeto implements Initializable{
                     infAjuda.setText("Altera o status do projeto.");
                     Button botao = new Button();
                     Path resourcePath = Paths.get("");
-                    File file = new File(resourcePath.toAbsolutePath().toString() + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\delete.png");
+                    File file = new File(resourcePath.toAbsolutePath().toString() + "\\src\\br\\com\\faculdade\\projetopoo\\imagens\\stats-history.png");
                     Image imagem = new Image(file.toURI().toString());
                     ImageView imv = new ImageView();
                     {

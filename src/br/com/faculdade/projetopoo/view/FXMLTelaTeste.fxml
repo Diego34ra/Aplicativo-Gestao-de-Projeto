@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="borderPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaTeste">
+<BorderPane fx:id="borderPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.faculdade.projetopoo.controller.ControllerTelaTeste">
    <center>
       <AnchorPane fx:id="PaneMeio" prefHeight="200.0" prefWidth="200.0" stylesheets="@telaInicialDesign.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -22,7 +17,7 @@
    <top>
       <AnchorPane prefHeight="55.0" prefWidth="700.0" style="-fx-background-color: #3F2B63;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#teste" prefWidth="88.0" style="-fx-border-color: white; -fx-border-radius: 10px;" stylesheets="@telaInicialDesign.css" text="Início" textFill="WHITE">
+            <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#teste" prefWidth="88.0" styleClass="button-second" stylesheets="@telaInicialDesign.css" text="Início" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -31,7 +26,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="131.0" layoutY="12.0" mnemonicParsing="false" onAction="#getPaneProjeto" style="-fx-border-color: white; -fx-border-radius: 10px;" styleClass="right-form" stylesheets="@telaInicialDesign.css" text="Projetos" textFill="WHITE">
+            <Button layoutX="131.0" layoutY="12.0" mnemonicParsing="false" onAction="#getPaneProjeto" styleClass="button-second" stylesheets="@telaInicialDesign.css" text="Projetos" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +35,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="250.0" layoutY="12.0" mnemonicParsing="false" onAction="#btPerfilUser" prefWidth="88.0" style="-fx-border-color: white; -fx-border-radius: 10px;" stylesheets="@telaInicialDesign.css" text="Perfil" textFill="WHITE">
+            <Button layoutX="250.0" layoutY="12.0" mnemonicParsing="false" onAction="#btPerfilUser" prefWidth="88.0" styleClass="button-second" stylesheets="@telaInicialDesign.css" text="Perfil" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +44,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="598.0" layoutY="12.0" mnemonicParsing="false" onAction="#sair" prefWidth="88.0" style="-fx-border-color: white; -fx-border-radius: 10px;" styleClass="right-form" stylesheets="@telaInicialDesign.css" text="Logout" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+            <Button layoutX="598.0" layoutY="12.0" mnemonicParsing="false" onAction="#sair" prefWidth="88.0" styleClass="button-second" stylesheets="@telaInicialDesign.css" text="Logout" textFill="WHITE" AnchorPane.rightAnchor="14.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
