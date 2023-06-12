@@ -5,6 +5,7 @@
 package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Alertas;
+import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.services.UsuarioService;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
@@ -13,10 +14,6 @@ import br.com.faculdade.projetopoo.view.TelaAlterarSenha;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -72,6 +69,7 @@ public class ControllerTelaPrincipal implements Initializable {
         Usuario usuario  = UsuarioService.findByEmail(txEmail.getText());
         if(txEmail.getText().equals(usuario.getEmail())){
             if (usuario.getSenha().equals(UsuarioService.cryptoPass(txSenha.getText()))) {
+                Global.usuario = usuario;
                 TelaInformacoes tela = new TelaInformacoes();
                 try {
                     tela.start(new Stage());
