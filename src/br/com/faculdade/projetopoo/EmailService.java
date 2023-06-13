@@ -2,12 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.faculdade.projetopoo.services;
+package br.com.faculdade.projetopoo;
 
 import java.util.Base64;
 import java.util.Properties;
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -64,7 +62,6 @@ public class EmailService {
 
             MimeBodyPart texto = new MimeBodyPart();
             texto.setContent(text,"text/html");
-
             Multipart mp = new MimeMultipart();
             mp.addBodyPart(texto);
 //            for(String path: pathArquivo){

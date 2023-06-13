@@ -7,14 +7,14 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Tarefa;
-import br.com.faculdade.projetopoo.services.TarefaService;
+import br.com.faculdade.projetopoo.dao.TarefaDao;
 import br.com.faculdade.projetopoo.view.TelaConsultaUsuario;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-    import javafx.fxml.FXML;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-    import javafx.scene.control.TextField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -43,7 +43,7 @@ public class ControllerTelaNovaTarefa implements Initializable{
         } else {
             try {
                 Tarefa tarefa = new Tarefa(txNome.getText(), txDescricao.getText(), Global.projeto, Global.consulta);
-                TarefaService tarefaService = new TarefaService();
+                TarefaDao tarefaService = new TarefaDao();
                 tarefaService.create(tarefa);
                 Alertas.informacao("Sucesso!", "Tarefa Criada com sucesso.");
                 Stage stage = (Stage) Pane.getScene().getWindow();

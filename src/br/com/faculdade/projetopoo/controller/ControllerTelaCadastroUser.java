@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
 import br.com.faculdade.projetopoo.view.TelaPrincipal;
 import br.com.faculdade.projetopoo.view.TelaVerificacao;
 import javafx.fxml.FXML;
@@ -42,8 +42,8 @@ public class ControllerTelaCadastroUser implements Initializable {
     @FXML
     void cadastrar() {
         boolean valida = true;
-        if (UsuarioService.validateEmail(txEmail.getText())) {
-            if(!UsuarioService.findByEmail(txEmail.getText()).getEmail().equals("")){
+        if (UsuarioDao.validateEmail(txEmail.getText())) {
+            if(!UsuarioDao.findByEmail(txEmail.getText()).getEmail().equals("")){
                 Alertas.informacao("E-mail inválido!", "O E-mail Informado já está cadastrado.");
                 valida = false;
             }
@@ -51,8 +51,8 @@ public class ControllerTelaCadastroUser implements Initializable {
             Alertas.informacao("E-mail inválido!", "O E-mail Informado não tem um formato correto.");
             valida = false;
         }
-        if(!UsuarioService.validateCpf(txCpf.getText()).equals("")){
-            if (!UsuarioService.findByCpf(txCpf.getText()).getCpf().equals("")) {
+        if(!UsuarioDao.validateCpf(txCpf.getText()).equals("")){
+            if (!UsuarioDao.findByCpf(txCpf.getText()).getCpf().equals("")) {
                 valida = false;
                 Alertas.informacao("Cpf inválido!", "O Cpf Informado já está cadastrado.");
            }   
@@ -68,10 +68,10 @@ public class ControllerTelaCadastroUser implements Initializable {
                 Global.usuario = new Usuario( txCpf.getText(),txEmail.getText(),
                                               txNome.getText(), psSenha.getText());
                 tela.start(new Stage());
-                TelaVerificacao.getStage().showAndWait();
-                if(Global.validar){
-                    Alertas.informacao("Sucesso", "Usuário cadastrado com sucesso.");
-                }
+                TelaVerificacao.getStage().show();
+                //Fecha a tela atual
+                Stage stage = (Stage) Pane.getScene().getWindow();
+                stage.close();
             } catch (Exception ex) {
                 System.out.println("Exception ao criar a tela de cadastro\n"+ex);
             }

@@ -1,9 +1,12 @@
 package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Alertas;
+import br.com.faculdade.projetopoo.EmailService;
 import br.com.faculdade.projetopoo.Global;
-import br.com.faculdade.projetopoo.services.EmailService;
-import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
+import br.com.faculdade.projetopoo.view.TelaAlterarSenha;
+import br.com.faculdade.projetopoo.view.TelaCadastroUser;
+import br.com.faculdade.projetopoo.view.TelaPrincipal;
 import br.com.faculdade.projetopoo.view.TelaTrocarSenha;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +23,7 @@ import javafx.stage.Stage;
 public class ControllerCodigoVerificacao implements Initializable {
 	
     @FXML
-    private AnchorPane painel;
+    private AnchorPane Pane;
     
     @FXML
     private Button txEnviar;
@@ -33,27 +36,38 @@ public class ControllerCodigoVerificacao implements Initializable {
 
     private String codigo;
     
+    private final UsuarioDao usuarioDao = new UsuarioDao();
+    
     @FXML
     void enviarCodigo() throws NoSuchAlgorithmException {
         if(txCodigo.getText().equals(codigo)){
             switch (Global.tipoVerificacao) {
                 case "Trocar Senha":
+                    usuarioDao.update(Global.usuario,codigo);
                     TelaTrocarSenha tela = new TelaTrocarSenha();
                     try{
                         tela.start(new Stage());
                         TelaTrocarSenha.getStage().show();
-                        Stage stage = (Stage) painel.getScene().getWindow();
+                        Stage stage = (Stage) Pane.getScene().getWindow();
                         stage.close();
                     } catch(Exception e){
                         System.out.println("Exception ao criar a tela de alteração de senha \n"+e);
                     }
                     break;
                 case "Cadastrar Usuario":
-                    UsuarioService service = new UsuarioService();
+                    UsuarioDao service = new UsuarioDao();
                     service.createUsuario(Global.usuario);
-                    Global.validar = true;
-                    Stage stage = (Stage) painel.getScene().getWindow();
-                    stage.close();
+                    Alertas.informacao("Sucesso", "Usuário cadastrado com sucesso.");
+                    TelaPrincipal telaPrincipal = new TelaPrincipal();
+                    try{
+                        telaPrincipal.start(new Stage());
+                        TelaPrincipal.getStage().show();
+                        Stage stage = (Stage) Pane.getScene().getWindow();
+                        stage.close();
+                    } catch(Exception e){
+                        System.out.println("Exception ao criar a tela principal\n"+e);
+                    }
+                    
                     break;
                 default:
                     throw new AssertionError();
@@ -68,10 +82,34 @@ public class ControllerCodigoVerificacao implements Initializable {
     }
 
     @FXML
-    void btSair() {
-        Stage stage = (Stage) painel.getScene().getWindow();
-        stage.close();
-    } 
+    void voltar() {
+        switch (Global.tipoVerificacao) {
+            case "Trocar Senha":
+                TelaAlterarSenha telaAlterarSenha = new TelaAlterarSenha();
+                try {
+                    telaAlterarSenha.start(new Stage());
+                    TelaAlterarSenha.getStage().show();
+                    //Fecha a tela atual
+                    Stage stage = (Stage) Pane.getScene().getWindow();
+                    stage.close();
+                } catch (Exception ex) {
+                    System.out.println("Erro ao abrir tela de recuperação de senha: " + ex.getMessage());
+                }
+                break;
+            case "Cadastrar Usuario":
+                TelaCadastroUser tela = new TelaCadastroUser();
+                try {
+                    tela.start(new Stage());
+                    TelaCadastroUser.getStage().show();
+                    //Fecha a tela atual
+                    Stage stage = (Stage) Pane.getScene().getWindow();
+                    stage.close();
+                } catch (Exception ex) {
+                    System.out.println("Exception ao criar a tela de cadastro\n"+ex);
+                }
+                break;
+            }
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -37,7 +37,7 @@ public class TelaAlterarSenha extends Application {
         stage.setTitle("Tela Recuperação");
         stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" )));    
 
-        stage.show();
+//        stage.show();
 
         stage.setScene(scene);
 

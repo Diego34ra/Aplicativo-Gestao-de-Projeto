@@ -8,7 +8,7 @@ import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Tarefa;
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.TarefaService;
+import br.com.faculdade.projetopoo.dao.TarefaDao;
 import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
 import br.com.faculdade.projetopoo.view.TelaNovaTarefa;
 import java.io.File;
@@ -60,7 +60,7 @@ public class ControllerTelaTarefa implements Initializable{
         try {
             tela.start(new Stage());
             TelaNovaTarefa.getStage().showAndWait();    
-            TarefaService tarefa = new TarefaService();
+            TarefaDao tarefa = new TarefaDao();
             obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
             carregaTabelaProjeto(obj);
         } catch (Exception ex) {
@@ -259,7 +259,7 @@ public class ControllerTelaTarefa implements Initializable{
                         botao.setOnAction(event -> 
                             { 
                                 if (Alertas.confirmacao("Atenção","Deseja deletar a tarefa?") == 1) {
-                                    TarefaService tarefaService = new TarefaService();
+                                    TarefaDao tarefaService = new TarefaDao();
                                     tarefaService.deleteById(getTableView().getItems().get(getIndex()).getCodTarefa());
                                     Alertas.informacao("Sucesso", "A tarefa foi deletada com sucesso.");
                                     obj.remove(getTableView().getItems().get(getIndex()));
@@ -277,13 +277,13 @@ public class ControllerTelaTarefa implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TarefaService tarefa = new TarefaService();
+        TarefaDao tarefa = new TarefaDao();
         obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
         carregaTabelaProjeto(obj);
     }
     
     public void geraTabela(){
-        TarefaService tarefa = new TarefaService();
+        TarefaDao tarefa = new TarefaDao();
         obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
         carregaTabelaProjeto(obj);
     }

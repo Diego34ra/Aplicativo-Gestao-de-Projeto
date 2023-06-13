@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.faculdade.projetopoo.services;
+package br.com.faculdade.projetopoo.dao;
 
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
@@ -24,16 +24,12 @@ import javax.mail.internet.InternetAddress;
  *
  * @author Diego
  */
-public class UsuarioService {
+public class UsuarioDao {
     
     public static void createUsuario(Usuario usuario) throws NoSuchAlgorithmException{
         ConnectionBD con = new ConnectionBD();
-//        PreparedStatement stmt = null;
-//        String sql = "INSERT INTO `usuario` (`codUsuario`, `nome`, `email`, `cpf`,`senha`)\n"
-//        		   + "VALUES ('"+usuario.getCodUsuario()+"', '"+usuario.getNome()+"', '"+usuario.getEmail()+"',\n"
-//        		   + "'"+usuario.getCpf()+"','"+cryptoPass(usuario.getSenha())+"')";
         String sql = "INSERT INTO usuario (codUsuario, nome, email, cpf, senha) VALUES (?,?,?,?,?)";
-        System.out.println("br.com.faculdade.projetopoo.services.UsuarioService.createUsuario()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.createUsuario()");
         try {
             String cryptoSenha = cryptoPass(usuario.getSenha());
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
@@ -61,7 +57,7 @@ public class UsuarioService {
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM usuario";
-        System.out.println("br.com.faculdade.projetopoo.services.UsuarioService()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.findAll()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 
@@ -86,6 +82,49 @@ public class UsuarioService {
         return usuarios;
     }
     
+    public static void update(Usuario usuario, String codRecuperacao) throws NoSuchAlgorithmException{
+        ConnectionBD con = new ConnectionBD();
+        String sql = "UPDATE usuario SET codRecuperacao = ? WHERE codUsuario = ?";
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.update()");
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, codRecuperacao);
+            stmt.setString(2, usuario.getCodUsuario().toString());
+            stmt.execute();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public static void updateSenha(Usuario usuario, String senha){
+        ConnectionBD con = new ConnectionBD();
+        String sql = "UPDATE usuario SET senha = ? WHERE codUsuario = ?";
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.updateSenha()");
+        try {
+            String cryptoSenha = cryptoPass(senha);
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, cryptoSenha);
+            stmt.setString(2, usuario.getCodUsuario().toString());
+            stmt.execute();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.closeConnection();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     public static Usuario findByEmail(String email){
         ConnectionBD con = new ConnectionBD();
         Usuario usuario = new Usuario();
@@ -93,7 +132,7 @@ public class UsuarioService {
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM `usuario` WHERE `email` = '" + email+"'";
-        System.out.println("br.com.faculdade.projetopoo.services.UsuarioService()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.findByEmail()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 
@@ -122,7 +161,7 @@ public class UsuarioService {
         List<Usuario> usuarios = new ArrayList<>();
         ResultSet rs = null;
         String sql = "SELECT * FROM usuario WHERE nome LIKE ?";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.findByName()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, "%"+consulta+"%");
@@ -154,7 +193,7 @@ public class UsuarioService {
         usuario.setCodUsuario(0L);
         ResultSet rs = null;
         String sql = "SELECT * FROM usuario WHERE codUsuario = ?";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.findById()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, codigo);
@@ -186,7 +225,7 @@ public class UsuarioService {
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM `usuario` WHERE `cpf` = '" + cpf+"'";
-        System.out.println("br.com.faculdade.projetopoo.services.UsuarioService()");
+        System.out.println("br.com.faculdade.projetopoo.dao.UsuarioDao.findByCpf()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 

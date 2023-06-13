@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.faculdade.projetopoo.services;
+package br.com.faculdade.projetopoo.dao;
 
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Tarefa;
@@ -17,11 +17,12 @@ import java.util.List;
  *
  * @author 2022101202010058
  */
-public class TarefaService {
+public class TarefaDao {
     
     public void create(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO tarefa (codTarefa, codProjeto, codUsuario, nome, descricao, status, dtCriacao) VALUES (?,?,?,?,?,?,NOW())";
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.create()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, tarefa.getCodTarefa().toString());
@@ -49,7 +50,7 @@ public class TarefaService {
         Statement stmt = null;
         Boolean rs = false;
         String sql = "DELETE FROM TAREFA WHERE CODPROJETO = '"+codigo+"'";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.deleteByIdProjeto()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.execute(sql); 
@@ -70,7 +71,7 @@ public class TarefaService {
         ConnectionBD con = new ConnectionBD();
         Boolean rs = false;
         String sql = "DELETE FROM tarefa WHERE codTarefa = ?";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.deleteById()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setLong(1, codigo);
@@ -93,7 +94,7 @@ public class TarefaService {
         List<Tarefa> lista = new ArrayList<>();
         ResultSet rs = null;
         String sql = "SELECT * FROM tarefa WHERE codProjeto = ?";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.findAll()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, codigo.toString());
@@ -109,7 +110,7 @@ public class TarefaService {
                 }
             	tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setStatus(rs.getString("status"));
-                tarefa.setUsuario(UsuarioService.findById(rs.getString("codUsuario")));
+                tarefa.setUsuario(UsuarioDao.findById(rs.getString("codUsuario")));
                 lista.add(tarefa);
             	
             }
@@ -129,6 +130,7 @@ public class TarefaService {
     public void update(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
         String sql = "UPDATE tarefa SET status = ?, dtFinalizacao = "+tarefa.getDataFinalizacao()+" WHERE codTarefa = ?";
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.update()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, tarefa.getStatus());

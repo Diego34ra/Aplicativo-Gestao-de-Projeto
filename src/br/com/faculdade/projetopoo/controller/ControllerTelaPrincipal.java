@@ -7,7 +7,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
 import br.com.faculdade.projetopoo.view.TelaCadastroUser;
 import br.com.faculdade.projetopoo.view.TelaInformacoes;
 import br.com.faculdade.projetopoo.view.TelaAlterarSenha;
@@ -53,9 +53,10 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     void recuperarSenha() {
-    TelaAlterarSenha telaRecuperacaoSenha = new TelaAlterarSenha();
+    TelaAlterarSenha telaAlterarSenha = new TelaAlterarSenha();
     try {
-        telaRecuperacaoSenha.start(new Stage());
+        telaAlterarSenha.start(new Stage());
+        TelaAlterarSenha.getStage().show();
         //Fecha a tela atual
         Stage stage = (Stage) Pane.getScene().getWindow();
         stage.close();
@@ -66,9 +67,9 @@ public class ControllerTelaPrincipal implements Initializable {
     
     @FXML
     void logar() throws NoSuchAlgorithmException {
-        Usuario usuario  = UsuarioService.findByEmail(txEmail.getText());
+        Usuario usuario  = UsuarioDao.findByEmail(txEmail.getText());
         if(txEmail.getText().equals(usuario.getEmail())){
-            if (usuario.getSenha().equals(UsuarioService.cryptoPass(txSenha.getText()))) {
+            if (usuario.getSenha().equals(UsuarioDao.cryptoPass(txSenha.getText()))) {
                 Global.usuario = usuario;
                 TelaInformacoes tela = new TelaInformacoes();
                 try {

@@ -4,10 +4,17 @@
  */
 package br.com.faculdade.projetopoo.controller;
 
+import br.com.faculdade.projetopoo.Alertas;
+import br.com.faculdade.projetopoo.Global;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
+import br.com.faculdade.projetopoo.view.TelaPrincipal;
+import br.com.faculdade.projetopoo.view.TelaVerificacao;
+import java.security.NoSuchAlgorithmException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -19,11 +26,45 @@ public class ControllerTelaTrocarSenha {
     private PasswordField pwSenha;
 
     @FXML
-    private AnchorPane painel;
+    private AnchorPane Pane;
 
     @FXML
     private PasswordField pwSenha1;
 
     @FXML
     private Button salvar;
+    
+    UsuarioDao usuarioDao = new UsuarioDao();
+    
+    @FXML
+    void salvar(){
+        if(pwSenha.getText().equals(pwSenha1.getText())){
+            usuarioDao.updateSenha(Global.usuario, pwSenha.getText());
+            Alertas.informacao("Sucesso!", "Senha alterada com sucesso.");
+            TelaPrincipal tela = new TelaPrincipal();
+            try{
+                tela.start(new Stage());
+                TelaPrincipal.getStage().showAndWait();
+            } catch(Exception e){
+                System.out.println("Exception ao criar a tela principal\n"+e);
+            }
+            Stage stage = (Stage) Pane.getScene().getWindow();
+            stage.close();
+        } else {
+            Alertas.informacao("Erro!", "As senhas digitadas não são iguais.");
+        }
+    }
+    
+     @FXML
+    void voltar() {
+        try{
+            TelaVerificacao telaVerificacao = new TelaVerificacao();
+            telaVerificacao.start(new Stage());
+            TelaVerificacao.getStage().show();
+            Stage stage = (Stage) Pane.getScene().getWindow();
+            stage.close();
+        } catch(Exception e){
+            System.out.println("Exception ao criar a tela de alteracao de senha \n"+e);
+        } 
+    }
 }

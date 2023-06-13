@@ -8,7 +8,7 @@ import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Status;
-import br.com.faculdade.projetopoo.services.ProjetoService;
+import br.com.faculdade.projetopoo.dao.ProjetoDao;
 import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
 import br.com.faculdade.projetopoo.view.TelaHistoricoStatus;
 import br.com.faculdade.projetopoo.view.TelaNovoProjeto;
@@ -88,15 +88,15 @@ public class ControllerTelaProjeto implements Initializable{
     void buscar() {
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
-                obj = FXCollections.observableArrayList(ProjetoService.findAll());
+                obj = FXCollections.observableArrayList(ProjetoDao.findAll());
                 break;
             case "Nome":
-                obj = FXCollections.observableArrayList(ProjetoService.findByName(txConsulta.getText()));
+                obj = FXCollections.observableArrayList(ProjetoDao.findByName(txConsulta.getText()));
                 break;
             case "Código":
                 List<Projeto> lista= new ArrayList<>();
-                if(!ProjetoService.findById(txConsulta.getText()).getCodProjeto().equals(0L)){
-                    lista.add(ProjetoService.findById(txConsulta.getText()));
+                if(!ProjetoDao.findById(txConsulta.getText()).getCodProjeto().equals(0L)){
+                    lista.add(ProjetoDao.findById(txConsulta.getText()));
                 }
                 obj = FXCollections.observableArrayList(lista);
                 break;
@@ -267,7 +267,7 @@ public class ControllerTelaProjeto implements Initializable{
                     } else {
                         botao.setOnAction(event -> 
                             { 
-                                ProjetoService projetoService = new ProjetoService();
+                                ProjetoDao projetoService = new ProjetoDao();
                                 if(Alertas.confirmacao("Atenção!", "Realmente deseja deletar o projeto "+getTableView().getItems().get(0).getNome()+" ?") == 1){
                                     Boolean retorno = projetoService.deleteById(getTableView().getItems().get(0).getCodProjeto());
                                     if(retorno){

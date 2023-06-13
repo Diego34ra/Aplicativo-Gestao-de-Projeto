@@ -5,9 +5,8 @@
 package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Global;
-import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +50,14 @@ public class ControllerTelaConsultaUsuario implements Initializable{
     void buscar() {
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
             case "Todos":
-                obj = FXCollections.observableArrayList(UsuarioService.findAll());
+                obj = FXCollections.observableArrayList(UsuarioDao.findAll());
                 break;
             case "Nome":
-                obj = FXCollections.observableArrayList(UsuarioService.findByName(txConsulta.getText()));
+                obj = FXCollections.observableArrayList(UsuarioDao.findByName(txConsulta.getText()));
                 break;
             case "Código":
                 List<Usuario> lista= new ArrayList<>();
-                Usuario usuario = UsuarioService.findById(txConsulta.getText());
+                Usuario usuario = UsuarioDao.findById(txConsulta.getText());
                 if(!usuario.getCodUsuario().equals(0L)){
                     lista.add(usuario);
                 }

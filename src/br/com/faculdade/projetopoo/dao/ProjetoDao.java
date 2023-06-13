@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.faculdade.projetopoo.services;
+package br.com.faculdade.projetopoo.dao;
 
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Projeto;
@@ -20,21 +20,21 @@ import java.util.List;
  *
  * @author Diego
  */
-public class ProjetoService {
+public class ProjetoDao {
     
     public void create(Projeto projeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO projeto (codProjeto, nome, descricao, dataCriacao) VALUES (?,?,?,NOW())";
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.create()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, projeto.getCodProjeto().toString());
             stmt.setString(2, projeto.getNome());
             stmt.setString(3, projeto.getDescricao());
-          //stmt.setDate(4, Date.valueOf(projeto.getDataCriacao()+LocalTime.now()));
             if (stmt.execute()) {
                 
             }
-            StatusService statusService = new StatusService();
+            StatusDao statusService = new StatusDao();
             Status status = new Status("Em espera", "O projeto ainda não foi iniciado.", projeto.getCodProjeto().toString());
             statusService.create(status);
     
@@ -53,6 +53,7 @@ public class ProjetoService {
     public boolean deleteById(Long codProjeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "DELETE FROM projeto WHERE codProjeto = ?";
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.deleteById()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, codProjeto.toString());
@@ -77,7 +78,7 @@ public class ProjetoService {
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM projeto";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.findAll()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 
@@ -87,7 +88,7 @@ public class ProjetoService {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusService.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
                 lista.add(projeto);
             	
             }
@@ -108,7 +109,7 @@ public class ProjetoService {
         List<Projeto> lista = new ArrayList<>();
         ResultSet rs = null;
         String sql = "SELECT * FROM projeto WHERE nome LIKE ?";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.findByName()");
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, "%"+consulta+"%");
@@ -119,7 +120,7 @@ public class ProjetoService {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusService.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
                 lista.add(projeto);
             	
             }
@@ -142,7 +143,7 @@ public class ProjetoService {
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
-        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
+        System.out.println("br.com.faculdade.projetopoo.dao.ProjetoDao.findById()");
         try {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 
@@ -151,7 +152,7 @@ public class ProjetoService {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusService.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
             	
             }
         } catch (Exception e) {
@@ -165,28 +166,5 @@ public class ProjetoService {
         }
         return projeto;
     }
-    
-//    public static Boolean deleteById(Long codigo){
-//        ConnectionBD con = new ConnectionBD();
-//        Statement stmt = null;
-//        Boolean rs = false;
-//        TarefaService tarefaService = new TarefaService();
-//        String sql = "DELETE FROM PROJETO WHERE CODPROJETO = '"+codigo+"'";
-//        System.out.println("br.com.faculdade.projetopoo.services.ProjetoService.findAll()");
-//        try {
-//            stmt = con.getConnection().createStatement();
-//            rs = stmt.execute(sql); 
-//            tarefaService.deleteById(codigo);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                con.closeConnection();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return rs;
-//    }
     
 }

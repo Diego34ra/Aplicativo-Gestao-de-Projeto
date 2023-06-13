@@ -7,8 +7,8 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Status;
-import br.com.faculdade.projetopoo.services.StatusService;
-import br.com.faculdade.projetopoo.services.TarefaService;
+import br.com.faculdade.projetopoo.dao.StatusDao;
+import br.com.faculdade.projetopoo.dao.TarefaDao;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -48,7 +48,7 @@ public class ControllerTelaAlteraStatus implements Initializable{
                     } else { 
                         Global.tarefa.setDataFinalizacao("null");
                     }
-                    TarefaService tarefaService = new TarefaService();
+                    TarefaDao tarefaService = new TarefaDao();
                     tarefaService.update(Global.tarefa);
                     Alertas.informacao("Sucesso!", "Status da tarefa atualizado com sucesso.");
                     Stage stage = (Stage) Pane.getScene().getWindow();
@@ -57,7 +57,7 @@ public class ControllerTelaAlteraStatus implements Initializable{
                 break;
             case "Projeto":
                 if(Alertas.confirmacao("Atenção!", "Realmente deseja atualizar o status do Projeto?") == 1){
-                StatusService statusService = new StatusService();
+                StatusDao statusService = new StatusDao();
                 Status statusProjeto = new Status(status.getNome(), status.getDescricao(), Global.projeto.getCodProjeto().toString());
                 statusService.create(statusProjeto);
                 Alertas.informacao("Sucesso!", "Status da Projeto atualizado com sucesso.");

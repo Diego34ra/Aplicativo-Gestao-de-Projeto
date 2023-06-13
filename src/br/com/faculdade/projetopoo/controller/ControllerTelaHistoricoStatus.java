@@ -6,7 +6,7 @@ package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Status;
-import br.com.faculdade.projetopoo.services.StatusService;
+import br.com.faculdade.projetopoo.dao.StatusDao;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -32,7 +32,7 @@ public class ControllerTelaHistoricoStatus implements Initializable{
     private final TableColumn cellStatusDescricao = new TableColumn("Descrição");
     private final TableColumn cellStatusData = new TableColumn("Data de alteração");
 
-    private final StatusService StatusService = new StatusService();
+    private final StatusDao StatusService = new StatusDao();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {

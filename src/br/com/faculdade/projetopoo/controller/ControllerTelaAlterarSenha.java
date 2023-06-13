@@ -3,7 +3,7 @@ package br.com.faculdade.projetopoo.controller;
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
 import br.com.faculdade.projetopoo.model.Usuario;
-import br.com.faculdade.projetopoo.services.UsuarioService;
+import br.com.faculdade.projetopoo.dao.UsuarioDao;
 import br.com.faculdade.projetopoo.view.TelaPrincipal;
 import br.com.faculdade.projetopoo.view.TelaVerificacao;
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ public class ControllerTelaAlterarSenha {
     @FXML
     private TextField txEmail;
     
-    private final UsuarioService usuarioService = new UsuarioService();
+    private final UsuarioDao usuarioService = new UsuarioDao();
 
     @FXML
     void alterar() { 
@@ -31,15 +31,19 @@ public class ControllerTelaAlterarSenha {
             Usuario usuario = new Usuario();
             usuario = usuarioService.findByEmail(txEmail.getText());
             Global.email = txEmail.getText();
+            Global.usuario = usuario;
             if(!usuario.getEmail().equals("")){
                 TelaVerificacao telaVerificacao = new TelaVerificacao();
                 Global.tipoVerificacao = "Trocar Senha";
                 try{
                     telaVerificacao.start(new Stage());
-                    TelaVerificacao.getStage().showAndWait();
+                    TelaVerificacao.getStage().show();
+                    Stage stage = (Stage) Pane.getScene().getWindow();
+                    stage.close();
                 } catch(Exception e){
                     System.out.println("Exception ao criar a tela de alteracao de senha \n"+e);
                 } 
+                
             } else{
                 Alertas.informacao("Erro!", "Não foi encontrado nenhum usuário cadastrado com esse E-mail.");
             }

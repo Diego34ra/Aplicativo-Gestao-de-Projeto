@@ -23,12 +23,8 @@ public class TelaVerificacao extends Application {
 		Parent painel = FXMLLoader.load(getClass().getResource("FXMLTelaVerificacao.fxml"));
 		scene = new Scene(painel);
                 
+                stage.setTitle("Tela Verificação"); 
                 stage.getIcons().add(new Image(TelaPrincipal.class.getResourceAsStream( "gerenciamento-de-projetos.png" ))); 
-		stage.setTitle("Tela Verificação"); 
-                
-		//stage.initStyle(StageStyle.TRANSPARENT);
-		
-//		stage.show();
 
 		stage.setScene(scene);
 
