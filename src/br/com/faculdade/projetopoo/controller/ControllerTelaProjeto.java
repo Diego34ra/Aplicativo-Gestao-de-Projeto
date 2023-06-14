@@ -126,13 +126,13 @@ public class ControllerTelaProjeto implements Initializable{
         cellProId.setStyle("-fx-alignment: center;");
         
         cellProNome.setMinWidth(200);
-        cellProNome.setPrefWidth(300);
+        cellProNome.setPrefWidth(200);
         cellProNome.setResizable(false);
         cellProNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
         cellProNome.setStyle("-fx-alignment: center;");
         
         cellProStatus.setMinWidth(200);
-        cellProStatus.setPrefWidth(300);
+        cellProStatus.setPrefWidth(200);
         cellProStatus.setResizable(false);
         cellProStatus.setCellValueFactory (new PropertyValueFactory <> ( "status" ));
         cellProStatus.setCellFactory( col -> {              
@@ -152,7 +152,7 @@ public class ControllerTelaProjeto implements Initializable{
         cellProStatus.setStyle("-fx-alignment: center;");
         
         cellProDtCriacao.setMinWidth(100);
-        cellProDtCriacao.setPrefWidth(300);
+        cellProDtCriacao.setPrefWidth(200);
         cellProDtCriacao.setResizable(true);
         cellProDtCriacao.setCellValueFactory (new PropertyValueFactory<> ("dataCriacao"));
         cellProDtCriacao.setCellFactory( coluna -> {              
@@ -164,7 +164,7 @@ public class ControllerTelaProjeto implements Initializable{
                        setText("");
                        setGraphic(null);
                    }else {
-                        setText(item.substring(0,10));
+                        setText(item);
                    }
                 }
             };
@@ -172,7 +172,7 @@ public class ControllerTelaProjeto implements Initializable{
         cellProDtCriacao.setStyle("-fx-alignment: center;");
         
         cellProDescricao.setMinWidth(100);
-        cellProDescricao.setPrefWidth(200);
+        cellProDescricao.setPrefWidth(253);
         cellProDescricao.setResizable(true);
         cellProDescricao.setCellValueFactory (new PropertyValueFactory<> ("descricao"));
         cellProDescricao.setCellFactory( coluna -> {              
@@ -194,7 +194,7 @@ public class ControllerTelaProjeto implements Initializable{
         cellProTarefas.setMinWidth(50);
         cellProTarefas.setPrefWidth(80);
         cellProTarefas.setResizable(false);
-        cellProTarefas.setStyle("-fx-alignment: center;-fx-background-radius:10px");
+        cellProTarefas.setStyle("-fx-alignment: center;");
         cellProTarefas.setCellFactory(col -> {
             TableCell<Projeto, Projeto> cell = new TableCell<Projeto, Projeto>() {
                 @Override

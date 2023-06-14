@@ -9,6 +9,8 @@ import br.com.faculdade.projetopoo.model.Status;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,9 +19,9 @@ import java.sql.Statement;
 public class StatusDao {
     
     
-    public static Status findById(Long codProjeto){
+    public static List<Status> findById(Long codProjeto){
+        List<Status> listaStatus = new ArrayList<>();
         ConnectionBD con = new ConnectionBD();
-        Status status = new Status();
         Statement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM status WHERE codProjeto = '"+codProjeto+"' ORDER BY DATAHORA ASC";
@@ -28,12 +30,13 @@ public class StatusDao {
             stmt = con.getConnection().createStatement();
             rs = stmt.executeQuery(sql); 
             while(rs.next()) {
+                Status status = new Status();
                 status.setCodStatus(rs.getInt("codStatus"));
                 status.setCodProjeto(rs.getString("codProjeto"));
             	status.setNome(rs.getString("nome"));
             	status.setDataHora(rs.getString("dataHora"));
             	status.setDescricao(rs.getString("descricao"));
-            	
+            	listaStatus.add(status);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +47,7 @@ public class StatusDao {
                 e.printStackTrace();
             }
         }
-        return status;
+        return listaStatus;
     }
     
     public void create(Status status){

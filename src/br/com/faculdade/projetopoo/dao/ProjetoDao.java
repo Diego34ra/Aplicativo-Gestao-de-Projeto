@@ -88,7 +88,7 @@ public class ProjetoDao {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()).get(0));
                 lista.add(projeto);
             	
             }
@@ -120,7 +120,7 @@ public class ProjetoDao {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()).get(0));
                 lista.add(projeto);
             	
             }
@@ -152,7 +152,7 @@ public class ProjetoDao {
             	projeto.setNome(rs.getString("nome"));
             	projeto.setDataCriacao(rs.getString("dataCriacao"));
             	projeto.setDescricao(rs.getString("descricao"));
-                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()));
+                projeto.setStatus(StatusDao.findById(projeto.getCodProjeto()).get(0));
             	
             }
         } catch (Exception e) {
