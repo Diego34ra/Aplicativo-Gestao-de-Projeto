@@ -24,7 +24,7 @@ public class StatusDao {
         ConnectionBD con = new ConnectionBD();
         Statement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM status WHERE codProjeto = '"+codProjeto+"' ORDER BY DATAHORA ASC";
+        String sql = "SELECT * FROM status WHERE codProjeto = '"+codProjeto+"' ORDER BY DATAHORA DESC";
         System.out.println("br.com.faculdade.projetopoo.dao.findById()");
         try {
             stmt = con.getConnection().createStatement();

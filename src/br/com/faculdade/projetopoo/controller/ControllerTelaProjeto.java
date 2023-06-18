@@ -384,51 +384,6 @@ public class ControllerTelaProjeto implements Initializable{
             return cell ;
         });
         
-//        cellCliIntegerar.setMinWidth(50);
-//        cellCliIntegerar.setPrefWidth(80);
-//        cellCliIntegerar.setResizable(false);
-//        cellCliIntegerar.setStyle("-fx-alignment: center;");
-//        cellCliIntegerar.setCellFactory(col -> {
-//            TableCell<ClienteBean, ClienteBean> cell = new TableCell<ClienteBean, ClienteBean>() {
-//                @Override
-//                public void updateItem(ClienteBean item, boolean empty) {
-//                    final Tooltip infAjuda = new Tooltip();
-//                    infAjuda.setText("Tenta integrar o cliente com o ERP.");
-//                    Button botao = new Button();
-//                    String caminho = "icon/integrar.png";
-//                    File file = new File(caminho);
-//                    Image imagem = new Image(file.toURI().toString());
-//                    ImageView imv = new ImageView();
-//                    {
-//                        imv.setFitHeight(20l);
-//                        imv.setFitWidth(20l);
-//                    }
-//                    imv.setImage(imagem);
-//                    botao.setPickOnBounds(true);
-//                    botao.setGraphic(imv);
-//                    botao.setAlignment(Pos.CENTER);
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        botao.setOnAction(event -> 
-//                            { 
-//                                if(Alertas.confirmacao("Confirma o processamento manual?", "", "Sim", "Não") == 1){
-//                                    integraCliente(getTableView().getItems().get(getIndex()));
-//                                    Alertas.alertaInformacao("Processo finalizado!","");
-//                                    consultaClienteGeral();
-//                                } else
-//                                    Alertas.alertaAtencao("Ok!", "Nada foi alterado!");
-//                            }
-//                        );
-//                        
-//                        setGraphic(botao);
-//                    }
-//                }
-//            };
-//            return cell ;
-//        });
-        
     }
 
     @Override

@@ -48,7 +48,7 @@ public class ControllerTelaHistoricoStatus implements Initializable{
     
     private void formataTabelaHistorico(){
         cellStatusNome.setMinWidth(100);
-        cellStatusNome.setPrefWidth(120);
+        cellStatusNome.setPrefWidth(110);
         cellStatusNome.setResizable(false);
         cellStatusNome.setCellValueFactory (new PropertyValueFactory <> ( "nome" ));
         cellStatusNome.setStyle("-fx-alignment: center;");

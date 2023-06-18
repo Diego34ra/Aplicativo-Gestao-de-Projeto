@@ -20,10 +20,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/2022101202010058/Documents/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/controller/ControllerTelaTrocarSenha.java</file>
-            <file>file:/C:/Users/2022101202010058/Documents/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/controller/ControllerTelaCadastroUser.java</file>
-            <file>file:/C:/Users/2022101202010058/Documents/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/controller/ControllerCodigoVerificacao.java</file>
-            <file>file:/C:/Users/2022101202010058/Documents/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/view/TelaPrincipal.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/dao/TarefaDao.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/controller/ControllerTelaTarefa.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/Initialize.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/Global.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/dao/StatusDao.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/view/TelaPrincipal.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/GitHub/Aplicativo-Gestao-de-Projeto/src/br/com/faculdade/projetopoo/controller/ControllerTelaProjeto.java</file>
         </group>
     </open-files>
 </project-private>

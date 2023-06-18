@@ -1,5 +1,6 @@
 package br.com.faculdade.projetopoo.view;
 
+import br.com.faculdade.projetopoo.Initialize;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,9 @@ public class TelaPrincipal extends Application {
         stage.show();
         
         stage.setScene(scene);
+        
+//        Initialize init = new Initialize();
+//        init.generateDB();
         
         stage.setOnCloseRequest((WindowEvent t1) -> {
             t1.consume();

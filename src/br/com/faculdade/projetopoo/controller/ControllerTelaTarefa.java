@@ -6,15 +6,20 @@ package br.com.faculdade.projetopoo.controller;
 
 import br.com.faculdade.projetopoo.Alertas;
 import br.com.faculdade.projetopoo.Global;
+import br.com.faculdade.projetopoo.dao.ProjetoDao;
+import br.com.faculdade.projetopoo.dao.StatusDao;
 import br.com.faculdade.projetopoo.model.Tarefa;
 import br.com.faculdade.projetopoo.model.Usuario;
 import br.com.faculdade.projetopoo.dao.TarefaDao;
+import br.com.faculdade.projetopoo.model.Status;
 import br.com.faculdade.projetopoo.view.TelaAlteraStatus;
 import br.com.faculdade.projetopoo.view.TelaNovaTarefa;
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,6 +58,8 @@ public class ControllerTelaTarefa implements Initializable{
     private final TableColumn cellTarefaAlteraStatus = new TableColumn("Alterar status");
     
     private ObservableList<Tarefa> obj = null;
+    private List<Tarefa> tarefas = new ArrayList<>();
+    private final TarefaDao tarefaDao = new TarefaDao();
     
     @FXML
     void addTarefa() {
@@ -60,9 +67,8 @@ public class ControllerTelaTarefa implements Initializable{
         try {
             tela.start(new Stage());
             TelaNovaTarefa.getStage().showAndWait();    
-            TarefaDao tarefa = new TarefaDao();
-            obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
-            carregaTabelaProjeto(obj);
+            
+            geraTabela();
         } catch (Exception ex) {
             System.out.println("Exception ao criar a tela de nova tarefa\n"+ex);
         }  
@@ -277,14 +283,58 @@ public class ControllerTelaTarefa implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TarefaDao tarefa = new TarefaDao();
-        obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
-        carregaTabelaProjeto(obj);
+        geraTabela();
     }
     
     public void geraTabela(){
-        TarefaDao tarefa = new TarefaDao();
-        obj = FXCollections.observableArrayList(tarefa.findAll(Global.projeto.getCodProjeto()));
+        tarefas = tarefaDao.findAll(Global.projeto.getCodProjeto());
+        validaStatus(tarefas);
+        
+        obj = FXCollections.observableArrayList(tarefas);
         carregaTabelaProjeto(obj);
+    }
+    
+    
+    public void validaStatus(List<Tarefa> tarefas){
+        tarefas.stream().forEach(tarefa -> {System.out.println(tarefa.getStatus());});
+        Long contador = tarefas.stream()
+                .filter(tarefa ->  tarefa.getStatus().equals("Sem Fluxo"))
+                .count();
+        if(contador == tarefas.size()){
+            if (!Global.projeto.getStatus().equals("Sem Fluxo")) {
+                StatusDao statusDao = new StatusDao();
+                Status statusProjeto = new Status("Sem Fluxo", "O projeto foi parado momentâneamente.", Global.projeto.getCodProjeto().toString());
+                statusDao.create(statusProjeto);
+                return;
+            }
+        }
+        contador = tarefas.stream()
+                .filter(tarefa ->  tarefa.getStatus().equals("Finalizado"))
+                .count();
+        if(contador == tarefas.size()){
+            if (!Global.projeto.getStatus().equals("Finalizado")) {
+                StatusDao statusDao = new StatusDao();
+                Status statusProjeto = new Status("Finalizado", "O projeto foi finalizado.", Global.projeto.getCodProjeto().toString());
+                statusDao.create(statusProjeto);
+                return;
+            }
+        }
+        contador = tarefas.stream()
+                .filter(tarefa ->  tarefa.getStatus().equals("Em Espera"))
+                .count();
+        if(contador == tarefas.size()){
+            if (!Global.projeto.getStatus().equals("Em Espera")) {
+                StatusDao statusDao = new StatusDao();
+                Status statusProjeto = new Status("Em Espera", "O projeto ainda não foi iniciado.", Global.projeto.getCodProjeto().toString());
+                statusDao.create(statusProjeto);
+                return;
+            }
+        } else { 
+            if (!Global.projeto.getStatus().equals("Em Andamento")) {
+                StatusDao statusDao = new StatusDao();
+                Status statusProjeto = new Status("Em Andamento", "O projeto está sendo executado.", Global.projeto.getCodProjeto().toString());
+                statusDao.create(statusProjeto);
+            }
+        }
     }
 }
