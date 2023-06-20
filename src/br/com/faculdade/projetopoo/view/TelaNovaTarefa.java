@@ -15,14 +15,22 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- *
- * @author 2022101202010066
+ * Classe responsável por exibir a tela de criação de uma nova tarefa.
+ * 
+ * A tela de nova tarefa permite ao usuário criar uma nova tarefa e fornecer as informações
+ * necessárias, como título, descrição, prazo, etc.
+ * @author joaog
  */
 public class TelaNovaTarefa extends Application{
     
     public static Stage stage;
     public static Scene scene;
     
+    /**
+     * Inicia a aplicação, configurando a janela de nova tarefa.
+     * @param t o estágio primário da aplicação
+     * @throws Exception se ocorrer um erro ao carregar o arquivo FXML
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage =  new Stage();
@@ -55,16 +63,28 @@ public class TelaNovaTarefa extends Application{
     }
 
     /**
-     * @param args the command line arguments
+     * O método principal que inicia a aplicação.
+     *
+     * @param args os argumentos da linha de comando
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Obtém o estágio da janela da tela de nova tarefa.
+     *
+     * @return o estágio da janela
+     */
     public static Stage getStage() {
         return stage;
     }
     
+    /**
+     * Obtém a cena da tela de nova tarefa.
+     *
+     * @return a cena da tela
+     */
     public static Scene getScene(){
         return scene;
     }

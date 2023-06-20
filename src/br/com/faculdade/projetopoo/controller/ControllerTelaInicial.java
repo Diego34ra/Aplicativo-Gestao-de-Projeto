@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 
 /**
- *
- * @author Diego
+ *  Classe controller utilizada para testes
+ * @author João Gabriel
  */
 public class ControllerTelaInicial {
     @FXML

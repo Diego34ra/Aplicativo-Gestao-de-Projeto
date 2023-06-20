@@ -38,22 +38,35 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Diego
+ * Controller responsável pela tela de projeto.
+ * Implementa a interface Initializable do JavaFX.
+ * @author joaog
  */
 public class ControllerTelaProjeto implements Initializable{
     
+     /**
+     * Campo de texto para consulta.
+     */
     @FXML
     private TextField txConsulta;
 
+     /**
+     * ComboBox para seleção do tipo de consulta.
+     */
     @FXML
     private ComboBox<String> cbConsulta;
     
+    /**
+     * Botão para abrir a tela de novo projeto.
+     */
     @FXML
     private Button btTelaNovoProjeto;
     
     private ObservableList<Projeto> obj = null;
 
+     /**
+     * Tabela de projetos.
+     */
     @FXML
     private TableView<Projeto> tbProjeto;
     private final TableColumn cellProId = new TableColumn("Código");
@@ -66,6 +79,10 @@ public class ControllerTelaProjeto implements Initializable{
     private final TableColumn<Projeto,Projeto> cellProTarefas = new TableColumn("Tarefas");
     private final TableColumn<Projeto,Projeto> cellProDelete = new TableColumn("Deletar");
     
+    /**
+     * Carrega os dados na tabela de projetos.
+     * @param list Lista observável de projetos
+     */
     private void carregaTabelaProjeto(ObservableList<Projeto> list){
         tbProjeto.getColumns().clear();
         formataTabelaProjeto();
@@ -73,6 +90,10 @@ public class ControllerTelaProjeto implements Initializable{
         tbProjeto.getColumns().addAll(cellProTarefas,cellProId,cellProNome,cellProDescricao,cellProStatus,cellProDtCriacao,cellProAlteraStatus,cellProHistoricoStatus, cellProDelete);
     }
     
+    /**
+     * Método chamado ao clicar no botão "Novo Projeto".
+     * Abre a tela de novo projeto.
+     */
     @FXML
     void novoProjeto() {
         TelaNovoProjeto tela = new TelaNovoProjeto();
@@ -84,6 +105,10 @@ public class ControllerTelaProjeto implements Initializable{
         }       
     }
             
+    /**
+     * Método chamado ao clicar no botão "Buscar".
+     * Realiza a busca de projetos.
+     */
     @FXML
     void buscar() {
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
@@ -104,6 +129,10 @@ public class ControllerTelaProjeto implements Initializable{
         carregaTabelaProjeto(obj);
     }
     
+    /**
+    * Formata a tabela de projetos, definindo as configurações de cada coluna.
+    * As configurações incluem largura, valor da célula, estilo e ações dos botões.
+    */
     private void formataTabelaProjeto(){
         cellProId.setMinWidth(100);
         cellProId.setPrefWidth(120);

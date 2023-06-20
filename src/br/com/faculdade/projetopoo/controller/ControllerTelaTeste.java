@@ -19,7 +19,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller da tela de teste.
+ * Responsável por gerenciar os eventos e ações na tela de teste.
  * @author Diego
  */
 public class ControllerTelaTeste implements Initializable{
@@ -38,6 +39,11 @@ public class ControllerTelaTeste implements Initializable{
 
     }
     
+    /**
+     * Ação do botão "Perfil do Usuário".
+     * Abre a tela de perfil do usuário.
+     * @throws IOException Lança uma exceção IOException se ocorrer um erro ao carregar a tela.
+     */
     @FXML
     void btPerfilUser() throws IOException {
            
@@ -53,6 +59,11 @@ public class ControllerTelaTeste implements Initializable{
         }
     }
 
+    /**
+     * Ação para obter o painel do projeto.
+     * Carrega o painel do projeto na parte central da tela.
+     * @throws IOException Lança uma exceção IOException se ocorrer um erro ao carregar o painel.
+     */
     @FXML
     void getPaneProjeto() throws IOException {
         Parent menuRecebimento = FXMLLoader.load(getClass().getResource("/br/com/faculdade/projetopoo/view/FXMLTelaProjeto2.fxml"));
@@ -63,6 +74,10 @@ public class ControllerTelaTeste implements Initializable{
         PaneMeio.getChildren().setAll(menuRecebimento);
     }
     
+    /**
+     * Ação para sair da tela atual.
+     * Fecha a tela atual e abre a tela principal.
+     */
     @FXML
     public void sair( ){
         //Fecha a tela atual

@@ -10,10 +10,22 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Classe responsável por exibir a tela principal do sistema.
+ * A tela principal exibe a interface gráfica principal do sistema de gestão de projetos.
+ * Ela é a primeira tela exibida ao iniciar a aplicação e geralmente contém um menu ou
+ * painel de navegação para acessar outras funcionalidades do sistema.
+ * @author joaog
+ */
 public class TelaPrincipal extends Application {
         public static Stage stage;
     public static Scene scene;
     
+    /**
+     * Inicia a aplicação, configurando a janela da tela principal.
+     * @param t o estágio primário da aplicação
+     * @throws Exception se ocorrer um erro ao carregar o arquivo FXML
+     */
     public void start(Stage t) throws Exception {
         stage = new Stage();
         //para não esticar as laterais
@@ -50,16 +62,28 @@ public class TelaPrincipal extends Application {
     
 
     /**
-     * @param args the command line arguments
+     * O método principal que inicia a aplicação.
+     *
+     * @param args os argumentos da linha de comando
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Obtém o estágio da janela da tela principal.
+     *
+     * @return o estágio da janela
+     */
     public static Stage getStage() {
         return stage;
     }
     
+     /**
+     * Obtém a cena da tela principal.
+     *
+     * @return a cena da tela
+     */
     public static Scene getScene(){
         return scene;
     }

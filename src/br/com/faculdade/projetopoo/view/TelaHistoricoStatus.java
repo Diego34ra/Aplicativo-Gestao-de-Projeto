@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- *
+ * Classe de visualização do historico de status
  * @author Diego
  */
 public class TelaHistoricoStatus extends Application{
@@ -23,6 +23,11 @@ public class TelaHistoricoStatus extends Application{
     public static Stage stage;
     public static Scene scene;
     
+    /**
+     * Inicia a aplicação, configurando a janela de histórico de status.
+     * @param t o estágio primário da aplicação
+     * @throws Exception se ocorrer um erro ao carregar o arquivo FXML
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage =  new Stage();
@@ -54,17 +59,30 @@ public class TelaHistoricoStatus extends Application{
         
     }
 
-    /**
-     * @param args the command line arguments
+     /**
+     * O método principal que inicia a aplicação.
+     *
+     * @param args os argumentos da linha de comando
      */
+
     public static void main(String[] args) {
         launch(args);
     }
     
+     /**
+     * Obtém o estágio da janela da tela de histórico de status.
+     *
+     * @return o estágio da janela
+     */
     public static Stage getStage() {
         return stage;
     }
     
+    /**
+     * Obtém a cena da tela de histórico de status.
+     *
+     * @return a cena da tela
+     */
     public static Scene getScene(){
         return scene;
     }

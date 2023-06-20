@@ -17,7 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller da tela de troca de senha.
+ * Responsável por gerenciar os eventos e ações na tela de troca de senha.
  * @author Diego
  */
 public class ControllerTelaTrocarSenha {
@@ -36,6 +37,12 @@ public class ControllerTelaTrocarSenha {
     
     UsuarioDao usuarioDao = new UsuarioDao();
     
+    /**
+     * Ação do botão "Salvar".
+     * Verifica se as senhas digitadas são iguais e atualiza a senha do usuário.
+     * Exibe uma mensagem de sucesso e abre a tela principal.
+     * Fecha a tela atual.
+     */
     @FXML
     void salvar(){
         if(pwSenha.getText().equals(pwSenha1.getText())){
@@ -55,6 +62,11 @@ public class ControllerTelaTrocarSenha {
         }
     }
     
+    /**
+     * Ação do botão "Voltar".
+     * Abre a tela de verificação.
+     * Fecha a tela atual.
+     */
      @FXML
     void voltar() {
         try{

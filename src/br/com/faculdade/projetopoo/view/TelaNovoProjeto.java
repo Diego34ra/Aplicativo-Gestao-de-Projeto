@@ -16,14 +16,22 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- *
- * @author 2022101202010066
+ * Classe responsável por exibir a tela de criação de um novo projeto.
+ * A tela de novo projeto permite ao usuário criar um novo projeto e fornecer as informações
+ * necessárias, como nome, descrição, data de início, etc.
+ * 
+ * @author joaog
  */
 public class TelaNovoProjeto extends Application{
     
     public static Stage stage;
     public static Scene scene;
     
+    /**
+     * Inicia a aplicação, configurando a janela de novo projeto.
+     * @param t o estágio primário da aplicação
+     * @throws Exception se ocorrer um erro ao carregar o arquivo FXML
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage =  new Stage();
@@ -56,16 +64,28 @@ public class TelaNovoProjeto extends Application{
     }
 
     /**
-     * @param args the command line arguments
+     * O método principal que inicia a aplicação.
+     *
+     * @param args os argumentos da linha de comando
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Obtém o estágio da janela da tela de novo projeto.
+     *
+     * @return o estágio da janela
+     */
     public static Stage getStage() {
         return stage;
     }
     
+    /**
+     * Obtém a cena da tela de novo projeto.
+     *
+     * @return a cena da tela
+     */
     public static Scene getScene(){
         return scene;
     }

@@ -13,13 +13,22 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
- *
+ *  Classe responsável por exibir a tela de perfil do usuário.
+ * 
+ * A tela de perfil do usuário exibe as informações e configurações relacionadas
+ * ao perfil do usuário atual. Ela permite que o usuário visualize e atualize seus
+ * dados pessoais, preferências e outras informações relevantes.
  * @author joaog
  */
 public class TelaPerfilUsuario extends Application {
     public static Stage stage;
     public static Scene scene;
     
+    /**
+     * Inicia a aplicação, configurando a janela da tela de perfil do usuário.
+     * @param t o estágio primário da aplicação
+     * @throws Exception se ocorrer um erro ao carregar o arquivo FXML
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage =  new Stage();
@@ -62,17 +71,29 @@ public class TelaPerfilUsuario extends Application {
         
     }
 
-    /**
-     * @param args the command line arguments
+     /**
+     * O método principal que inicia a aplicação.
+     *
+     * @param args os argumentos da linha de comando
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Obtém o estágio da janela da tela de perfil do usuário.
+     *
+     * @return o estágio da janela
+     */
     public static Stage getStage() {
         return stage;
     }
     
+    /**
+     * Obtém a cena da tela de perfil do usuário.
+     *
+     * @return a cena da tela
+     */
     public static Scene getScene(){
         return scene;
     }

@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller da tela que exibe e interage com informações de usuários.
  * @author 2022101202010058
  */
 public class ControllerTelaConsultaUsuario implements Initializable{
@@ -46,6 +46,9 @@ public class ControllerTelaConsultaUsuario implements Initializable{
     
     private ObservableList<Usuario> obj = null;
 
+    /**
+    Realiza uma busca com base no critério de busca selecionado.
+    */
     @FXML
     void buscar() {
         switch (cbConsulta.getSelectionModel().getSelectedItem()) {
@@ -66,7 +69,10 @@ public class ControllerTelaConsultaUsuario implements Initializable{
         }
         carregaTabelaProjeto(obj);
     }
-
+/**
+ * Carrega as informações de usuários na tabela.
+ *@param list A lista de usuários para exibir na tabela.
+ */
     private void carregaTabelaProjeto(ObservableList<Usuario> list){
         tbUsuario.getColumns().clear();
         formataTabelaProjeto();
@@ -74,6 +80,9 @@ public class ControllerTelaConsultaUsuario implements Initializable{
         tbUsuario.getColumns().addAll(cellUsuarioId,cellUsuarioNome);
     }
     
+    /**
+    Formata as colunas na tabela de usuários.
+    */
     private void formataTabelaProjeto(){
         cellUsuarioId.setMinWidth(100);
         cellUsuarioId.setPrefWidth(150);
@@ -102,6 +111,9 @@ public class ControllerTelaConsultaUsuario implements Initializable{
         cellUsuarioNome.setStyle("-fx-alignment: center;");
     }
     
+    /**
+    Obtém o usuário selecionado.
+    */
     @FXML
     void getUsuario(MouseEvent event) {
         int x = tbUsuario.getSelectionModel().getSelectedIndex();

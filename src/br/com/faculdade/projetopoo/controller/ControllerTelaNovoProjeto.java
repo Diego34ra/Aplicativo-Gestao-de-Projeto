@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller para a tela de criação de um novo projeto.
  * @author 2022101202010066
  */
 public class ControllerTelaNovoProjeto implements Initializable {
@@ -31,6 +31,9 @@ public class ControllerTelaNovoProjeto implements Initializable {
     @FXML
     private AnchorPane Pane;
 
+    /**
+     * Adiciona um novo projeto.
+     */
     @FXML
     void addProjeto() {
         ProjetoDao projetoService = new ProjetoDao();

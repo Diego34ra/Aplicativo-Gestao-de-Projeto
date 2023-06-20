@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 /**
- *
+ *  Controller da tela que exibe o histórico de status de um projeto.
  * @author 2022101202010058
  */
 public class ControllerTelaHistoricoStatus implements Initializable{
@@ -38,7 +38,10 @@ public class ControllerTelaHistoricoStatus implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         carregaTabelaHistorico(FXCollections.observableArrayList(StatusService.findById(Global.projeto.getCodProjeto())));
     }
-    
+    /**
+     * Carrega o histórico de status na tabela.
+     * @param list A lista de status a ser exibida na tabela.
+     */
     private void carregaTabelaHistorico(ObservableList<Status> list){
         tbStatus.getColumns().clear();
         formataTabelaHistorico();
@@ -46,6 +49,9 @@ public class ControllerTelaHistoricoStatus implements Initializable{
         tbStatus.getColumns().addAll(cellStatusNome,cellStatusDescricao,cellStatusData);
     }
     
+    /**
+     * Formata as colunas na tabela de histórico.
+     */
     private void formataTabelaHistorico(){
         cellStatusNome.setMinWidth(100);
         cellStatusNome.setPrefWidth(110);

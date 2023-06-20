@@ -37,7 +37,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller para a tela de tarefas.
  * @author Diego
  */
 public class ControllerTelaTarefa implements Initializable{
@@ -61,6 +61,10 @@ public class ControllerTelaTarefa implements Initializable{
     private List<Tarefa> tarefas = new ArrayList<>();
     private final TarefaDao tarefaDao = new TarefaDao();
     
+    /**
+     * Método chamado quando o botão "Adicionar Tarefa" é clicado.
+     * Abre a tela de nova tarefa e atualiza a tabela de tarefas.
+     */
     @FXML
     void addTarefa() {
      TelaNovaTarefa tela = new TelaNovaTarefa();
@@ -73,7 +77,10 @@ public class ControllerTelaTarefa implements Initializable{
             System.out.println("Exception ao criar a tela de nova tarefa\n"+ex);
         }  
     }
-    
+    /**
+     * Carrega os dados da lista de tarefas na tabela de tarefas.
+     * @param list Lista de tarefas a ser carregada na tabela
+     */
     private void carregaTabelaProjeto(ObservableList<Tarefa> list){
         tbTarefa.getColumns().clear();
         formataTabelaTarefa();
@@ -81,6 +88,9 @@ public class ControllerTelaTarefa implements Initializable{
         tbTarefa.getColumns().addAll(cellTarefaCodigo,cellTarefaEncarregado, cellTarefaNome,cellTarefaDescricao,cellTarefaStatus, cellTarefaDtCriacao,cellTarefaDtFinalizacao,cellTarefaAlteraStatus,cellTarefaDelete);
     }
     
+    /**
+     * Configura a formatação das colunas da tabela de tarefas.
+     */
     private void formataTabelaTarefa(){
         cellTarefaCodigo.setMinWidth(80);
         cellTarefaCodigo.setPrefWidth(100);
@@ -286,6 +296,11 @@ public class ControllerTelaTarefa implements Initializable{
         geraTabela();
     }
     
+    
+    /**
+     * Gera a tabela de tarefas com base na lista de tarefas do projeto atual.
+     * Os dados são obtidos do banco de dados e carregados na tabela.
+     */
     public void geraTabela(){
         tarefas = tarefaDao.findAll(Global.projeto.getCodProjeto());
         validaStatus(tarefas);
@@ -294,7 +309,11 @@ public class ControllerTelaTarefa implements Initializable{
         carregaTabelaProjeto(obj);
     }
     
-    
+    /**
+     * Valida o status do projeto com base na lista de tarefas.
+     * Verifica se todas as tarefas estão com o mesmo status e atualiza o status do projeto, se necessário.
+     * @param tarefas Lista de tarefas do projeto
+     */
     public void validaStatus(List<Tarefa> tarefas){
         tarefas.stream().forEach(tarefa -> {System.out.println(tarefa.getStatus());});
         Long contador = tarefas.stream()

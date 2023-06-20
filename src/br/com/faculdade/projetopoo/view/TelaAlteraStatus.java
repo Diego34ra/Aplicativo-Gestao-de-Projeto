@@ -15,14 +15,22 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- *
- * @author Diego
+ * Classe responsável por exibir a tela de alteração de status.
+ * Extende a classe Application do JavaFX para permitir a inicialização da aplicação.
+ * @author joaog
  */
 public class TelaAlteraStatus extends Application{
     
     public static Stage stage;
     public static Scene scene;
     
+     /**
+     * Método de inicialização da tela.
+     * Configura o tamanho e as propriedades da janela.
+     * Carrega o arquivo FXML da interface gráfica.
+     * Define o título da janela e o ícone.
+     * Define o comportamento de fechamento da janela.
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage =  new Stage();
@@ -55,16 +63,26 @@ public class TelaAlteraStatus extends Application{
     }
 
     /**
+     *  Método principal da aplicação.
+     * Inicia a aplicação JavaFX.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * Obtém o objeto Stage da janela.
+     * @return O objeto Stage da janela.
+     */
     public static Stage getStage() {
         return stage;
     }
     
+    /**
+     * Obtém o objeto Scene da janela.
+     * @return O objeto Scene da janela.
+     */
     public static Scene getScene(){
         return scene;
     }

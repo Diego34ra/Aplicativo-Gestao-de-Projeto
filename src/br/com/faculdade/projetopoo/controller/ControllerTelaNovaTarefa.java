@@ -19,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ *  Controller para a tela de criação de uma nova tarefa.
  * @author 2022101202010066
  */
 public class ControllerTelaNovaTarefa implements Initializable{
@@ -36,6 +36,10 @@ public class ControllerTelaNovaTarefa implements Initializable{
     @FXML
     private TextField txEncarregado;
 
+    /**
+     * Adiciona uma nova tarefa.
+     * @param event O evento que acionou a ação.
+     */
     @FXML
     void add(ActionEvent event) {
         if(txDescricao.getText().isEmpty() || txNome.getText().isEmpty() || txEncarregado.getText().isEmpty()){
@@ -55,6 +59,9 @@ public class ControllerTelaNovaTarefa implements Initializable{
        }
     }
     
+    /**
+     * Abre a tela de consulta de usuários.
+     */
     @FXML
     void buscar() {
         TelaConsultaUsuario tela = new TelaConsultaUsuario();

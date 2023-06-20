@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller para a tela principal do sistema.
  * @author Diego
  */
 public class ControllerTelaPrincipal implements Initializable {    
@@ -50,7 +50,9 @@ public class ControllerTelaPrincipal implements Initializable {
     @FXML
     private Label txRecuperaSenha;
    
-
+    /**
+     * Abre a tela de recuperação de senha.
+     */
     @FXML
     void recuperarSenha() {
     TelaAlterarSenha telaAlterarSenha = new TelaAlterarSenha();
@@ -65,6 +67,10 @@ public class ControllerTelaPrincipal implements Initializable {
     }
 }
     
+    /**
+     * Realiza o login do usuário.
+     * @throws NoSuchAlgorithmException exceção lançada caso ocorra um problema com o algoritmo de criptografia.
+     */
     @FXML
     void logar() throws NoSuchAlgorithmException {
         Usuario usuario  = UsuarioDao.findByEmail(txEmail.getText());
@@ -89,6 +95,9 @@ public class ControllerTelaPrincipal implements Initializable {
         }
     }
     
+    /**
+     * Abre a tela de cadastro de usuário.
+     */
     @FXML
     void cadastrarUsuario() {
         TelaCadastroUser tela = new TelaCadastroUser();

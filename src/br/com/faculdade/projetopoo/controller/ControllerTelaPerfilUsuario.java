@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller para a tela de perfil do usuário.
  * @author joaog
  */
 public class ControllerTelaPerfilUsuario implements Initializable{
@@ -31,6 +31,9 @@ public class ControllerTelaPerfilUsuario implements Initializable{
     @FXML
     private Label txCpf;
 
+    /**
+     * Fecha a tela atual.
+     */
     @FXML
     void fechar() {
         //Fecha a tela atual

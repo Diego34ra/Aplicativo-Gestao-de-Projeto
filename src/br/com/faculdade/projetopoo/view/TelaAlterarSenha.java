@@ -11,11 +11,23 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Classe responsável por exibir a tela de alteração de senha.
+ * Extende a classe Application do JavaFX para permitir a inicialização da aplicação.
+ * @author joaog
+ */
 public class TelaAlterarSenha extends Application {
 
     private static Stage stage;
     public static Scene scene;
 
+    /**
+     * Método de inicialização da tela.
+     * Configura o tamanho e as propriedades da janela.
+     * Carrega o arquivo FXML da interface gráfica.
+     * Define o título da janela e o ícone.
+     * Define o comportamento de fechamento da janela.
+     */
     @Override
     public void start(Stage t) throws Exception {
         stage = new Stage();
@@ -47,23 +59,37 @@ public class TelaAlterarSenha extends Application {
         });
     }
 
-    /**
-     * @param args the command line arguments
+     /**
+     * Método principal da aplicação.
+     * Inicia a aplicação JavaFX.
+     * @param args 
      */
     public static void main(String[] args) {
-            launch(args);
+        launch(args);
     }
 
+    /**
+     * Obtém o objeto Stage da janela.
+     * @return O objeto Stage da janela.
+     */
     public static Stage getStage() {
-            return stage;
+        return stage;
     }
 
+    /**
+     * Obtém o objeto Scene da janela.
+     * @return O objeto Scene da janela.
+     */
     public static Scene getScene() {
-            return scene;
+        return scene;
     }
 
+    /**
+     * Define o objeto Scene da janela.
+     * @param scene O objeto Scene a ser definido.
+     */
     public static void setScene(Scene scene) {
-            TelaCadastroUser.scene = scene;
+        TelaCadastroUser.scene = scene;
     }
 
 }
