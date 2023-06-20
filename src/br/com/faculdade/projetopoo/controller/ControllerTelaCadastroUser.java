@@ -17,6 +17,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controller da tela de cadastro do usuario
+ * @author 2022101202010058
+ */
 public class ControllerTelaCadastroUser implements Initializable {
 
     @FXML
@@ -39,6 +43,9 @@ public class ControllerTelaCadastroUser implements Initializable {
 
     private Usuario usuario;
 
+    /**
+     * Acao do botao que cadastra o usuario
+     */
     @FXML
     void cadastrar() {
         boolean valida = true;
@@ -78,6 +85,9 @@ public class ControllerTelaCadastroUser implements Initializable {
         } 
     }
 
+    /**
+     * Acao do botao que volta para a tela anterior
+     */
     @FXML
     void voltar() {
         TelaPrincipal tela = new TelaPrincipal();

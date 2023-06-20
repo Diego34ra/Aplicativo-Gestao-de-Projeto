@@ -18,6 +18,13 @@ import javafx.stage.Stage;
  * @author Diego
  */
 public class Alertas {
+    
+    /**
+     * Metodo que chama uma tela de confirmacao
+     * @param cabeca cabeçalho da tela de confimacao
+     * @param corpo frase de confirmacao
+     * @return retorna a confirmacao do usuario
+     */
     public static Integer confirmacao(String cabeca,String corpo){
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Gestão de Projetos");
@@ -41,7 +48,11 @@ public class Alertas {
             return 0;
         }
     }
-    
+    /**
+     * Metodo que chama uma tela de informacao
+     * @param cabeca cabecalho da tela de informacao
+     * @param corpo frase de informacao
+     */
     public static void informacao(String cabeca,String corpo){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Gestão de Projetos");

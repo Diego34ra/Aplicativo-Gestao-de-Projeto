@@ -13,12 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe Dao do status
  * @author Diego
  */
 public class StatusDao {
     
-    
+    /**
+     * Metodo que retorna uma lista de status pelo codigo do projeto
+     * @param codProjeto codigo do projeto que o status esta vinculado
+     * @return lista de status
+     */
     public static List<Status> findById(Long codProjeto){
         List<Status> listaStatus = new ArrayList<>();
         ConnectionBD con = new ConnectionBD();
@@ -34,7 +38,7 @@ public class StatusDao {
                 status.setCodStatus(rs.getInt("codStatus"));
                 status.setCodProjeto(rs.getString("codProjeto"));
             	status.setNome(rs.getString("nome"));
-            	status.setDataHora(rs.getString("dataHora"));
+            	status.setDataCriacao(rs.getString("dataHora"));
             	status.setDescricao(rs.getString("descricao"));
             	listaStatus.add(status);
             }
@@ -50,6 +54,10 @@ public class StatusDao {
         return listaStatus;
     }
     
+    /**
+     * Metodo que cria um status 
+     * @param status status
+     */
     public void create(Status status){
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO status (codStatus, codProjeto, nome, descricao, dataHora) VALUES (?,?,?,?,NOW())";
@@ -74,6 +82,10 @@ public class StatusDao {
         }
     }
         
+    /**
+     * Metodo que deleta um status pelo codigo do projeto 
+     * @param codProjeto 
+     */
     public static void deleteByIdProjeto(Long codProjeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "DELETE FROM `status` WHERE `status`.codProjeto = ?";

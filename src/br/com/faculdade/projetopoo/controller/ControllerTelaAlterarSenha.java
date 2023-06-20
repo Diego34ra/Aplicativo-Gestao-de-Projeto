@@ -12,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controller da tela de alteracao de senha
+ * @author 2022101202010058
+ */
 public class ControllerTelaAlterarSenha {
 
     @FXML
@@ -25,6 +29,9 @@ public class ControllerTelaAlterarSenha {
     
     private final UsuarioDao usuarioService = new UsuarioDao();
 
+    /**
+     * Metodo que altera a senha
+     */
     @FXML
     void alterar() { 
         if(!txEmail.getText().equals("")){
@@ -53,6 +60,9 @@ public class ControllerTelaAlterarSenha {
         }
     }
 
+    /**
+     * Acao do botao que volta a tela anterior
+     */
     @FXML
     void voltar() {
         TelaPrincipal tela = new TelaPrincipal();

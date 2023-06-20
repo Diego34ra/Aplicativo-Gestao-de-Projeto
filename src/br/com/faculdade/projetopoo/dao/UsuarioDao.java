@@ -21,11 +21,16 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 /**
- *
+ * Classe Dao do usuario
  * @author Diego
  */
 public class UsuarioDao {
     
+    /**
+     * Metodo que cria um usuario
+     * @param usuario usuario
+     * @throws NoSuchAlgorithmException 
+     */
     public static void createUsuario(Usuario usuario) throws NoSuchAlgorithmException{
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO usuario (codUsuario, nome, email, cpf, senha) VALUES (?,?,?,?,?)";
@@ -51,6 +56,10 @@ public class UsuarioDao {
         }
     }
     
+    /**
+     * Metodo que pega uma lista de usuario
+     * @return lista de usuario
+     */
     public static List<Usuario> findAll(){
         ConnectionBD con = new ConnectionBD();
         List<Usuario> usuarios = new ArrayList<>();
@@ -82,6 +91,12 @@ public class UsuarioDao {
         return usuarios;
     }
     
+    /**
+     * Metodo que atualiza o codigo de recuperacao do usuario
+     * @param usuario usuario
+     * @param codRecuperacao codigo de recuperacao
+     * @throws NoSuchAlgorithmException 
+     */
     public static void update(Usuario usuario, String codRecuperacao) throws NoSuchAlgorithmException{
         ConnectionBD con = new ConnectionBD();
         String sql = "UPDATE usuario SET codRecuperacao = ? WHERE codUsuario = ?";
@@ -103,6 +118,11 @@ public class UsuarioDao {
         }
     }
     
+    /**
+     * Metodo que atualiza a senha do usuario
+     * @param usuario usuario
+     * @param senha senha do usuario
+     */
     public static void updateSenha(Usuario usuario, String senha){
         ConnectionBD con = new ConnectionBD();
         String sql = "UPDATE usuario SET senha = ? WHERE codUsuario = ?";
@@ -125,6 +145,11 @@ public class UsuarioDao {
         }
     }
     
+    /**
+     * Metodo que pega um usuario pelo email
+     * @param email email do usuario
+     * @return usuario
+     */
     public static Usuario findByEmail(String email){
         ConnectionBD con = new ConnectionBD();
         Usuario usuario = new Usuario();
@@ -156,6 +181,11 @@ public class UsuarioDao {
         return usuario;
     }
     
+    /**
+     * Metodo que pega uma lista de usuario pelo nome
+     * @param consulta nome do usuario
+     * @return lista de usuario
+     */
     public static List<Usuario> findByName(String consulta){
         ConnectionBD con = new ConnectionBD();
         List<Usuario> usuarios = new ArrayList<>();
@@ -187,6 +217,11 @@ public class UsuarioDao {
         return usuarios;
     }
     
+    /**
+     * Metodo que pega um usuario pelo codigo
+     * @param codigo codigo do usuario
+     * @return usuario
+     */
     public static Usuario findById(String codigo){
         ConnectionBD con = new ConnectionBD();
         Usuario usuario = new Usuario();
@@ -218,6 +253,11 @@ public class UsuarioDao {
         return usuario;
     }
     
+    /**
+     * Metodo que pega o usuario pelo cpf
+     * @param cpf cpf do usuario
+     * @return usuario
+     */
     public static Usuario findByCpf(String cpf){
         ConnectionBD con = new ConnectionBD();
         Usuario usuario = new Usuario();
@@ -249,6 +289,12 @@ public class UsuarioDao {
         return usuario;
     }
     
+    /**
+     * Metodo para criptografia da senha do usuario
+     * @param password senha do usuario
+     * @return senha criptografada
+     * @throws NoSuchAlgorithmException 
+     */
     public static String cryptoPass(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
  
@@ -257,6 +303,11 @@ public class UsuarioDao {
         return String.format("%32x", hash);
     }
     
+    /**
+     * Metodo que valida o cpf do usuario
+     * @param cpf cpf do usuario
+     * @return cpf validado
+     */
     public static String validateCpf(String cpf){
         CPFValidator cpfValidator = new CPFValidator(); 
         try{ cpfValidator.assertValid(cpf); 
@@ -267,12 +318,22 @@ public class UsuarioDao {
         } 
     }
 
+    /**
+     * Metood que remove os acentos de uma frase
+     * @param value frase
+     * @return frase com os acentos removidos
+     */
     public static String removeAcentos(String value) {
         String normalizer = Normalizer.normalize(value, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(normalizer).replaceAll("");
     }
     
+    /**
+     * Metodo que valida o email
+     * @param email email do usuario
+     * @return validacao do email
+     */
     public static boolean validateEmail(String email) {
         boolean result = true;
         try {

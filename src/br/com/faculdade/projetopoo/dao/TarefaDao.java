@@ -6,7 +6,6 @@ package br.com.faculdade.projetopoo.dao;
 
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Tarefa;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -14,11 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe Dao da Tarefa
  * @author 2022101202010058
  */
 public class TarefaDao {
     
+    /**
+     * Metodo que cria uma tarefa
+     * @param tarefa tarefa
+     */
     public void create(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO tarefa (codTarefa, codProjeto, codUsuario, nome, descricao, status, dtCriacao) VALUES (?,?,?,?,?,?,NOW())";
@@ -45,6 +48,11 @@ public class TarefaDao {
         }
     }
     
+    /**
+     * Metodo que deleta uma tarefa pelo codigo do projeto que ela esta vinculada
+     * @param codigo codigo do projeto
+     * @return 
+     */
     public static Boolean deleteByIdProjeto(Long codigo){
         ConnectionBD con = new ConnectionBD();
         Statement stmt = null;
@@ -67,6 +75,11 @@ public class TarefaDao {
         return rs;
     }
     
+    /**
+     * Metodo que deleta a tarefa pelo codigo da tarefa
+     * @param codigo codigo da tarefa
+     * @return 
+     */
     public Boolean deleteById(Long codigo){
         ConnectionBD con = new ConnectionBD();
         Boolean rs = false;
@@ -89,6 +102,11 @@ public class TarefaDao {
         return rs;
     }
     
+    /**
+     * Metodo que pega uma lista de tarefas de um projeto
+     * @param codigo codigo do projeto
+     * @return 
+     */
     public List<Tarefa> findAll(Long codigo){
         ConnectionBD con = new ConnectionBD();
         List<Tarefa> lista = new ArrayList<>();
@@ -127,6 +145,10 @@ public class TarefaDao {
     
     }
     
+    /**
+     * Metodo que atualiza uma tarefa
+     * @param tarefa tarefa
+     */
     public void update(Tarefa tarefa){
         ConnectionBD con = new ConnectionBD();
         String sql = "UPDATE tarefa SET status = ?, dtFinalizacao = "+tarefa.getDataFinalizacao()+" WHERE codTarefa = ?";

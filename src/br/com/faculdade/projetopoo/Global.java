@@ -28,6 +28,11 @@ public class Global {
     public static Tarefa tarefa = new Tarefa();
     public static String alteraStatus = "";
     
+    /**
+     * Método que retorno uma lista dos tipos de consultas
+     * @param tipo : Tipo de consulta
+     * @return lista de tipo de consultsa
+     */
     public static List<String>  tipoConsulta(String tipo){
         List<String> tipoConsulta = new ArrayList<>();
         switch (tipo) {

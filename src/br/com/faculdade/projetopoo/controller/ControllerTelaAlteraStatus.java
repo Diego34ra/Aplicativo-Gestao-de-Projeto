@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller da tela de alteracao de status
  * @author Diego
  */
 public class ControllerTelaAlteraStatus implements Initializable{
@@ -34,6 +34,9 @@ public class ControllerTelaAlteraStatus implements Initializable{
     private TableView<Status> tbStatus;
     private final TableColumn cellStatusNome = new TableColumn("Status");
     
+    /**
+     * Acao do botao que altera o status
+     */
     @FXML
     void getStatus() {
         int x = tbStatus.getSelectionModel().getSelectedIndex();
@@ -70,6 +73,10 @@ public class ControllerTelaAlteraStatus implements Initializable{
         
     }
     
+    /**
+     * Metodo que carrega a tabela de status 
+     * @param list 
+     */
     private void carregaTabelaStatus(ObservableList<Status> list){
         tbStatus.getColumns().clear();
         formataTabelaStatus();
@@ -77,6 +84,9 @@ public class ControllerTelaAlteraStatus implements Initializable{
         tbStatus.getColumns().addAll(cellStatusNome);
     }
     
+    /**
+     * Metodo que formata a tabela de status
+     */
     private void formataTabelaStatus(){
         cellStatusNome.setMinWidth(200);
         cellStatusNome.setPrefWidth(295);
@@ -85,6 +95,11 @@ public class ControllerTelaAlteraStatus implements Initializable{
         cellStatusNome.setStyle("-fx-alignment: center;");
     }
 
+    /**
+     * Metodo que inicializa o controller de alteracao de status
+     * @param location
+     * @param resources 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         carregaTabelaStatus(FXCollections.observableArrayList(Global.tipoStatus()));

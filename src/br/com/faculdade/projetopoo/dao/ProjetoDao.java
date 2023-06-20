@@ -7,21 +7,22 @@ package br.com.faculdade.projetopoo.dao;
 import br.com.faculdade.projetopoo.connection.ConnectionBD;
 import br.com.faculdade.projetopoo.model.Projeto;
 import br.com.faculdade.projetopoo.model.Status;
-import br.com.faculdade.projetopoo.model.Usuario;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe Dao do projeto
  * @author Diego
  */
 public class ProjetoDao {
     
+    /**
+     * Metodo que cria um projeto
+     * @param projeto projeto
+     */
     public void create(Projeto projeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "INSERT INTO projeto (codProjeto, nome, descricao, dataCriacao) VALUES (?,?,?,NOW())";
@@ -50,6 +51,11 @@ public class ProjetoDao {
         }
     }
     
+    /**
+     * Metodo que deleta um projeto pelo codigo
+     * @param codProjeto codigo do projeto
+     * @return 
+     */
     public boolean deleteById(Long codProjeto){
         ConnectionBD con = new ConnectionBD();
         String sql = "DELETE FROM projeto WHERE codProjeto = ?";
@@ -72,6 +78,10 @@ public class ProjetoDao {
         }
     }
     
+    /**
+     * Metodo que pega uma lista de projetos
+     * @return lista de projetos
+     */
     public static List<Projeto> findAll(){
         ConnectionBD con = new ConnectionBD();
         List<Projeto> lista = new ArrayList<>();
@@ -104,6 +114,11 @@ public class ProjetoDao {
         return lista;
     }
     
+    /**
+     * Metodo que busca uma lista de projeto atraves do nome
+     * @param consulta nome do projeto
+     * @return 
+     */
     public static List<Projeto> findByName(String consulta){
         ConnectionBD con = new ConnectionBD();
         List<Projeto> lista = new ArrayList<>();
@@ -136,6 +151,11 @@ public class ProjetoDao {
         return lista;
     }
     
+    /**
+     * Metodo que pega um projeto pelo codigo
+     * @param codigo codigo do projeto
+     * @return 
+     */
     public static Projeto findById(String codigo){
         ConnectionBD con = new ConnectionBD();
         Projeto projeto = new Projeto();

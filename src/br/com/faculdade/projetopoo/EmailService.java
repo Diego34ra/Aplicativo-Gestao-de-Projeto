@@ -20,11 +20,17 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 /**
- *
+ * Classe de enviar Email
  * @author Diego
  */
 public class EmailService {
     
+    /**
+     * Metodo que envia email
+     * @param title titulo do email
+     * @param destinatarios destinatarios do email
+     * @param text texto do email
+     */
     public static void sendEmail(
                                  String title,
                                  String[] destinatarios,
@@ -84,10 +90,15 @@ public class EmailService {
         }
     }
     
-    public static String criptografia(String valor){
-        return new String(Base64.getEncoder().encode(valor.getBytes()));
-    }
+//    public static String criptografia(String valor){
+//        return new String(Base64.getEncoder().encode(valor.getBytes()));
+//    }
     
+    /**
+     * Metodo que descriptografa alguma frase
+     * @param valor frase
+     * @return frase descriptografada
+     */
     public static String descriptografia(String valor){
         return new String(Base64.getDecoder().decode(valor.getBytes()));
     }

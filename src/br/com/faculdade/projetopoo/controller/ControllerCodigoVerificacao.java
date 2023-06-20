@@ -20,6 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controller da tela de codigo de verificacao
+ * @author 2022101202010058
+ */
 public class ControllerCodigoVerificacao implements Initializable {
 	
     @FXML
@@ -38,6 +42,10 @@ public class ControllerCodigoVerificacao implements Initializable {
     
     private final UsuarioDao usuarioDao = new UsuarioDao();
     
+    /**
+     * Acao do botao para enviar o codigo
+     * @throws NoSuchAlgorithmException 
+     */
     @FXML
     void enviarCodigo() throws NoSuchAlgorithmException {
         if(txCodigo.getText().equals(codigo)){
@@ -81,6 +89,9 @@ public class ControllerCodigoVerificacao implements Initializable {
         }
     }
 
+    /**
+     * Acao do botao para voltar a tela anterior
+     */
     @FXML
     void voltar() {
         switch (Global.tipoVerificacao) {
@@ -111,11 +122,20 @@ public class ControllerCodigoVerificacao implements Initializable {
             }
     }
     
+    /**
+     * Metodo de inicializacao do controller
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         codigo = gerarCodigo();
     }
     
+    /**
+     * Metodo que gera um codigo de verificacao para ser enviada no email
+     * @return 
+     */
     public static String gerarCodigo (){
         Random random = new Random();
         String codigo = String.valueOf((long)(random.nextDouble() * 10000L));

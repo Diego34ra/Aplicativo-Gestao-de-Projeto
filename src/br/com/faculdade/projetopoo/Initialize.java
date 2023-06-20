@@ -9,11 +9,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- *
+ * Inicializador do banco de dados
  * @author Diego
  */
 public class Initialize {
     
+    /**
+     * Metodo que gera as tabelas do banco de dados caso elas nao existam
+     */
     public void generateDB(){
         if (!verifyTable("usuario")) {
             createTable("CREATE TABLE `usuario` (\n" +
@@ -72,6 +75,10 @@ public class Initialize {
         
     }
     
+    /**
+     * Metodo para criar as tabelas
+     * @param sql sql da tabela que vai ser criada
+     */
     public void createTable(String sql){
         ConnectionBD con = new ConnectionBD();
         Statement stmt = null;
@@ -89,6 +96,11 @@ public class Initialize {
         }
     }
     
+    /**
+     * Metodo que verifica se a tabela existe no banco de dados
+     * @param table tabela que vai ser verificada
+     * @return verificacao da tabela
+     */
     public Boolean verifyTable(String table){
         String sql = "SELECT 1 AS RESULTADO \n" +
                      "  FROM information_schema.TABLES \n" +
